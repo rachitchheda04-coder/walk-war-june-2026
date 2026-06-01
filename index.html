@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Great June Walk War 2026</title>
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js & Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        :root {
+            --bg-color: #f4f7f9;
+            --card-bg: #ffffff;
+            --rachit-primary: #0284c7;
+            --rachit-light: #e0f2fe;
+            --anushka-primary: #e11d48;
+            --anushka-light: #ffe4e6;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(2, 132, 199, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(225, 29, 72, 0.03) 0%, transparent 50%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-bottom: 60px;
+        }
+
+        h1, h2, h3, .impact-text { font-family: 'Outfit', sans-serif; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        /* Premium White Cards with Soft Shadows */
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        }
+        
+        .glass-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero Section */
+        .hero { text-align: center; margin: 50px 0 40px; }
+        .hero h1 { 
+            font-size: 3.5rem; 
+            font-weight: 900; 
+            letter-spacing: -1px;
+            color: var(--text-dark);
+            margin-bottom: 15px; 
+        }
+        .hero p { color: var(--text-muted); font-size: 1.2rem; margin-bottom: 25px; font-weight: 500;}
+        
+        .leader-banner {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Layout Grids */
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            .glass-card { padding: 20px; }
+        }
+
+        /* Gamified Score Cards */
+        .score-card { text-align: center; position: relative; overflow: hidden; }
+        
+        .avatar-container {
+            width: 100px; height: 100px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 3rem;
+            box-shadow: inset 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .score-card.rachit .avatar-container { background: var(--rachit-light); color: var(--rachit-primary); }
+        .score-card.anushka .avatar-container { background: var(--anushka-light); color: var(--anushka-primary); }
+        
+        .score-value { 
+            font-size: 4.5rem; 
+            font-weight: 900; 
+            font-family: 'Outfit', sans-serif; 
+            line-height: 1; 
+            margin: 10px 0; 
+            letter-spacing: -2px;
+        }
+        
+        .score-card.rachit .score-value { color: var(--rachit-primary); }
+        .score-card.anushka .score-value { color: var(--anushka-primary); }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        /* Forms & Inputs */
+        .entry-form { display: flex; flex-direction: column; gap: 15px; }
+        .input-group { display: flex; flex-direction: column; gap: 8px; }
+        .input-group label { font-size: 0.95rem; font-weight: 700; color: var(--text-dark); }
+        .input-group input {
+            background: #f8fafc; 
+            border: 2px solid var(--border-color); 
+            color: var(--text-dark);
+            padding: 14px; 
+            border-radius: 12px; 
+            font-size: 1.1rem; 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.2s;
+        }
+        .input-group input:focus { outline: none; border-color: var(--rachit-primary); background: #fff; box-shadow: 0 0 0 4px var(--rachit-light); }
+        
+        .btn {
+            background: linear-gradient(135deg, var(--text-dark), #334155);
+            border: none; color: white; padding: 16px; font-size: 1.1rem; font-weight: 800;
+            border-radius: 12px; cursor: pointer; transition: all 0.3s;
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        
+        .btn-sync {
+            background: linear-gradient(135deg, var(--rachit-primary), var(--anushka-primary));
+            margin-top: 10px;
+        }
+
+        /* Fun Danger Meters */
+        .meter-container { margin: 25px 0; }
+        .meter-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 700; color: var(--text-dark); }
+        .meter-bg { 
+            width: 100%; height: 30px; 
+            background: #e2e8f0; 
+            border-radius: 15px; 
+            overflow: hidden; 
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .meter-fill { 
+            height: 100%; 
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1); 
+            display: flex; align-items: center; justify-content: flex-end; 
+            padding-right: 15px; font-size: 0.9rem; font-weight: 800; color: white;
+        }
+        .fill-pani-puri { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+        .fill-alcohol { background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
+
+        /* Commentator Desk */
+        .commentator-box { 
+            background: #fffbeb;
+            border: 2px solid #fde68a;
+            border-radius: 16px;
+            padding: 20px 20px 20px 50px; 
+            position: relative; 
+            color: #92400e;
+            font-weight: 500;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+        .commentator-box::before { 
+            content: '🎙️'; position: absolute; left: 15px; top: 18px; font-size: 1.5rem; 
+        }
+
+        /* Timeline Items */
+        .timeline-item { 
+            background: #fff; 
+            border: 1px solid var(--border-color);
+            border-radius: 16px; 
+            padding: 20px; 
+            margin-bottom: 12px; 
+            display: flex; justify-content: space-between; align-items: center; 
+            transition: transform 0.2s;
+        }
+        .timeline-item:hover { transform: scale(1.02); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .timeline-date { font-weight: 800; color: var(--text-dark); font-size: 1rem; display: flex; align-items: center; gap: 8px;}
+        .timeline-stats { font-size: 1.2rem; font-weight: 800; font-family: 'Outfit', sans-serif;}
+        .timeline-roast { font-size: 0.95rem; font-style: italic; color: var(--text-muted); margin-top: 8px; }
+
+        /* Modern Stat Boxes */
+        .stat-box { 
+            text-align: center; padding: 20px; background: #f8fafc; border-radius: 16px; border: 1px solid var(--border-color);
+        }
+        .stat-title { font-size: 0.85rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;}
+        .stat-value { font-size: 2rem; font-weight: 900; font-family: 'Outfit', sans-serif; color: var(--text-dark);}
+
+        /* Decorative Background Elements */
+        .bg-shape {
+            position: fixed; z-index: -1; filter: blur(60px); opacity: 0.4; border-radius: 50%;
+        }
+        .shape-1 { width: 300px; height: 300px; background: var(--rachit-light); top: -100px; left: -100px; }
+        .shape-2 { width: 400px; height: 400px; background: var(--anushka-light); bottom: -100px; right: -100px; }
+    </style>
+</head>
+<body>
+
+<div class="bg-shape shape-1"></div>
+<div class="bg-shape shape-2"></div>
+
+<div class="container">
+    <div class="hero">
+        <h1>👟 The Great June Walk War</h1>
+        <p>30 Days. 2 Competitors. 1 Year of Suffering.</p>
+        <div id="ui-leader-banner" class="leader-banner" style="color:var(--warning); border-color:var(--warning);">
+            <i class="fa-solid fa-satellite-dish fa-spin"></i> Fetching live battle data...
+        </div>
+    </div>
+
+    <!-- Live Scoreboard -->
+    <div class="grid-2">
+        <div class="glass-card score-card rachit">
+            <div class="avatar-container" id="avatar-rachit"><i class="fa-solid fa-person-running"></i></div>
+            <h2 style="font-size: 1.8rem; color: var(--text-dark);">Rachit</h2>
+            <div class="score-value" id="ui-rachit-total">0</div>
+            <p style="color: var(--text-muted); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Total Steps</p>
+            <div class="badge" id="badge-rachit" style="background: var(--rachit-light); color: var(--rachit-primary);">Level 1 Walker</div>
+        </div>
+        <div class="glass-card score-card anushka">
+            <div class="avatar-container" id="avatar-anushka"><i class="fa-solid fa-person-walking"></i></div>
+            <h2 style="font-size: 1.8rem; color: var(--text-dark);">Anushka Ji</h2>
+            <div class="score-value" id="ui-anushka-total">0</div>
+            <p style="color: var(--text-muted); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Total Steps</p>
+            <div class="badge" id="badge-anushka" style="background: var(--anushka-light); color: var(--anushka-primary);">Level 1 Walker</div>
+        </div>
+    </div>
+
+    <!-- Data Entry & Momentum -->
+    <div class="grid-2">
+        <div class="glass-card">
+            <h2 style="margin-bottom: 20px;"><i class="fa-solid fa-bolt" style="color: var(--warning);"></i> Log Today's Battle</h2>
+            <div class="entry-form">
+                <div class="input-group">
+                    <label>Select Date</label>
+                    <input type="date" id="input-date">
+                </div>
+                <div class="grid-2" style="gap:15px;">
+                    <div class="input-group">
+                        <label>Rachit's Steps</label>
+                        <input type="number" id="input-rachit" placeholder="e.g. 12500" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label>Anushka's Steps</label>
+                        <input type="number" id="input-anushka" placeholder="e.g. 10200" min="0">
+                    </div>
+                </div>
+                <button class="btn btn-sync" id="save-btn" onclick="app.addEntry()">
+                    <i class="fa-solid fa-paper-plane"></i> Record & Sync
+                </button>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <h2 style="margin-bottom: 20px;"><i class="fa-solid fa-chart-simple" style="color: var(--rachit-primary);"></i> Momentum Tracker</h2>
+            <div class="grid-2" style="gap:15px;">
+                <div class="stat-box">
+                    <div class="stat-title">Avg Steps (Rachit)</div>
+                    <div class="stat-value" id="ui-avg-rachit" style="color: var(--rachit-primary)">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-title">Avg Steps (Anushka)</div>
+                    <div class="stat-value" id="ui-avg-anushka" style="color: var(--anushka-primary)">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-title">Best Day (Rachit)</div>
+                    <div class="stat-value" id="ui-best-rachit">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-title">Best Day (Anushka)</div>
+                    <div class="stat-value" id="ui-best-anushka">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Punishments & Commentary -->
+    <div class="grid-2">
+        <div class="glass-card">
+            <h2 style="margin-bottom: 15px;"><i class="fa-solid fa-skull-crossbones" style="color: var(--anushka-primary);"></i> Survival Meters</h2>
+            <div class="meter-container">
+                <div class="meter-label">
+                    <span>Anushka's Pani Puri Survival Rate</span>
+                    <span id="ui-panipuri-pct">100%</span>
+                </div>
+                <div class="meter-bg"><div class="meter-fill fill-pani-puri" id="ui-panipuri-bar" style="width: 100%;"><i class="fa-solid fa-bowl-food" style="margin-right: 5px;"></i></div></div>
+            </div>
+            <div class="meter-container">
+                <div class="meter-label">
+                    <span>Rachit's Alcohol Retention Rate</span>
+                    <span id="ui-alcohol-pct">100%</span>
+                </div>
+                <div class="meter-bg"><div class="meter-fill fill-alcohol" id="ui-alcohol-bar" style="width: 100%;"><i class="fa-solid fa-beer-mug-empty" style="margin-right: 5px;"></i></div></div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <h2 style="margin-bottom: 15px;"><i class="fa-solid fa-microphone-lines" style="color: var(--rachit-primary);"></i> Live Commentator</h2>
+            <div class="commentator-box">
+                <p id="ui-commentary">"Connecting to satellites to retrieve the latest battle data..."</p>
+            </div>
+            <div style="margin-top: 20px; background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px solid var(--border-color);">
+                <p style="color: var(--text-dark); font-size: 0.95rem;"><strong><i class="fa-solid fa-robot"></i> AI Prediction:</strong> <span id="ui-prediction" style="color: var(--text-muted);">Awaiting data...</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="glass-card">
+        <h2 style="margin-bottom: 20px;"><i class="fa-solid fa-chart-area" style="color: var(--success);"></i> War Graphics</h2>
+        <div class="grid-2">
+            <div><canvas id="cumulativeChart" height="250"></canvas></div>
+            <div><canvas id="dailyChart" height="250"></canvas></div>
+        </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="glass-card">
+        <h2 style="margin-bottom: 20px;"><i class="fa-solid fa-clock-rotate-left" style="color: var(--text-dark);"></i> Battle History</h2>
+        <div id="ui-timeline">
+            <p style="text-align:center; color: var(--text-muted); padding: 20px; font-weight: 500;">Loading historical records...</p>
+        </div>
+    </div>
+</div>
+
+<script>
+// ========================================================
+// 🚨 LIVE GOOGLE API ENDPOINT
+// ========================================================
+const GOOGLE_API_URL = 'https://script.google.com/macros/s/AKfycbzrkC9hO7S_BDZsOw0LoOC0HSpbBuayu-ksuOBLzeIegzEb_c6XBcXoigVoZt9Gh88/exec';
+
+const app = {
+    data: [], 
+    charts: { cumulative: null, daily: null },
+
+    roasts: {
+        rachit_wins: [
+            "Anushka's legs are currently on strike.",
+            "At this rate, the pani puri ban paperwork is already being drafted.",
+            "Pani Puri Protection Services have officially entered panic mode.",
+            "Rachit is walking like he's running away from his responsibilities."
+        ],
+        anushka_wins: [
+            "Rachit might be hitting that 136g protein target, but his step count is looking awfully skinny today.",
+            "Rachit's alcohol collection is nervously watching this leaderboard.",
+            "Anushka Ji is power-walking past pani puri stalls without making eye contact.",
+            "Sources say Rachit is considering taping his phone to a ceiling fan."
+        ],
+        tie: [
+            "This rivalry is tighter than gym leggings.",
+            "A dead heat! Both are actually trying? What timeline is this?"
+        ],
+        commentary: [
+            "Breaking News: Experts believe this rivalry may never recover.",
+            "Sources confirm the streets are no longer safe from these two.",
+            "We are approaching WWE levels of drama in this step challenge."
+        ]
+    },
+
+    async init() {
+        document.getElementById('input-date').valueAsDate = new Date();
+        await this.fetchLiveSheetData();
+    },
+
+    async fetchLiveSheetData() {
+        try {
+            const response = await fetch(GOOGLE_API_URL);
+            const sheetData = await response.json();
+            
+            if (Array.isArray(sheetData) && sheetData.length > 0) {
+                this.data = sheetData;
+            } else {
+                const local = localStorage.getItem('walkwar_data');
+                if(local) this.data = JSON.parse(local);
+            }
+        } catch (error) {
+            console.error('API Error:', error);
+            const local = localStorage.getItem('walkwar_data');
+            if(local) this.data = JSON.parse(local);
+        }
+        
+        this.renderAll();
+    },
+
+    async addEntry() {
+        const dateStr = document.getElementById('input-date').value;
+        const rSteps = parseInt(document.getElementById('input-rachit').value) || 0;
+        const aSteps = parseInt(document.getElementById('input-anushka').value) || 0;
+        const btn = document.getElementById('save-btn');
+
+        if (!dateStr) return alert("Please select a date!");
+
+        let roastStr = "";
+        if (rSteps > aSteps) roastStr = this.roasts.rachit_wins[Math.floor(Math.random() * this.roasts.rachit_wins.length)];
+        else if (aSteps > rSteps) roastStr = this.roasts.anushka_wins[Math.floor(Math.random() * this.roasts.anushka_wins.length)];
+        else roastStr = this.roasts.tie[Math.floor(Math.random() * this.roasts.tie.length)];
+
+        const entry = { date: dateStr, rachit: rSteps, anushka: aSteps, roast: roastStr };
+
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Syncing...';
+        btn.style.opacity = "0.7";
+        
+        const existingIndex = this.data.findIndex(d => d.date === dateStr);
+        if (existingIndex >= 0) this.data[existingIndex] = entry;
+        else this.data.push(entry);
+        
+        this.data.sort((a, b) => new Date(a.date) - new Date(b.date));
+        localStorage.setItem('walkwar_data', JSON.stringify(this.data));
+        this.renderAll();
+
+        if (rSteps >= 15000 || aSteps >= 15000) confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+
+        try {
+            await fetch(GOOGLE_API_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(entry)
+            });
+            document.getElementById('input-rachit').value = '';
+            document.getElementById('input-anushka').value = '';
+        } catch (e) {
+            console.error("Failed to push to Google Sheet:", e);
+        } finally {
+            btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Record & Sync';
+            btn.style.opacity = "1";
+        }
+    },
+
+    formatNum(num) {
+        return new Intl.NumberFormat('en-US').format(num);
+    },
+
+    getBadge(total) {
+        if(total > 300000) return { text: "Elite Olympian 🏅", color: "#8b5cf6", bg: "#ede9fe" };
+        if(total > 200000) return { text: "Marathoner 🏃", color: "#10b981", bg: "#d1fae5" };
+        if(total > 100000) return { text: "Power Walker ⚡", color: "#f59e0b", bg: "#fef3c7" };
+        if(total > 50000)  return { text: "Active 🚶", color: "#0284c7", bg: "#e0f2fe" };
+        return { text: "Level 1 Walker 🐌", color: "#64748b", bg: "#f1f5f9" };
+    },
+
+    renderAll() {
+        let rTotal = 0, aTotal = 0, rMax = 0, aMax = 0;
+        const daysCount = this.data.length;
+
+        this.data.forEach(d => {
+            rTotal += d.rachit; aTotal += d.anushka;
+            if (d.rachit > rMax) rMax = d.rachit;
+            if (d.anushka > aMax) aMax = d.anushka;
+        });
+
+        document.getElementById('ui-rachit-total').innerText = this.formatNum(rTotal);
+        document.getElementById('ui-anushka-total').innerText = this.formatNum(aTotal);
+
+        // Update Badges
+        const rBadge = this.getBadge(rTotal);
+        const aBadge = this.getBadge(aTotal);
+        const elRBadge = document.getElementById('badge-rachit');
+        const elABadge = document.getElementById('badge-anushka');
+        
+        elRBadge.innerText = rBadge.text; elRBadge.style.color = rBadge.color; elRBadge.style.background = rBadge.bg;
+        elABadge.innerText = aBadge.text; elABadge.style.color = aBadge.color; elABadge.style.background = aBadge.bg;
+
+        // Avatar Reactions
+        document.getElementById('avatar-rachit').innerHTML = rTotal > aTotal ? '<i class="fa-solid fa-face-laugh-squint"></i>' : '<i class="fa-solid fa-face-tired"></i>';
+        document.getElementById('avatar-anushka').innerHTML = aTotal > rTotal ? '<i class="fa-solid fa-face-laugh-squint"></i>' : '<i class="fa-solid fa-face-tired"></i>';
+
+        const banner = document.getElementById('ui-leader-banner');
+        if (daysCount === 0) {
+            banner.innerHTML = "<i class='fa-solid fa-hourglass-start'></i> Waiting for Day 1...";
+            banner.style.color = "var(--text-muted)"; banner.style.borderColor = "var(--border-color)";
+        } else if (rTotal > aTotal) {
+            banner.innerHTML = `🔥 Rachit leads by ${this.formatNum(rTotal - aTotal)} steps`;
+            banner.style.color = "var(--rachit-primary)"; banner.style.borderColor = "var(--rachit-light)"; banner.style.background = "var(--rachit-light)";
+        } else if (aTotal > rTotal) {
+            banner.innerHTML = `👑 Anushka Ji leads by ${this.formatNum(aTotal - rTotal)} steps`;
+            banner.style.color = "var(--anushka-primary)"; banner.style.borderColor = "var(--anushka-light)"; banner.style.background = "var(--anushka-light)";
+        } else {
+            banner.innerHTML = "⚔️ DEAD HEAT. IT'S A TIE!";
+            banner.style.color = "var(--text-dark)"; banner.style.borderColor = "var(--border-color)"; banner.style.background = "var(--card-bg)";
+        }
+
+        document.getElementById('ui-avg-rachit').innerText = daysCount ? this.formatNum(Math.round(rTotal/daysCount)) : 0;
+        document.getElementById('ui-avg-anushka').innerText = daysCount ? this.formatNum(Math.round(aTotal/daysCount)) : 0;
+        document.getElementById('ui-best-rachit').innerText = this.formatNum(rMax);
+        document.getElementById('ui-best-anushka').innerText = this.formatNum(aMax);
+
+        const grandTotal = rTotal + aTotal;
+        let pPct = 100, aPct = 100;
+        if (grandTotal > 0) {
+            const rShare = rTotal / grandTotal;
+            const aShare = aTotal / grandTotal;
+            if(rShare > 0.5) pPct = Math.max(0, 100 - ((rShare - 0.5) * 400)); 
+            if(aShare > 0.5) aPct = Math.max(0, 100 - ((aShare - 0.5) * 400));
+        }
+
+        document.getElementById('ui-panipuri-pct').innerText = Math.round(pPct) + "%";
+        document.getElementById('ui-panipuri-bar').style.width = Math.round(pPct) + "%";
+        document.getElementById('ui-alcohol-pct').innerText = Math.round(aPct) + "%";
+        document.getElementById('ui-alcohol-bar').style.width = Math.round(aPct) + "%";
+
+        document.getElementById('ui-commentary').innerText = this.roasts.commentary[Math.floor(Math.random() * this.roasts.commentary.length)];
+        
+        if (daysCount > 0) {
+            const remaining = 30 - daysCount;
+            const rProj = rTotal + (Math.round(rTotal/daysCount) * remaining);
+            const aProj = aTotal + (Math.round(aTotal/daysCount) * remaining);
+            if (rProj > aProj) document.getElementById('ui-prediction').innerHTML = `<strong style="color:var(--rachit-primary)">Rachit</strong> projected to win with ${this.formatNum(rProj)} steps. Bye Pani Puri!`;
+            else if (aProj > rProj) document.getElementById('ui-prediction').innerHTML = `<strong style="color:var(--anushka-primary)">Anushka Ji</strong> projected to win with ${this.formatNum(aProj)} steps. Sober year for Rachit!`;
+            else document.getElementById('ui-prediction').innerText = "Too close to call!";
+        }
+
+        const tlContainer = document.getElementById('ui-timeline');
+        if (this.data.length === 0) {
+            tlContainer.innerHTML = '<p style="text-align:center; color: var(--text-muted); padding: 20px;">No battles recorded yet.</p>';
+        } else {
+            tlContainer.innerHTML = '';
+            [...this.data].reverse().forEach(d => {
+                let winColor = d.rachit > d.anushka ? 'var(--rachit-primary)' : (d.anushka > d.rachit ? 'var(--anushka-primary)' : 'var(--text-muted)');
+                let winIcon = d.rachit > d.anushka ? '<i class="fa-solid fa-trophy"></i>' : (d.anushka > d.rachit ? '<i class="fa-solid fa-crown"></i>' : '<i class="fa-solid fa-handshake"></i>');
+                
+                tlContainer.innerHTML += `
+                    <div class="timeline-item" style="border-left: 5px solid ${winColor}">
+                        <div style="flex: 1;">
+                            <div class="timeline-date"><i class="fa-regular fa-calendar"></i> ${d.date}</div>
+                            <div class="timeline-roast">"${d.roast}"</div>
+                        </div>
+                        <div style="text-align:right;">
+                            <div class="timeline-stats">
+                                <span style="color:var(--rachit-primary)">${this.formatNum(d.rachit)}</span> <span style="color:var(--text-muted); font-size:0.9rem;">vs</span> 
+                                <span style="color:var(--anushka-primary)">${this.formatNum(d.anushka)}</span>
+                            </div>
+                            <div style="color: ${winColor}; margin-top: 5px; font-size: 1.2rem;">${winIcon}</div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        this.renderCharts();
+    },
+
+    renderCharts() {
+        const labels = this.data.map(d => d.date.substring(5)); 
+        const rDaily = this.data.map(d => d.rachit);
+        const aDaily = this.data.map(d => d.anushka);
+        let rCumulData = [], aCumulData = [], rs = 0, as = 0;
+        
+        this.data.forEach(d => {
+            rs += d.rachit; as += d.anushka;
+            rCumulData.push(rs); aCumulData.push(as);
+        });
+
+        Chart.defaults.color = '#64748b'; 
+        Chart.defaults.font.family = 'Plus Jakarta Sans';
+
+        if(this.charts.cumulative) this.charts.cumulative.destroy();
+        if(this.charts.daily) this.charts.daily.destroy();
+
+        const ctxC = document.getElementById('cumulativeChart').getContext('2d');
+        this.charts.cumulative = new Chart(ctxC, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    { label: 'Rachit Total', data: rCumulData, borderColor: '#0284c7', backgroundColor: 'rgba(2, 132, 199, 0.1)', fill: true, tension: 0.4, borderWidth: 3 },
+                    { label: 'Anushka Total', data: aCumulData, borderColor: '#e11d48', backgroundColor: 'rgba(225, 29, 72, 0.1)', fill: true, tension: 0.4, borderWidth: 3 }
+                ]
+            },
+            options: { responsive: true, plugins: { title: { display: true, text: 'Total Steps Progression', font: {size: 14} } } }
+        });
+
+        const ctxD = document.getElementById('dailyChart').getContext('2d');
+        this.charts.daily = new Chart(ctxD, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    { label: 'Rachit Daily', data: rDaily, backgroundColor: '#0284c7', borderRadius: 6 },
+                    { label: 'Anushka Daily', data: aDaily, backgroundColor: '#e11d48', borderRadius: 6 }
+                ]
+            },
+            options: { responsive: true, plugins: { title: { display: true, text: 'Daily Head-to-Head', font: {size: 14} } } }
+        });
+    }
+};
+
+window.onload = () => app.init();
+</script>
+</body>
+</html>
