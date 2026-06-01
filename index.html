@@ -303,37 +303,120 @@ h1,h2,h3,.impact{font-family:'Outfit',sans-serif;}
 @keyframes medalSpin{0%{transform:rotate(0deg)}25%{transform:rotate(-10deg)}75%{transform:rotate(10deg)}100%{transform:rotate(0deg)}}
 
 /* ══════════════════════════════════════════════
-   HALL OF SHAME
+   HALL OF SHAME — UPGRADED
 ══════════════════════════════════════════════ */
 .shame{
-  background:linear-gradient(160deg,#0f172a 0%,#1e1b4b 100%);
-  border:2px solid rgba(244,63,94,.3);border-radius:28px;
-  padding:2rem 1.5rem;margin-bottom:1.5rem;
-  box-shadow:0 20px 60px rgba(244,63,94,.15);
+  background:linear-gradient(160deg,#08020e 0%,#150010 50%,#0a0218 100%);
+  border:2px solid rgba(244,63,94,.35);border-radius:28px;
+  padding:2.2rem 1.5rem;margin-bottom:1.5rem;
+  box-shadow:0 24px 72px rgba(244,63,94,.18),inset 0 1px 0 rgba(255,255,255,.05);
   position:relative;overflow:hidden;z-index:1;
 }
+/* subtle scanline texture */
+.shame::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,.012) 3px,rgba(255,255,255,.012) 4px);
+  border-radius:28px;
+}
+/* ambient red glow corners */
 .shame::after{
-  content:'';position:absolute;inset:0;
-  background:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(244,63,94,.015) 24px,rgba(244,63,94,.015) 48px);
-  pointer-events:none;
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 35% at 0% 0%,rgba(244,63,94,.1),transparent 60%),
+    radial-gradient(ellipse 55% 35% at 100% 100%,rgba(139,92,246,.1),transparent 60%);
+}
+.shame-eyebrow{
+  text-align:center;font-size:.7rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:3px;
+  color:rgba(244,63,94,.7);margin-bottom:.6rem;
+  position:relative;z-index:1;
 }
 .shame-title{
-  font-size:1.9rem;font-weight:900;font-family:'Outfit';
-  color:#f43f5e;text-align:center;letter-spacing:-1px;
-  margin-bottom:1.5rem;text-shadow:0 0 30px rgba(244,63,94,.4);
+  font-size:2.6rem;font-weight:900;font-family:'Outfit';
+  color:#f43f5e;text-align:center;letter-spacing:-1.5px;
+  margin-bottom:.2rem;position:relative;z-index:1;
+  text-shadow:0 0 40px rgba(244,63,94,.5),0 0 80px rgba(244,63,94,.2);
+  animation:shameGlow 3s ease-in-out infinite;
 }
-.shame-title small{font-size:.7rem;display:block;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#475569;margin-bottom:.3rem;font-family:'Plus Jakarta Sans';}
-.shame-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+@keyframes shameGlow{
+  0%,100%{text-shadow:0 0 40px rgba(244,63,94,.5),0 0 80px rgba(244,63,94,.2)}
+  50%{text-shadow:0 0 60px rgba(244,63,94,.8),0 0 120px rgba(244,63,94,.35)}
+}
+.shame-divider{
+  height:1px;background:linear-gradient(90deg,transparent,rgba(244,63,94,.3),transparent);
+  margin:.8rem 0;position:relative;z-index:1;
+}
+
+/* ── ROW 1: 3 big boxes ── */
+.shame-row3{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
+  position:relative;z-index:1;margin-bottom:0;
+}
 .shame-box{
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
-  border-radius:16px;padding:1.2rem;text-align:center;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:18px;padding:1.4rem 1rem 1.1rem;
+  text-align:center;position:relative;overflow:hidden;
+  transition:all .3s cubic-bezier(.34,1.56,.64,1);
+  cursor:default;
+}
+.shame-box:hover{
+  background:rgba(255,255,255,.08);
+  transform:translateY(-5px) scale(1.02);
+  border-color:rgba(244,63,94,.35);
+  box-shadow:0 12px 32px rgba(244,63,94,.15);
+}
+.sb-ribbon{
+  position:absolute;top:0;left:0;right:0;
+  background:linear-gradient(90deg,rgba(244,63,94,.3),rgba(244,63,94,.1));
+  font-size:.58rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(244,63,94,.9);padding:.28rem .5rem;text-align:center;
+  border-radius:18px 18px 0 0;
+}
+.sb-couch .sb-ribbon{background:linear-gradient(90deg,rgba(245,158,11,.3),rgba(245,158,11,.08));color:rgba(245,158,11,.9);}
+.sb-miracle .sb-ribbon{background:linear-gradient(90deg,rgba(139,92,246,.3),rgba(139,92,246,.08));color:rgba(167,139,250,.9);}
+.sb-icon-big{font-size:2.8rem;margin:1.2rem 0 .4rem;display:block;}
+.sb-label{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:#64748b;margin-bottom:.5rem;}
+.sb-val{font-size:2.4rem;font-weight:900;font-family:'Outfit';color:#fff;line-height:1;letter-spacing:-1px;}
+.sb-couch .sb-val{color:#fbbf24;}
+.sb-slug .sb-val{color:#f43f5e;}
+.sb-miracle .sb-val{color:#a78bfa;}
+.sb-unit{font-size:.68rem;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.8px;margin:.2rem 0;}
+.sb-who{font-size:.78rem;font-weight:800;color:#facc15;margin:.3rem 0;}
+.sb-quote{
+  font-size:.72rem;color:#475569;font-style:italic;
+  margin-top:.6rem;line-height:1.4;padding:.5rem .4rem 0;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+
+/* ── ROW 2: 4 detail boxes ── */
+.shame-row4{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;
+  position:relative;z-index:1;
+}
+.shame-box2{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:14px;padding:1rem .8rem;text-align:center;
   transition:all .25s;
 }
-.shame-box:hover{background:rgba(255,255,255,.07);transform:translateY(-3px);}
-.shame-icon{font-size:2.2rem;margin-bottom:.5rem;}
-.shame-lbl{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:#64748b;margin-bottom:.4rem;}
-.shame-val{font-size:1.8rem;font-weight:900;font-family:'Outfit';color:#fff;line-height:1;}
-.shame-sub{font-size:.75rem;color:#facc15;font-weight:700;font-style:italic;margin-top:.3rem;}
+.shame-box2:hover{background:rgba(255,255,255,.07);transform:translateY(-3px);}
+.sb2-icon{font-size:1.8rem;margin-bottom:.4rem;}
+.sb2-label{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#475569;margin-bottom:.4rem;}
+.sb2-val{font-size:1.5rem;font-weight:900;font-family:'Outfit';color:#e2e8f0;line-height:1;}
+.sb2-sub{font-size:.65rem;color:#334155;font-weight:600;margin-top:.25rem;}
+
+/* ── VERDICT BANNER ── */
+.shame-verdict{
+  background:linear-gradient(90deg,rgba(244,63,94,.08),rgba(139,92,246,.08));
+  border:1px solid rgba(244,63,94,.2);border-radius:12px;
+  padding:.9rem 1.2rem;margin-top:1.5rem;
+  display:flex;align-items:flex-start;gap:.8rem;
+  position:relative;z-index:1;
+}
+.sv-icon{font-size:1.4rem;flex-shrink:0;margin-top:.05rem;}
+.sv-text{font-size:.88rem;color:#94a3b8;font-weight:600;font-style:italic;line-height:1.6;}
+.sv-text strong{color:#f43f5e;font-style:normal;}
 
 /* ══════════════════════════════════════════════
    PUNISHMENT HP BARS
@@ -452,7 +535,7 @@ h1,h2,h3,.impact{font-family:'Outfit',sans-serif;}
 @media(max-width:640px){
   .arena{grid-template-columns:1fr;gap:1.5rem;}
   .vs-orb{display:none;}
-  .shame-grid,.insight-grid,.charts-grid,.pred-grid{grid-template-columns:1fr;}
+  .shame-row3,.shame-row4,.insight-grid,.charts-grid,.pred-grid{grid-template-columns:1fr;}
   .hero-title{letter-spacing:-1.5px;}
   .fighter{padding:1.5rem 1rem;}
 }
@@ -585,27 +668,88 @@ h1,h2,h3,.impact{font-family:'Outfit',sans-serif;}
 
 <!-- HALL OF SHAME -->
 <div class="shame">
-  <div class="shame-title"><small>⚠️ Classified Intel</small>Hall of Shame</div>
-  <div class="shame-grid">
-    <div class="shame-box">
-      <div class="shame-icon">🛋️</div>
-      <div class="shame-lbl">Couch Potato Award</div>
-      <div class="shame-val" id="sh-low">—</div>
-      <div class="shame-sub" id="sh-low-sub">Lowest single day</div>
+  <!-- header -->
+  <div class="shame-eyebrow">☠️ &nbsp; Classified Embarrassment File &nbsp; ☠️</div>
+  <div class="shame-title">Hall of Shame</div>
+  <div class="shame-divider"></div>
+
+  <!-- row 1: big 3 -->
+  <div class="shame-row3">
+
+    <div class="shame-box sb-couch">
+      <div class="sb-ribbon">WORST DAY</div>
+      <div class="sb-icon-big">🛋️</div>
+      <div class="sb-label">Couch Potato Award</div>
+      <div class="sb-val" id="sh-low">—</div>
+      <div class="sb-unit">steps</div>
+      <div class="sb-who" id="sh-low-sub">Waiting for data</div>
+      <div class="sb-quote" id="sh-low-quote">"A number so small it's basically decorative."</div>
     </div>
-    <div class="shame-box">
-      <div class="shame-icon">📉</div>
-      <div class="shame-lbl">Pathetic Days (under 5k)</div>
-      <div class="shame-val" id="sh-slug">—</div>
-      <div class="shame-sub" id="sh-slug-sub">Career low moments</div>
+
+    <div class="shame-box sb-slug">
+      <div class="sb-ribbon">CAREER LOWS</div>
+      <div class="sb-icon-big">📉</div>
+      <div class="sb-label">Pathetic Days Under 5,000</div>
+      <div class="sb-val" id="sh-slug">—</div>
+      <div class="sb-unit">days of shame</div>
+      <div class="sb-who" id="sh-slug-sub">Waiting for data</div>
+      <div class="sb-quote" id="sh-slug-quote">"Fewer steps than a toddler at IKEA."</div>
     </div>
-    <div class="shame-box">
-      <div class="shame-icon">🧮</div>
-      <div class="shame-lbl">Daily Miracle Required</div>
-      <div class="shame-val" id="sh-mir">—</div>
-      <div class="shame-sub" id="sh-mir-sub">Extra steps/day for loser</div>
+
+    <div class="shame-box sb-miracle">
+      <div class="sb-ribbon">MATH IS BRUTAL</div>
+      <div class="sb-icon-big">🧮</div>
+      <div class="sb-label">Daily Miracle Required</div>
+      <div class="sb-val" id="sh-mir">—</div>
+      <div class="sb-unit">extra steps/day</div>
+      <div class="sb-who" id="sh-mir-sub">above rival's pace</div>
+      <div class="sb-quote" id="sh-mir-quote">"The math doesn't care about your feelings."</div>
     </div>
+
   </div>
+
+  <!-- divider -->
+  <div class="shame-divider" style="margin:1.5rem 0"></div>
+
+  <!-- row 2: 4 deep stats -->
+  <div class="shame-row4">
+
+    <div class="shame-box2" id="sh-box-lazy">
+      <div class="sb2-icon">😴</div>
+      <div class="sb2-label">Laziest Streak</div>
+      <div class="sb2-val" id="sh-lazy-streak">—</div>
+      <div class="sb2-sub" id="sh-lazy-sub">consecutive days under avg</div>
+    </div>
+
+    <div class="shame-box2" id="sh-box-gap">
+      <div class="sb2-icon">🏔️</div>
+      <div class="sb2-label">Biggest Single Day Gap</div>
+      <div class="sb2-val" id="sh-gap">—</div>
+      <div class="sb2-sub" id="sh-gap-sub">steps between rivals</div>
+    </div>
+
+    <div class="shame-box2" id="sh-box-below">
+      <div class="sb2-icon">🐢</div>
+      <div class="sb2-label">Days Below 8k Steps</div>
+      <div class="sb2-val" id="sh-below">—</div>
+      <div class="sb2-sub" id="sh-below-sub">internationally recognised as mediocre</div>
+    </div>
+
+    <div class="shame-box2" id="sh-box-ratio">
+      <div class="sb2-icon">⚖️</div>
+      <div class="sb2-label">Domination Ratio</div>
+      <div class="sb2-val" id="sh-ratio">—</div>
+      <div class="sb2-sub" id="sh-ratio-sub">leader's steps per loser step</div>
+    </div>
+
+  </div>
+
+  <!-- verdict banner -->
+  <div class="shame-verdict" id="shame-verdict">
+    <span class="sv-icon">🎤</span>
+    <span class="sv-text" id="sv-text">Waiting for battle data to render the full verdict...</span>
+  </div>
+
 </div>
 
 <!-- PUNISHMENT HP BARS -->
@@ -963,20 +1107,98 @@ function renderAll(){
   }
 
   // ── HALL OF SHAME ──
+  const LOW_QUOTES=[
+    '"A number so small it\'s basically decorative."',
+    '"Fewer steps than a toddler at IKEA."',
+    '"The Fitbit wept when it recorded this."',
+    '"This is not a step count. This is a cry for help."',
+    '"Historically low. Medically concerning. Personally embarrassing."',
+  ];
+  const SLUG_QUOTES=[
+    '"Days where the only movement was scrolling this leaderboard."',
+    '"Fewer steps than the walk to the bathroom."',
+    '"A pattern of behaviour that concerns everyone who knows them."',
+    '"Scientists are baffled. Doctors are worried. Rivals are thrilled."',
+  ];
+  const MIR_QUOTES=[
+    '"The math doesn\'t care about your feelings."',
+    '"A number that increases daily. Like regret."',
+    '"Physics, unfortunately, is non-negotiable."',
+    '"This is what happens when you take rest days on a challenge."',
+  ];
   document.getElementById('sh-low').textContent=actualLow?fmt(actualLow):'—';
-  document.getElementById('sh-low-sub').textContent=actualLow?`Logged by ${lowestWho}`:'No data yet';
+  document.getElementById('sh-low-sub').textContent=actualLow?`Logged by ${lowestWho} 💀`:'No data yet';
+  document.getElementById('sh-low-quote').textContent=rnd(LOW_QUOTES);
+
   const slugWho=rSl>=aSl?'Rachit':'Anushka Ji';
   document.getElementById('sh-slug').textContent=fmt(Math.max(rSl,aSl));
-  document.getElementById('sh-slug-sub').textContent=`${slugWho}'s career shame`;
+  document.getElementById('sh-slug-sub').textContent=`${slugWho}'s career low moments`;
+  document.getElementById('sh-slug-quote').textContent=rnd(SLUG_QUOTES);
+
+  const dLeft2=Math.max(1,30-n);
   if(ldr!=='tie'&&diff>0){
-    const mir=Math.ceil(diff/dLeft);
+    const mir=Math.ceil(diff/dLeft2);
     const behind=ldr==='rachit'?'Anushka Ji':'Rachit';
     document.getElementById('sh-mir').textContent='+'+fmt(mir)+'/d';
-    document.getElementById('sh-mir-sub').textContent=`${behind} needs this above rival`;
+    document.getElementById('sh-mir-sub').textContent=`${behind} above rival's daily pace`;
   }else{
-    document.getElementById('sh-mir').textContent='0';
-    document.getElementById('sh-mir-sub').textContent='Dead even — no miracle needed';
+    document.getElementById('sh-mir').textContent='0/d';
+    document.getElementById('sh-mir-sub').textContent='Battle even — no miracle needed';
   }
+  document.getElementById('sh-mir-quote').textContent=rnd(MIR_QUOTES);
+
+  // ── SHAME ROW 2: deep stats ──
+  // Laziest streak (consecutive days both under combined avg)
+  const globalAvg=n?((rT+aT)/n/2):8000;
+  let lazyR=0,lazyA=0,maxLazyR=0,maxLazyA=0,curLR=0,curLA=0;
+  DATA.forEach(d=>{
+    if(d.r<globalAvg){curLR++;maxLazyR=Math.max(maxLazyR,curLR);}else curLR=0;
+    if(d.a<globalAvg){curLA++;maxLazyA=Math.max(maxLazyA,curLA);}else curLA=0;
+  });
+  const lazyWho=maxLazyR>=maxLazyA?'Rachit':'Anushka Ji';
+  const lazyDays=Math.max(maxLazyR,maxLazyA);
+  document.getElementById('sh-lazy-streak').textContent=lazyDays?lazyDays+' days':'—';
+  document.getElementById('sh-lazy-sub').textContent=lazyDays?`${lazyWho} — consecutive days under avg`:'No streak yet';
+  document.getElementById('sh-box-lazy').style.borderColor=lazyDays>2?'rgba(245,158,11,.3)':'rgba(255,255,255,.07)';
+
+  // Biggest single day gap
+  let maxGap=0,maxGapWinner='',maxGapDate='';
+  DATA.forEach(d=>{const g=Math.abs(d.r-d.a);if(g>maxGap){maxGap=g;maxGapWinner=d.r>d.a?'Rachit':'Anushka Ji';maxGapDate=d.date.slice(5);}});
+  document.getElementById('sh-gap').textContent=maxGap?fmt(maxGap):'—';
+  document.getElementById('sh-gap-sub').textContent=maxGap?`${maxGapWinner} on ${maxGapDate}`:'No data yet';
+  document.getElementById('sh-box-gap').style.borderColor=maxGap>5000?'rgba(244,63,94,.3)':'rgba(255,255,255,.07)';
+
+  // Days below 8k
+  let below8R=0,below8A=0;
+  DATA.forEach(d=>{if(d.r>0&&d.r<8000)below8R++;if(d.a>0&&d.a<8000)below8A++;});
+  const below8Who=below8R>=below8A?'Rachit':'Anushka Ji';
+  const below8Max=Math.max(below8R,below8A);
+  document.getElementById('sh-below').textContent=below8Max||'—';
+  document.getElementById('sh-below-sub').textContent=below8Max?`${below8Who} — officially mediocre`:'Everyone OK so far';
+
+  // Domination ratio
+  const domRatio=ldr==='rachit'&&aT>0?(rT/aT).toFixed(2):ldr==='anushka'&&rT>0?(aT/rT).toFixed(2):null;
+  const domWho=ldr==='rachit'?'Rachit':'Anushka Ji';
+  document.getElementById('sh-ratio').textContent=domRatio?domRatio+'×':'⚖️';
+  document.getElementById('sh-ratio-sub').textContent=domRatio?`${domWho} steps per loser step`:'Too close to call';
+  document.getElementById('sh-box-ratio').style.borderColor=domRatio>1.1?'rgba(139,92,246,.3)':'rgba(255,255,255,.07)';
+
+  // Verdict
+  const VERDICTS_R=[
+    `After ${n} days, <strong>Anushka Ji</strong> is walking like someone who has already mentally processed the pani puri ban and entered the acceptance stage. The numbers are unkind. The leaderboard is merciless. The stall vendors are already arranging a farewell dinner.`,
+    `<strong>Rachit</strong> is currently ahead by ${fmt(diff)} steps. Statistically, Anushka Ji would need to start walking in her sleep to catch up. The pani puri ban is not a possibility — it is a projection.`,
+    `The evidence is clear: <strong>Anushka Ji</strong> has logged ${aSl} sub-5k days, a single-day low of ${fmt(lowestA)} steps, and a deficit that grows daily. The Hall of Shame does not judge. The Hall of Shame simply documents.`,
+  ];
+  const VERDICTS_A=[
+    `After ${n} days, <strong>Rachit</strong> is walking like someone who has already accepted that sparkling water will replace all social activity for the next 365 days. His step count is performing at RTO quality.`,
+    `<strong>Anushka Ji</strong> leads by ${fmt(diff)} steps. Rachit's bar tab is in active mourning. Every sub-10k day from Rachit is statistically equivalent to pouring a drink down the drain. Voluntarily.`,
+    `The record shows: <strong>Rachit</strong> has logged ${rSl} sub-5k days, a lowest single day of ${fmt(lowestR)} steps, and a deficit that compounds with interest. This Hall does not judge. It only archives.`,
+  ];
+  const VERDICTS_TIE=[
+    `After ${n} days, both competitors have managed to be equally unremarkable. The Hall of Shame records this as a double entry. The pani puri and the alcohol are both nervous. As they should be.`,
+  ];
+  const verdict=ldr==='rachit'?rnd(VERDICTS_R):ldr==='anushka'?rnd(VERDICTS_A):rnd(VERDICTS_TIE);
+  document.getElementById('sv-text').innerHTML=verdict;
 
   // ── HP BARS ──
   let ppPct=100,alPct=100;
