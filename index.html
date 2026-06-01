@@ -26,6 +26,8 @@
             --text-muted: #64748b;
             --border-color: #e2e8f0;
             --warning: #f59e0b;
+            --brutal-dark: #1e1b4b;
+            --brutal-red: #9f1239;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -45,6 +47,20 @@
         h1, h2, h3, .impact-text { font-family: 'Outfit', sans-serif; }
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
+        /* Trash Talk Ticker */
+        .ticker-wrap {
+            width: 100%; background: var(--text-dark); color: #facc15;
+            padding: 10px 0; overflow: hidden; font-weight: 800; text-transform: uppercase;
+            font-family: 'Outfit', sans-serif; letter-spacing: 2px;
+            border-bottom: 3px solid var(--warning); margin-bottom: 20px;
+        }
+        .ticker-move {
+            display: inline-block; white-space: nowrap; padding-right: 100%;
+            animation: ticker 25s linear infinite;
+        }
+        .ticker-item { margin-right: 50px; display: inline-block; }
+        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+
         /* Floating VS Badge */
         .vs-badge {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -54,7 +70,6 @@
             border-radius: 50%; border: 4px solid var(--bg-color); z-index: 10;
             box-shadow: 0 10px 20px rgba(0,0,0,0.15); animation: pulse-vs 2s infinite;
         }
-
         @keyframes pulse-vs {
             0% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 0 0 rgba(15, 23, 42, 0.4); }
             70% { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 0 0 15px rgba(15, 23, 42, 0); }
@@ -72,8 +87,8 @@
         .glass-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12); }
 
         /* Hero */
-        .hero { text-align: center; margin: 40px 0; position: relative; }
-        .hero h1 { font-size: 4rem; font-weight: 900; letter-spacing: -2px; color: var(--text-dark); margin-bottom: 10px; line-height: 1.1; }
+        .hero { text-align: center; margin: 20px 0 40px; position: relative; }
+        .hero h1 { font-size: 4.5rem; font-weight: 900; letter-spacing: -2px; color: var(--text-dark); margin-bottom: 10px; line-height: 1.1; }
         .hero p { color: var(--text-muted); font-size: 1.3rem; margin-bottom: 25px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px;}
         
         .sync-btn {
@@ -86,11 +101,7 @@
         /* Grid */
         .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; position: relative; }
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 24px;}
-        @media (max-width: 768px) { 
-            .grid-2, .grid-3 { grid-template-columns: 1fr; } 
-            .hero h1 { font-size: 2.8rem; } 
-            .vs-badge { display: none; }
-        }
+        @media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } .hero h1 { font-size: 2.8rem; } .vs-badge { display: none; } }
 
         /* Score Cards */
         .score-card { text-align: center; }
@@ -100,7 +111,6 @@
             filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.6)); z-index: 5;
         }
         .score-card.is-leader .crown { top: 10px; opacity: 1; animation: float-crown 2s infinite; }
-
         @keyframes float-crown { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-10px); } }
 
         .avatar-container {
@@ -114,7 +124,7 @@
         .score-card.rachit .score-value { color: var(--rachit-primary); }
         .score-card.anushka .score-value { color: var(--anushka-primary); }
 
-        /* Level / XP System */
+        /* XP System */
         .level-badge { font-weight: 800; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 5px; color: var(--text-muted); }
         .xp-bar-bg { width: 80%; height: 12px; background: #f1f5f9; border-radius: 6px; margin: 0 auto; overflow: hidden; }
         .xp-bar-fill { height: 100%; border-radius: 6px; transition: width 1.5s ease; }
@@ -131,6 +141,24 @@
         .roast-text { font-size: 2rem; font-weight: 700; line-height: 1.3; font-family: 'Outfit', sans-serif; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
         .roast-sub { font-size: 1.1rem; color: #94a3b8; margin-top: 15px; font-weight: 500; }
 
+        /* THE HALL OF SHAME (New Brutal Section) */
+        .hall-of-shame {
+            background: linear-gradient(180deg, var(--brutal-dark) 0%, #000000 100%);
+            border: 2px solid var(--brutal-red);
+            color: #fff; border-radius: 24px; padding: 30px; margin-bottom: 24px;
+            box-shadow: 0 15px 40px rgba(159, 18, 57, 0.2);
+        }
+        .shame-title { font-size: 2.5rem; font-family: 'Outfit'; font-weight: 900; color: #f43f5e; text-align: center; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px;}
+        
+        .shame-card {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px; padding: 20px; text-align: center; position: relative;
+        }
+        .shame-icon { font-size: 2.5rem; margin-bottom: 15px; color: #f43f5e; }
+        .shame-label { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: #94a3b8; letter-spacing: 1px; }
+        .shame-value { font-size: 2rem; font-family: 'Outfit'; font-weight: 900; color: #fff; margin: 5px 0;}
+        .shame-sub { font-size: 0.9rem; color: #facc15; font-weight: 700; font-style: italic;}
+
         /* Health Bars */
         .health-bar-container { margin-bottom: 25px; }
         .health-label { display: flex; justify-content: space-between; font-weight: 800; font-size: 1.1rem; margin-bottom: 8px; text-transform: uppercase; }
@@ -139,7 +167,7 @@
         .health-fill.pani-puri { background: linear-gradient(90deg, #fbbf24, #ef4444); }
         .health-fill.alcohol { background: linear-gradient(90deg, #60a5fa, #4f46e5); }
 
-        /* NEW GAMIFIED INSIGHT CARDS */
+        /* War Analytics Cards */
         .insight-card {
             background: #fff; border: 1px solid var(--border-color); border-radius: 16px; padding: 20px;
             text-align: center; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.03);
@@ -150,26 +178,22 @@
         .insight-title { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; }
         .insight-data { font-size: 1.8rem; font-family: 'Outfit', sans-serif; font-weight: 900; color: var(--text-dark); margin: 5px 0;}
         .insight-sub { font-size: 0.85rem; color: var(--text-muted); font-weight: 500;}
-        
-        .pulse-border { position: absolute; inset: 0; border: 3px solid transparent; border-radius: 16px; pointer-events: none; }
-        .streak-active { animation: neon-pulse 2s infinite alternate; }
-        
-        @keyframes neon-pulse {
-            0% { border-color: rgba(245, 158, 11, 0.2); box-shadow: inset 0 0 10px rgba(245, 158, 11, 0.1); }
-            100% { border-color: rgba(245, 158, 11, 0.8); box-shadow: inset 0 0 20px rgba(245, 158, 11, 0.3); }
-        }
 
-        /* Timeline */
-        .timeline-item { background: #fff; border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; transition: transform 0.2s; }
-        .timeline-item:hover { transform: scale(1.02); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .timeline-date { font-weight: 800; color: var(--text-dark); font-size: 1rem; }
-        .timeline-stats { font-size: 1.3rem; font-weight: 900; font-family: 'Outfit', sans-serif;}
-
-        /* Canvas wrappers for nice layout */
+        /* Canvas wrappers */
         .chart-wrapper { position: relative; height: 300px; width: 100%; padding-top: 15px;}
     </style>
 </head>
 <body>
+
+<!-- Trash Talk Ticker -->
+<div class="ticker-wrap">
+    <div class="ticker-move">
+        <div class="ticker-item">🚨 BREAKING: PANI PURI PROTECTION SERVICES ON HIGH ALERT 🚨</div>
+        <div class="ticker-item">💀 RACHIT'S LIVER CURRENTLY SWEATING 💀</div>
+        <div class="ticker-item">🏃‍♀️ THE STREETS OF MUMBAI ARE NO LONGER SAFE 🏃‍♂️</div>
+        <div class="ticker-item">📉 SOMEONE'S STEP COUNT LOOKS LIKE A DIAL-UP CONNECTION 📉</div>
+    </div>
+</div>
 
 <div class="container">
     <div class="hero">
@@ -205,6 +229,31 @@
         </div>
     </div>
 
+    <!-- The Hall of Shame (BRUTAL STATS) -->
+    <div class="hall-of-shame">
+        <div class="shame-title"><i class="fa-solid fa-biohazard"></i> THE HALL OF SHAME <i class="fa-solid fa-biohazard"></i></div>
+        <div class="grid-3">
+            <div class="shame-card">
+                <div class="shame-icon"><i class="fa-solid fa-couch"></i></div>
+                <div class="shame-label">The Couch Potato Award</div>
+                <div class="shame-value" id="shame-lowest-steps">0</div>
+                <div class="shame-sub" id="shame-lowest-sub">Lowest single day effort</div>
+            </div>
+            <div class="shame-card">
+                <div class="shame-icon"><i class="fa-solid fa-calculator"></i></div>
+                <div class="shame-label">The Catch-Up Math</div>
+                <div class="shame-value" id="shame-deficit" style="font-size: 1.5rem; margin: 15px 0;">+0/day</div>
+                <div class="shame-sub" id="shame-deficit-sub">Extra steps needed to survive</div>
+            </div>
+            <div class="shame-card">
+                <div class="shame-icon"><i class="fa-solid fa-battery-quarter"></i></div>
+                <div class="shame-label">Sluggish Days (< 5k)</div>
+                <div class="shame-value" id="shame-sluggish">0</div>
+                <div class="shame-sub" id="shame-sluggish-sub">Total pathetic performances</div>
+            </div>
+        </div>
+    </div>
+
     <!-- Ultimate Roast -->
     <div class="ultimate-roast">
         <div class="roast-title"><i class="fa-solid fa-fire"></i> Daily Fatality <i class="fa-solid fa-fire"></i></div>
@@ -225,27 +274,23 @@
         </div>
     </div>
 
-    <!-- NEW GAMIFIED WAR GRAPHICS SECTION -->
+    <!-- War Analytics -->
     <div class="glass-card" style="background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);">
         <h2 style="margin-bottom: 25px; font-size: 2.2rem; text-align: center;"><i class="fa-solid fa-radar"></i> War Analytics Command</h2>
         
-        <!-- Animated Insights -->
         <div class="grid-3">
-            <div class="insight-card" id="card-streak">
-                <div class="pulse-border streak-active"></div>
+            <div class="insight-card">
                 <div class="insight-icon" style="color: #f59e0b;"><i class="fa-solid fa-fire-flame-curved"></i></div>
                 <div class="insight-title">Active Win Streak</div>
                 <div class="insight-data" id="insight-streak">0 Days</div>
                 <div class="insight-sub" id="insight-streak-sub">No momentum yet</div>
             </div>
-            
             <div class="insight-card">
                 <div class="insight-icon" style="color: #8b5cf6;"><i class="fa-solid fa-meteor"></i></div>
                 <div class="insight-title">Biggest Beatdown</div>
                 <div class="insight-data" id="insight-beatdown">0 Steps</div>
                 <div class="insight-sub" id="insight-beatdown-sub">Margin of victory</div>
             </div>
-
             <div class="insight-card">
                 <div class="insight-icon" style="color: #10b981;"><i class="fa-solid fa-route"></i></div>
                 <div class="insight-title">Combined Distance</div>
@@ -254,48 +299,15 @@
             </div>
         </div>
 
-        <!-- Charts Grid -->
         <div class="grid-2">
-            <!-- Cumulative Line Chart -->
             <div style="background: #fff; padding: 20px; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
                 <h3 style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 10px;"><i class="fa-solid fa-arrow-trend-up"></i> Total Distance Escalation</h3>
                 <div class="chart-wrapper"><canvas id="cumulativeChart"></canvas></div>
             </div>
-            
-            <!-- Daily Bar Chart -->
             <div style="background: #fff; padding: 20px; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
-                <h3 style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 10px;"><i class="fa-solid fa-hand-fist"></i> Daily Head-to-Head Clash</h3>
+                <h3 style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 10px;"><i class="fa-solid fa-hand-fist"></i> Daily Head-to-Head</h3>
                 <div class="chart-wrapper"><canvas id="dailyChart"></canvas></div>
             </div>
-        </div>
-        
-        <!-- Dominance Ring -->
-        <div style="background: #fff; padding: 20px; border-radius: 16px; border: 1px solid var(--border-color); margin-top: 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 250px; max-width: 300px;">
-                <canvas id="doughnutChart"></canvas>
-            </div>
-            <div style="flex: 1; min-width: 250px; text-align: left;">
-                <h3 style="font-size: 2rem; margin-bottom: 10px;">Overall Dominance</h3>
-                <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 20px;">The slice of the pie shows who is currently controlling the war. A wider gap means a higher chance of losing the survival stakes.</p>
-                <div style="display: flex; gap: 20px;">
-                    <div>
-                        <div style="font-weight: 900; font-size: 1.5rem; color: var(--rachit-primary);" id="dom-rachit">50%</div>
-                        <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 800; color: var(--text-muted);">Rachit</div>
-                    </div>
-                    <div>
-                        <div style="font-weight: 900; font-size: 1.5rem; color: var(--anushka-primary);" id="dom-anushka">50%</div>
-                        <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 800; color: var(--text-muted);">Anushka Ji</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Battle History -->
-    <div class="glass-card">
-        <h2 style="margin-bottom: 20px;"><i class="fa-solid fa-clock-rotate-left"></i> Battle Logs</h2>
-        <div id="ui-timeline">
-            <p style="text-align:center; color: var(--text-muted); padding: 20px; font-weight: 500;">Accessing encrypted logs...</p>
         </div>
     </div>
 </div>
@@ -308,28 +320,28 @@ const GOOGLE_API_URL = 'https://script.google.com/macros/s/AKfycbzQ4MYa4I-6-mGmr
 
 const app = {
     data: [], 
-    charts: { cumulative: null, daily: null, doughnut: null },
+    charts: { cumulative: null, daily: null },
     xpPerLevel: 10000,
 
+    // THE ULTIMATE SAVAGE ROASTS (Personalized & Brutal)
     savageRoasts: {
         rachit_crushes: [
-            "Anushka's legs have officially filed for unemployment.",
-            "Pani Puri Protection Services have entered DEFCON 1.",
-            "Anushka is walking like the Pani Puri stall moved to another continent.",
-            "Rachit is sprinting toward victory. Anushka is sprinting toward the couch.",
-            "A moment of silence for Anushka's pedometer. It died of boredom today."
+            "Rachit's 136g of daily protein finally kicked in. Anushka's Pani Puri dreams are fading fast.",
+            "Rachit's treating this challenge like a cricket pitch, and he just hit a boundary. Anushka is caught slipping.",
+            "Maybe if we put a Pani Puri stall at the finish line, Anushka would actually start walking.",
+            "Anushka's legs have officially filed for unemployment. Rachit is sprinting away with the alcohol.",
+            "Rachit crushed it today. Anushka spent more time dreaming about snacks than moving her feet."
         ],
         anushka_crushes: [
-            "Rachit's alcohol cabinet is actively planning a funeral.",
-            "Rachit might be hitting 136g of protein, but his step count is severely malnourished.",
-            "Anushka is owning the pavement. Rachit is owning the sofa.",
-            "Rachit's liver just threw a premature survival party.",
-            "Rachit is scoring fewer steps than a tailender facing fast bowling."
+            "All that Alpino peanut protein and MyProtein casein, Rachit, just to walk slower than a dial-up connection.",
+            "Anushka is owning the pavement. Rachit, you can't fix this massive deficit with a Nova Bloom face mask.",
+            "Rachit is spending more time optimizing Amazon India D2C logistics than moving his own feet.",
+            "Tracking saturated fats under 21g is great, Rachit, but your step count is what's really starving.",
+            "Rachit's alcohol cabinet is actively writing a farewell letter. Anushka is absolutely destroying him."
         ],
         tie: [
-            "A dead heat. Neither wanted to win, neither wanted to lose.",
-            "Stalemate. The tension is thicker than a protein shake.",
-            "Both survived today. The alcohol and the pani puri live to see another dawn."
+            "A pathetic tie. Neither wanted to win, neither wanted to lose.",
+            "Stalemate. Both survived today. The alcohol and the pani puri live to see another dawn."
         ]
     },
 
@@ -367,28 +379,68 @@ const app = {
         const pct = (remainder / this.xpPerLevel) * 100;
         document.getElementById(elLevel).innerText = `LVL ${level}`;
         document.getElementById(elFill).style.width = `${pct}%`;
-        document.getElementById(elText).innerText = `${this.formatNum(remainder)} / 10,000 to LVL ${level + 1}`;
+        document.getElementById(elText).innerText = `${this.formatNum(remainder)} / 10k to LVL ${level + 1}`;
     },
 
     renderAll() {
         if (this.data.length === 0) return;
 
-        let rTotal = 0, aTotal = 0;
-        this.data.forEach(d => { rTotal += d.rachit; aTotal += d.anushka; });
+        let rTotal = 0, aTotal = 0, rSluggish = 0, aSluggish = 0;
+        let lowestStepCount = 999999, lowestWalker = "";
+        
+        this.data.forEach(d => { 
+            rTotal += d.rachit; aTotal += d.anushka; 
+            if(d.rachit > 0 && d.rachit < 5000) rSluggish++;
+            if(d.anushka > 0 && d.anushka < 5000) aSluggish++;
 
-        // Scoreboards
+            if(d.rachit > 0 && d.rachit < lowestStepCount) { lowestStepCount = d.rachit; lowestWalker = "Rachit"; }
+            if(d.anushka > 0 && d.anushka < lowestStepCount) { lowestStepCount = d.anushka; lowestWalker = "Anushka"; }
+        });
+
+        // 1. Scoreboards
         document.getElementById('ui-rachit-total').innerText = this.formatNum(rTotal);
         document.getElementById('ui-anushka-total').innerText = this.formatNum(aTotal);
         document.getElementById('card-rachit').classList.toggle('is-leader', rTotal > aTotal);
         document.getElementById('card-anushka').classList.toggle('is-leader', aTotal > rTotal);
 
-        if(rTotal > aTotal && rTotal > 0) confetti({ particleCount: 50, origin: { x: 0.25, y: 0.3 } });
-        if(aTotal > rTotal && aTotal > 0) confetti({ particleCount: 50, origin: { x: 0.75, y: 0.3 } });
-
         this.updateLevel(rTotal, 'level-rachit', 'xp-rachit', 'xp-text-rachit');
         this.updateLevel(aTotal, 'level-anushka', 'xp-anushka', 'xp-text-anushka');
 
-        // Ultimate Roast
+        // 2. The Hall of Shame Math
+        if(lowestStepCount !== 999999) {
+            document.getElementById('shame-lowest-steps').innerText = this.formatNum(lowestStepCount);
+            document.getElementById('shame-lowest-sub').innerText = `Logged by ${lowestWalker}`;
+        }
+
+        let sluggishLeader = rSluggish >= aSluggish ? "Rachit" : "Anushka";
+        document.getElementById('shame-sluggish').innerText = Math.max(rSluggish, aSluggish);
+        document.getElementById('shame-sluggish-sub').innerText = `Pathetic days logged by ${sluggishLeader}`;
+
+        // Catch-up Math
+        let daysPassed = this.data.length;
+        let daysLeft = 30 - daysPassed;
+        let catchUpText = "Challenge Over";
+        let catchUpSub = "The war is decided.";
+        
+        if(daysLeft > 0) {
+            if(rTotal > aTotal) {
+                let diff = rTotal - aTotal;
+                let needed = Math.ceil(diff / daysLeft);
+                catchUpText = `+${this.formatNum(needed)}/day`;
+                catchUpSub = `Anushka needs this above Rachit's daily pace`;
+            } else if (aTotal > rTotal) {
+                let diff = aTotal - rTotal;
+                let needed = Math.ceil(diff / daysLeft);
+                catchUpText = `+${this.formatNum(needed)}/day`;
+                catchUpSub = `Rachit needs this above Anushka's daily pace`;
+            } else {
+                catchUpText = "0/day"; catchUpSub = "It's dead even.";
+            }
+        }
+        document.getElementById('shame-deficit').innerText = catchUpText;
+        document.getElementById('shame-deficit-sub').innerText = catchUpSub;
+
+        // 3. Ultimate Roast
         const latest = this.data[this.data.length - 1];
         const roastTextEl = document.getElementById('ui-roast-text');
         const roastSubEl = document.getElementById('ui-roast-sub');
@@ -406,7 +458,7 @@ const app = {
             roastTextEl.style.color = "#facc15";
         }
 
-        // Stakes
+        // 4. Stakes Health Bars
         const grandTotal = rTotal + aTotal;
         let pPct = 100, aPct = 100;
         if (grandTotal > 0) {
@@ -419,35 +471,19 @@ const app = {
         document.getElementById('ui-alcohol-pct').innerText = Math.round(aPct) + "% HP";
         document.getElementById('ui-alcohol-bar').style.width = Math.round(aPct) + "%";
 
-        // --- NEW GAMIFIED CALCULATIONS ---
-        
-        // 1. Streak Calculation
+        // 5. War Analytics
         let rStreak = 0, aStreak = 0;
         for(let i = this.data.length - 1; i >= 0; i--) {
             if(this.data[i].rachit > this.data[i].anushka) { if(aStreak > 0) break; rStreak++; }
             else if(this.data[i].anushka > this.data[i].rachit) { if(rStreak > 0) break; aStreak++; }
             else break;
         }
-        
         const streakEl = document.getElementById('insight-streak');
         const streakSubEl = document.getElementById('insight-streak-sub');
-        const streakCard = document.getElementById('card-streak');
-        
-        if(rStreak > aStreak) {
-            streakEl.innerText = `${rStreak} Days`; streakEl.style.color = "var(--rachit-primary)";
-            streakSubEl.innerText = "Rachit is on fire";
-            streakCard.querySelector('.pulse-border').style.borderColor = "rgba(2, 132, 199, 0.5)";
-        } else if (aStreak > rStreak) {
-            streakEl.innerText = `${aStreak} Days`; streakEl.style.color = "var(--anushka-primary)";
-            streakSubEl.innerText = "Anushka is dominating";
-            streakCard.querySelector('.pulse-border').style.borderColor = "rgba(225, 29, 72, 0.5)";
-        } else {
-            streakEl.innerText = "0 Days"; streakEl.style.color = "var(--text-dark)";
-            streakSubEl.innerText = "Momentum is broken";
-            streakCard.querySelector('.pulse-border').style.borderColor = "transparent";
-        }
+        if(rStreak > aStreak) { streakEl.innerText = `${rStreak} Days`; streakEl.style.color = "var(--rachit-primary)"; streakSubEl.innerText = "Rachit is on fire"; } 
+        else if (aStreak > rStreak) { streakEl.innerText = `${aStreak} Days`; streakEl.style.color = "var(--anushka-primary)"; streakSubEl.innerText = "Anushka is dominating"; } 
+        else { streakEl.innerText = "0 Days"; streakEl.style.color = "var(--text-dark)"; streakSubEl.innerText = "Momentum is broken"; }
 
-        // 2. Biggest Beatdown
         let maxDiff = 0, beatdownWinner = "", beatdownDate = "";
         this.data.forEach(d => {
             let diff = Math.abs(d.rachit - d.anushka);
@@ -455,37 +491,10 @@ const app = {
         });
         document.getElementById('insight-beatdown').innerText = this.formatNum(maxDiff);
         document.getElementById('insight-beatdown-sub').innerText = `By ${beatdownWinner} on ${beatdownDate.substring(5)}`;
-
-        // 3. Combined Distance (Assuming 1 step = 0.0008 KM)
+        
         const km = (grandTotal * 0.0008).toFixed(1);
         document.getElementById('insight-distance').innerText = `${km} KM`;
 
-        // Update Dominance Text
-        if(grandTotal > 0) {
-            document.getElementById('dom-rachit').innerText = Math.round((rTotal/grandTotal)*100) + "%";
-            document.getElementById('dom-anushka').innerText = Math.round((aTotal/grandTotal)*100) + "%";
-        }
-
-        // Timeline
-        const tlContainer = document.getElementById('ui-timeline');
-        tlContainer.innerHTML = '';
-        [...this.data].reverse().forEach(d => {
-            let winColor = d.rachit > d.anushka ? 'var(--rachit-primary)' : (d.anushka > d.rachit ? 'var(--anushka-primary)' : 'var(--text-muted)');
-            let winIcon = d.rachit > d.anushka ? '<i class="fa-solid fa-khanda"></i>' : (d.anushka > d.rachit ? '<i class="fa-solid fa-khanda"></i>' : '<i class="fa-solid fa-handshake"></i>');
-            tlContainer.innerHTML += `
-                <div class="timeline-item" style="border-left: 6px solid ${winColor}">
-                    <div style="flex: 1;"><div class="timeline-date">${d.date}</div></div>
-                    <div style="text-align:right;">
-                        <div class="timeline-stats">
-                            <span style="color:var(--rachit-primary)">${this.formatNum(d.rachit)}</span> 
-                            <span style="color:var(--text-muted); font-size:1rem; margin: 0 5px;">VS</span> 
-                            <span style="color:var(--anushka-primary)">${this.formatNum(d.anushka)}</span>
-                        </div>
-                        <div style="color: ${winColor}; margin-top: 5px; font-size: 1.2rem;">${winIcon}</div>
-                    </div>
-                </div>
-            `;
-        });
         this.renderCharts();
     },
 
@@ -497,58 +506,36 @@ const app = {
         this.data.forEach(d => { rs += d.rachit; as += d.anushka; rCumulData.push(rs); aCumulData.push(as); });
 
         Chart.defaults.color = '#64748b'; Chart.defaults.font.family = 'Plus Jakarta Sans';
-        
         if(this.charts.cumulative) this.charts.cumulative.destroy();
         if(this.charts.daily) this.charts.daily.destroy();
-        if(this.charts.doughnut) this.charts.doughnut.destroy();
 
-        // 1. Cumulative Line Chart (With Gradients)
         const ctxC = document.getElementById('cumulativeChart').getContext('2d');
-        let gradRachit = ctxC.createLinearGradient(0, 0, 0, 300);
-        gradRachit.addColorStop(0, 'rgba(2, 132, 199, 0.4)'); gradRachit.addColorStop(1, 'rgba(2, 132, 199, 0)');
-        
-        let gradAnushka = ctxC.createLinearGradient(0, 0, 0, 300);
-        gradAnushka.addColorStop(0, 'rgba(225, 29, 72, 0.4)'); gradAnushka.addColorStop(1, 'rgba(225, 29, 72, 0)');
+        let gradRachit = ctxC.createLinearGradient(0, 0, 0, 300); gradRachit.addColorStop(0, 'rgba(2, 132, 199, 0.4)'); gradRachit.addColorStop(1, 'rgba(2, 132, 199, 0)');
+        let gradAnushka = ctxC.createLinearGradient(0, 0, 0, 300); gradAnushka.addColorStop(0, 'rgba(225, 29, 72, 0.4)'); gradAnushka.addColorStop(1, 'rgba(225, 29, 72, 0)');
 
         this.charts.cumulative = new Chart(ctxC, {
             type: 'line',
             data: {
                 labels: labels,
                 datasets: [
-                    { label: 'Rachit Total', data: rCumulData, borderColor: '#0284c7', backgroundColor: gradRachit, fill: true, tension: 0.4, borderWidth: 3, pointBackgroundColor: '#fff', pointBorderColor: '#0284c7', pointBorderWidth: 2, pointRadius: 4, pointHoverRadius: 6 },
-                    { label: 'Anushka Total', data: aCumulData, borderColor: '#e11d48', backgroundColor: gradAnushka, fill: true, tension: 0.4, borderWidth: 3, pointBackgroundColor: '#fff', pointBorderColor: '#e11d48', pointBorderWidth: 2, pointRadius: 4, pointHoverRadius: 6 }
+                    { label: 'Rachit Total', data: rCumulData, borderColor: '#0284c7', backgroundColor: gradRachit, fill: true, tension: 0.4, borderWidth: 3 },
+                    { label: 'Anushka Total', data: aCumulData, borderColor: '#e11d48', backgroundColor: gradAnushka, fill: true, tension: 0.4, borderWidth: 3 }
                 ]
             },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } }, scales: { y: { border: {dash: [4, 4]}, grid: {color: '#f1f5f9'} }, x: { grid: {display: false} } } }
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
         });
 
-        // 2. Daily Bar Chart (Floating/Rounded)
         const ctxD = document.getElementById('dailyChart').getContext('2d');
         this.charts.daily = new Chart(ctxD, {
             type: 'bar',
             data: {
                 labels: labels,
                 datasets: [
-                    { label: 'Rachit', data: rDaily, backgroundColor: '#0ea5e9', borderRadius: 8, borderSkipped: false },
-                    { label: 'Anushka Ji', data: aDaily, backgroundColor: '#fb7185', borderRadius: 8, borderSkipped: false }
+                    { label: 'Rachit', data: rDaily, backgroundColor: '#0ea5e9', borderRadius: 8 },
+                    { label: 'Anushka', data: aDaily, backgroundColor: '#fb7185', borderRadius: 8 }
                 ]
             },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } }, scales: { y: { border: {dash: [4, 4]}, grid: {color: '#f1f5f9'} }, x: { grid: {display: false} } } }
-        });
-
-        // 3. Dominance Doughnut
-        const ctxP = document.getElementById('doughnutChart').getContext('2d');
-        this.charts.doughnut = new Chart(ctxP, {
-            type: 'doughnut',
-            data: {
-                labels: ['Rachit', 'Anushka'],
-                datasets: [{
-                    data: [rs, as],
-                    backgroundColor: ['#0284c7', '#e11d48'],
-                    borderWidth: 4, borderColor: '#fff', hoverOffset: 10
-                }]
-            },
-            options: { responsive: true, cutout: '75%', plugins: { legend: { display: false } }, animation: { animateScale: true, animateRotate: true } }
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
         });
     }
 };
