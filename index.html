@@ -131,17 +131,31 @@
         .score-card.rachit .xp-bar-fill { background: linear-gradient(90deg, #38bdf8, var(--rachit-primary)); }
         .score-card.anushka .xp-bar-fill { background: linear-gradient(90deg, #fb7185, var(--anushka-primary)); }
 
-        /* The Ultimate Roast Banner */
+        /* THE LOSER'S SPOTLIGHT (NEW) */
+        .loser-card {
+            background: linear-gradient(135deg, #2a0808, #000000);
+            border: 2px dashed #dc2626; border-radius: 24px; padding: 40px 30px;
+            color: white; text-align: center; margin-bottom: 24px;
+            box-shadow: 0 10px 40px rgba(220, 38, 38, 0.25);
+            position: relative; overflow: hidden; display: none;
+        }
+        .loser-header { font-size: 1.8rem; font-weight: 900; color: #ef4444; letter-spacing: 3px; margin-bottom: 20px; font-family: 'Outfit'; text-transform: uppercase;}
+        .loser-avatar { font-size: 5rem; color: #7f1d1d; margin-bottom: 10px; animation: sad-pulse 2s infinite;}
+        .loser-name { font-size: 2.5rem; font-weight: 900; margin-bottom: 15px; font-family: 'Outfit'; text-decoration: line-through; color: #6b7280;}
+        .loser-roast-text { font-size: 1.6rem; font-weight: 700; font-style: italic; color: #fca5a5; line-height: 1.5; padding: 0 20px;}
+        @keyframes sad-pulse { 0% { transform: scale(1); opacity: 0.8;} 50% { transform: scale(0.95); opacity: 0.4;} 100% { transform: scale(1); opacity: 0.8;} }
+
+        /* The Ultimate Roast Banner (Winner) */
         .ultimate-roast {
-            background: linear-gradient(135deg, #1e293b, #0f172a); color: #fff; text-align: center; padding: 40px 30px;
+            background: linear-gradient(135deg, #064e3b, #022c22); color: #fff; text-align: center; padding: 40px 30px;
             border-radius: 24px; position: relative; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.2); margin-bottom: 24px;
         }
-        .ultimate-roast::before { content: '🔥'; position: absolute; font-size: 15rem; opacity: 0.05; top: -50px; left: -20px; }
-        .roast-title { font-size: 1.5rem; font-weight: 800; color: #facc15; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 2px;}
+        .ultimate-roast::before { content: '👑'; position: absolute; font-size: 15rem; opacity: 0.05; top: -50px; left: -20px; }
+        .roast-title { font-size: 1.5rem; font-weight: 800; color: #34d399; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 2px;}
         .roast-text { font-size: 2rem; font-weight: 700; line-height: 1.3; font-family: 'Outfit', sans-serif; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-        .roast-sub { font-size: 1.1rem; color: #94a3b8; margin-top: 15px; font-weight: 500; }
+        .roast-sub { font-size: 1.1rem; color: #a7f3d0; margin-top: 15px; font-weight: 500; }
 
-        /* THE HALL OF SHAME (New Brutal Section) */
+        /* THE HALL OF SHAME */
         .hall-of-shame {
             background: linear-gradient(180deg, var(--brutal-dark) 0%, #000000 100%);
             border: 2px solid var(--brutal-red);
@@ -175,7 +189,7 @@
         }
         .insight-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
         .insight-icon { font-size: 2rem; margin-bottom: 10px; }
-        .insight-title { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; }
+        .insight-title { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; }
         .insight-data { font-size: 1.8rem; font-family: 'Outfit', sans-serif; font-weight: 900; color: var(--text-dark); margin: 5px 0;}
         .insight-sub { font-size: 0.85rem; color: var(--text-muted); font-weight: 500;}
 
@@ -229,6 +243,14 @@
         </div>
     </div>
 
+    <!-- THE LOSER'S SPOTLIGHT (NEW PUBLIC HUMILIATION) -->
+    <div class="loser-card" id="ui-loser-card">
+        <div class="loser-header"><i class="fa-solid fa-skull"></i> PUBLIC HUMILIATION <i class="fa-solid fa-skull"></i></div>
+        <div class="loser-avatar"><i class="fa-solid fa-user-injured"></i></div>
+        <div class="loser-name" id="loser-name">Nobody</div>
+        <div class="loser-roast-text" id="loser-roast-text">"..."</div>
+    </div>
+
     <!-- The Hall of Shame (BRUTAL STATS) -->
     <div class="hall-of-shame">
         <div class="shame-title"><i class="fa-solid fa-biohazard"></i> THE HALL OF SHAME <i class="fa-solid fa-biohazard"></i></div>
@@ -254,9 +276,9 @@
         </div>
     </div>
 
-    <!-- Ultimate Roast -->
+    <!-- Daily Winner -->
     <div class="ultimate-roast">
-        <div class="roast-title"><i class="fa-solid fa-fire"></i> Daily Fatality <i class="fa-solid fa-fire"></i></div>
+        <div class="roast-title"><i class="fa-solid fa-medal"></i> Daily Victor <i class="fa-solid fa-medal"></i></div>
         <div class="roast-text" id="ui-roast-text">"Waiting for the combatants to log their first steps..."</div>
         <div class="roast-sub" id="ui-roast-sub">Awaiting satellite data</div>
     </div>
@@ -291,11 +313,16 @@
                 <div class="insight-data" id="insight-beatdown">0 Steps</div>
                 <div class="insight-sub" id="insight-beatdown-sub">Margin of victory</div>
             </div>
+            
+            <!-- SPLIT INDIVIDUAL DISTANCE CARD -->
             <div class="insight-card">
                 <div class="insight-icon" style="color: #10b981;"><i class="fa-solid fa-route"></i></div>
-                <div class="insight-title">Combined Distance</div>
-                <div class="insight-data" id="insight-distance">0 KM</div>
-                <div class="insight-sub">Estimated distance walked</div>
+                <div class="insight-title">Distance Covered</div>
+                <div class="insight-data" style="font-size: 1.4rem; margin-top: 10px;" id="insight-distance">
+                    <span style="color: var(--rachit-primary);">R: 0 KM</span><br>
+                    <span style="color: var(--anushka-primary);">A: 0 KM</span>
+                </div>
+                <div class="insight-sub" style="margin-top: 8px;">Individual mapping</div>
             </div>
         </div>
 
@@ -323,25 +350,34 @@ const app = {
     charts: { cumulative: null, daily: null },
     xpPerLevel: 10000,
 
-    // THE ULTIMATE SAVAGE ROASTS (Personalized & Brutal)
+    // THE ULTIMATE SAVAGE ROASTS
     savageRoasts: {
-        rachit_crushes: [
-            "Rachit's 136g of daily protein finally kicked in. Anushka's Pani Puri dreams are fading fast.",
-            "Rachit's treating this challenge like a cricket pitch, and he just hit a boundary. Anushka is caught slipping.",
-            "Maybe if we put a Pani Puri stall at the finish line, Anushka would actually start walking.",
-            "Anushka's legs have officially filed for unemployment. Rachit is sprinting away with the alcohol.",
-            "Rachit crushed it today. Anushka spent more time dreaming about snacks than moving her feet."
+        rachit_wins: [
+            "Rachit crushed it today.",
+            "Anushka is walking like the Pani Puri stall moved to another continent.",
+            "Rachit is sprinting toward victory."
         ],
-        anushka_crushes: [
-            "All that Alpino peanut protein and MyProtein casein, Rachit, just to walk slower than a dial-up connection.",
-            "Anushka is owning the pavement. Rachit, you can't fix this massive deficit with a Nova Bloom face mask.",
-            "Rachit is spending more time optimizing Amazon India D2C logistics than moving his own feet.",
-            "Tracking saturated fats under 21g is great, Rachit, but your step count is what's really starving.",
-            "Rachit's alcohol cabinet is actively writing a farewell letter. Anushka is absolutely destroying him."
+        anushka_wins: [
+            "Anushka is owning the pavement.",
+            "Rachit's liver is throwing a premature survival party.",
+            "Anushka destroyed the step count today."
+        ]
+    },
+
+    // OVERALL LOSER BRUTAL ROASTS (Deeply personalized)
+    loserRoasts: {
+        rachit: [
+            "All those meticulous macros, 136g of protein, and gram-level measurements of SuperYou yeast protein, just to get absolutely obliterated on the pavement.",
+            "Maybe you should spend less time optimizing Amazon India Premium A+ content and more time optimizing your step count.",
+            "Your step count is currently performing worse than a D2C brand trying to self-ship without a logistics plan.",
+            "You can track your saturated fats under 21g all you want, but your legs are clearly starving for some actual movement.",
+            "Even a Nova Bloom Bio-Collagen face mask can't hide the embarrassment of this deficit."
         ],
-        tie: [
-            "A pathetic tie. Neither wanted to win, neither wanted to lose.",
-            "Stalemate. Both survived today. The alcohol and the pani puri live to see another dawn."
+        anushka: [
+            "Anushka is walking so slowly, the Pani Puri vendors are starting to write their condolences.",
+            "At this pace, Anushka is going to need a miracle or a scooter to save her Pani Puri privileges.",
+            "Anushka's daily steps are dropping faster than a soggy Pani Puri.",
+            "It looks like Anushka has already surrendered to a year of absolutely zero street food."
         ]
     },
 
@@ -406,6 +442,24 @@ const app = {
         this.updateLevel(rTotal, 'level-rachit', 'xp-rachit', 'xp-text-rachit');
         this.updateLevel(aTotal, 'level-anushka', 'xp-anushka', 'xp-text-anushka');
 
+        // NEW: PUBLIC HUMILIATION CARD
+        const loserCard = document.getElementById('ui-loser-card');
+        const loserName = document.getElementById('loser-name');
+        const loserRoast = document.getElementById('loser-roast-text');
+        
+        if (rTotal !== aTotal && rTotal > 0 && aTotal > 0) {
+            loserCard.style.display = 'block';
+            if (aTotal > rTotal) {
+                loserName.innerText = "Rachit";
+                loserRoast.innerText = `"${this.loserRoasts.rachit[Math.floor(Math.random() * this.loserRoasts.rachit.length)]}"`;
+            } else {
+                loserName.innerText = "Anushka";
+                loserRoast.innerText = `"${this.loserRoasts.anushka[Math.floor(Math.random() * this.loserRoasts.anushka.length)]}"`;
+            }
+        } else {
+            loserCard.style.display = 'none';
+        }
+
         // 2. The Hall of Shame Math
         if(lowestStepCount !== 999999) {
             document.getElementById('shame-lowest-steps').innerText = this.formatNum(lowestStepCount);
@@ -427,12 +481,12 @@ const app = {
                 let diff = rTotal - aTotal;
                 let needed = Math.ceil(diff / daysLeft);
                 catchUpText = `+${this.formatNum(needed)}/day`;
-                catchUpSub = `Anushka needs this above Rachit's daily pace`;
+                catchUpSub = `Anushka needs this above Rachit's pace`;
             } else if (aTotal > rTotal) {
                 let diff = aTotal - rTotal;
                 let needed = Math.ceil(diff / daysLeft);
                 catchUpText = `+${this.formatNum(needed)}/day`;
-                catchUpSub = `Rachit needs this above Anushka's daily pace`;
+                catchUpSub = `Rachit needs this above Anushka's pace`;
             } else {
                 catchUpText = "0/day"; catchUpSub = "It's dead even.";
             }
@@ -440,22 +494,19 @@ const app = {
         document.getElementById('shame-deficit').innerText = catchUpText;
         document.getElementById('shame-deficit-sub').innerText = catchUpSub;
 
-        // 3. Ultimate Roast
+        // 3. Daily Victor
         const latest = this.data[this.data.length - 1];
         const roastTextEl = document.getElementById('ui-roast-text');
         const roastSubEl = document.getElementById('ui-roast-sub');
         if (latest.rachit > latest.anushka) {
-            roastTextEl.innerText = `"${this.savageRoasts.rachit_crushes[Math.floor(Math.random() * this.savageRoasts.rachit_crushes.length)]}"`;
-            roastSubEl.innerHTML = `Date: ${latest.date} | <strong>Rachit crushed Anushka by ${this.formatNum(latest.rachit - latest.anushka)} steps.</strong>`;
-            roastTextEl.style.color = "#38bdf8";
+            roastTextEl.innerText = `"${this.savageRoasts.rachit_wins[Math.floor(Math.random() * this.savageRoasts.rachit_wins.length)]}"`;
+            roastSubEl.innerHTML = `Date: ${latest.date} | <strong>Rachit took the day by ${this.formatNum(latest.rachit - latest.anushka)} steps.</strong>`;
         } else if (latest.anushka > latest.rachit) {
-            roastTextEl.innerText = `"${this.savageRoasts.anushka_crushes[Math.floor(Math.random() * this.savageRoasts.anushka_crushes.length)]}"`;
-            roastSubEl.innerHTML = `Date: ${latest.date} | <strong>Anushka destroyed Rachit by ${this.formatNum(latest.anushka - latest.rachit)} steps.</strong>`;
-            roastTextEl.style.color = "#fb7185";
+            roastTextEl.innerText = `"${this.savageRoasts.anushka_wins[Math.floor(Math.random() * this.savageRoasts.anushka_wins.length)]}"`;
+            roastSubEl.innerHTML = `Date: ${latest.date} | <strong>Anushka took the day by ${this.formatNum(latest.anushka - latest.rachit)} steps.</strong>`;
         } else {
-            roastTextEl.innerText = `"${this.savageRoasts.tie[0]}"`;
+            roastTextEl.innerText = `"A dead heat."`;
             roastSubEl.innerHTML = `Date: ${latest.date} | <strong>A pathetic tie.</strong>`;
-            roastTextEl.style.color = "#facc15";
         }
 
         // 4. Stakes Health Bars
@@ -492,8 +543,10 @@ const app = {
         document.getElementById('insight-beatdown').innerText = this.formatNum(maxDiff);
         document.getElementById('insight-beatdown-sub').innerText = `By ${beatdownWinner} on ${beatdownDate.substring(5)}`;
         
-        const km = (grandTotal * 0.0008).toFixed(1);
-        document.getElementById('insight-distance').innerText = `${km} KM`;
+        // INDIVIDUAL DISTANCE UPDATE
+        const rKm = (rTotal * 0.0008).toFixed(1);
+        const aKm = (aTotal * 0.0008).toFixed(1);
+        document.getElementById('insight-distance').innerHTML = `<span style="color: var(--rachit-primary);">R: ${rKm} KM</span><br><span style="color: var(--anushka-primary);">A: ${aKm} KM</span>`;
 
         this.renderCharts();
     },
