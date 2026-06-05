@@ -2,1655 +2,691 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>⚔️ The Great June Walk War 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
-/* ══════════════════════════════════════════════
-   ROOT & RESET
-══════════════════════════════════════════════ */
 :root{
-  --r:#0284c7;--r2:#38bdf8;--r3:#e0f2fe;--r4:#bae6fd;
-  --a:#e11d48;--a2:#fb7185;--a3:#fff1f2;--a4:#fecdd3;
-  --bg:#eef2f7;--card:#fff;--border:#e2e8f0;
-  --txt:#0f172a;--txt2:#475569;--txt3:#94a3b8;
-  --gold:#f59e0b;--gold2:#fef3c7;--gold3:#fbbf24;
-  --green:#10b981;--red:#ef4444;--purple:#8b5cf6;
+  --r:#0284c7;--r2:#38bdf8;--rl:#e0f2fe;--rm:#bae6fd;
+  --a:#e11d48;--a2:#fb7185;--al:#fff1f2;--am:#fecdd3;
+  --bg:#eef2f7;--card:#fff;--bdr:#e2e8f0;
+  --txt:#0f172a;--t2:#475569;--t3:#94a3b8;
+  --gold:#f59e0b;--gl:#fef3c7;--g2:#fbbf24;
+  --grn:#16a34a;--red:#ef4444;--pur:#7c3aed;
   --sh:0 2px 12px rgba(0,0,0,.07);
-  --sh-md:0 8px 32px rgba(0,0,0,.1);
-  --sh-lg:0 20px 60px rgba(0,0,0,.15);
-  --r-gradient:linear-gradient(135deg,var(--r),var(--r2));
-  --a-gradient:linear-gradient(135deg,var(--a),var(--a2));
+  --shm:0 8px 32px rgba(0,0,0,.1);
+  --shl:0 20px 60px rgba(0,0,0,.14);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{
-  font-family:'Plus Jakarta Sans',sans-serif;
-  background:var(--bg);color:var(--txt);
-  overflow-x:hidden;padding-bottom:80px;
-  background-image:
-    radial-gradient(ellipse 70% 50% at 5% 0%,rgba(2,132,199,.08),transparent 55%),
-    radial-gradient(ellipse 70% 50% at 95% 100%,rgba(225,29,72,.08),transparent 55%);
-  background-attachment:fixed;
-}
-h1,h2,h3,.impact{font-family:'Outfit',sans-serif;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;padding-bottom:80px;
+  background-image:radial-gradient(ellipse 70% 50% at 5% 0%,rgba(2,132,199,.07),transparent 55%),
+  radial-gradient(ellipse 70% 50% at 95% 100%,rgba(225,29,72,.07),transparent 55%);
+  background-attachment:fixed;}
+h1,h2,.f{font-family:'Outfit',sans-serif;}
 
-/* ══════════════════════════════════════════════
-   LOADING SCREEN
-══════════════════════════════════════════════ */
-#loading{
-  position:fixed;inset:0;z-index:500;
-  background:var(--txt);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;
-  transition:opacity .5s,visibility .5s;
-}
-#loading.out{opacity:0;visibility:hidden;}
-.load-logo{font-size:3rem;animation:loadPulse 1s ease-in-out infinite;}
-@keyframes loadPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-.load-title{font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:900;color:#fff;letter-spacing:-1px;}
-.load-sub{font-size:.85rem;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:2px;}
-.load-bar-wrap{width:200px;height:4px;background:rgba(255,255,255,.1);border-radius:50px;overflow:hidden;}
-.load-bar{height:100%;background:linear-gradient(90deg,var(--r),var(--a));border-radius:50px;animation:loadBar 1.5s ease-in-out infinite;}
-@keyframes loadBar{0%{width:0%}50%{width:80%}100%{width:100%}}
+/* LOADING */
+#ld{position:fixed;inset:0;z-index:500;background:#0f172a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;transition:opacity .5s,visibility .5s;}
+#ld.out{opacity:0;visibility:hidden;}
+.ld-ico{font-size:3rem;animation:ldp 1s ease-in-out infinite;}
+@keyframes ldp{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.ld-t{font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:900;color:#fff;}
+.ld-s{font-size:.8rem;color:#475569;text-transform:uppercase;letter-spacing:2px;font-weight:700;}
+.ld-bw{width:180px;height:4px;background:rgba(255,255,255,.1);border-radius:50px;overflow:hidden;}
+.ld-bf{height:100%;background:linear-gradient(90deg,var(--r),var(--a));border-radius:50px;animation:ldbf 1.5s ease-in-out infinite;}
+@keyframes ldbf{0%{width:0}50%{width:80%}100%{width:100%}}
 
-/* ══════════════════════════════════════════════
-   TICKER
-══════════════════════════════════════════════ */
-.ticker{
-  background:var(--txt);padding:.55rem 0;
-  overflow:hidden;border-bottom:3px solid var(--gold);
-  position:relative;z-index:50;
-}
-.ticker-track{
-  display:inline-flex;gap:0;white-space:nowrap;
-  animation:tickerRoll 40s linear infinite;
-}
-.ticker-track:hover{animation-play-state:paused;}
-.ti{
-  display:inline-flex;align-items:center;gap:.8rem;
-  padding:0 2rem;font-family:'Outfit',sans-serif;
-  font-weight:800;font-size:.78rem;letter-spacing:2px;
-  text-transform:uppercase;color:#facc15;
-}
-.ti-sep{color:rgba(250,204,21,.25);font-size:1.2rem;padding:0;}
-@keyframes tickerRoll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* TICKER */
+.ticker{background:#0f172a;border-bottom:3px solid var(--gold);overflow:hidden;padding:.5rem 0;position:relative;z-index:50;}
+.ticker-t{display:inline-flex;gap:0;white-space:nowrap;animation:tick 40s linear infinite;}
+.ticker-t:hover{animation-play-state:paused;}
+.ti{padding:0 2rem;font-family:'Outfit',sans-serif;font-weight:800;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:#facc15;}
+.ts{color:rgba(250,204,21,.2);padding:0;}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* ══════════════════════════════════════════════
-   HERO
-══════════════════════════════════════════════ */
-.hero{
-  text-align:center;padding:3rem 1rem 2.5rem;
-  position:relative;z-index:1;
-}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:.5rem;
-  background:var(--gold2);border:1.5px solid var(--gold3);
-  border-radius:50px;padding:.35rem 1rem;
-  font-size:.72rem;font-weight:800;color:var(--gold);
-  text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1rem;
-}
-.hero-title{
-  font-size:clamp(2.8rem,8vw,5.5rem);font-weight:900;
-  letter-spacing:-3px;line-height:.95;color:var(--txt);
-  margin-bottom:.6rem;
-}
-.hero-title .wr{color:var(--r);}
-.hero-title .wa{color:var(--a);}
-.hero-sub{
-  font-size:.95rem;font-weight:700;color:var(--txt3);
-  text-transform:uppercase;letter-spacing:2px;margin-bottom:2rem;
-}
-.hero-sync{
-  display:inline-flex;align-items:center;gap:.6rem;
-  background:var(--card);border:2px solid var(--border);
-  border-radius:50px;padding:.55rem 1.3rem;
-  font-size:.85rem;font-weight:800;cursor:pointer;
-  box-shadow:var(--sh-md);transition:all .25s;color:var(--txt);
-}
-.hero-sync:hover{border-color:var(--r);color:var(--r);transform:translateY(-2px);box-shadow:var(--sh-lg);}
-.sync-dot{width:9px;height:9px;border-radius:50%;background:var(--green);flex-shrink:0;}
-.sync-dot.spin{background:var(--gold);animation:dotSpin 1s linear infinite;}
-.sync-dot.err{background:var(--red);animation:none;}
-@keyframes dotSpin{0%{transform:scale(.4)}50%{transform:scale(1.3)}100%{transform:scale(.4)}}
+/* HERO */
+.hero{text-align:center;padding:3rem 1rem 2.5rem;position:relative;z-index:1;}
+.hero-bdg{display:inline-flex;align-items:center;gap:.4rem;background:var(--gl);border:1.5px solid var(--g2);border-radius:50px;padding:.3rem .9rem;font-size:.68rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.8rem;}
+.hero-t{font-size:clamp(2.6rem,8vw,5rem);font-weight:900;letter-spacing:-3px;line-height:.95;margin-bottom:.5rem;}
+.hw{color:var(--r)}.ha{color:var(--a)}
+.hero-s{font-size:.88rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:2px;margin-bottom:1.8rem;}
+.sync-btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--card);border:2px solid var(--bdr);border-radius:50px;padding:.5rem 1.2rem;font-size:.82rem;font-weight:800;cursor:pointer;box-shadow:var(--shm);transition:all .2s;color:var(--txt);}
+.sync-btn:hover{border-color:var(--r);color:var(--r);transform:translateY(-2px);}
+.sdot{width:9px;height:9px;border-radius:50%;background:var(--grn);flex-shrink:0;}
+.sdot.spin{background:var(--gold);animation:ds 1s linear infinite;}
+.sdot.err{background:var(--red);}
+@keyframes ds{0%{transform:scale(.4)}50%{transform:scale(1.3)}100%{transform:scale(.4)}}
 
-/* ══════════════════════════════════════════════
-   LAYOUT
-══════════════════════════════════════════════ */
-.wrap{max-width:1100px;margin:0 auto;padding:0 1rem;}
+/* WRAP */
+.w{max-width:1100px;margin:0 auto;padding:0 1rem;}
 
-/* ══════════════════════════════════════════════
-   FIGHTER ARENA
-══════════════════════════════════════════════ */
-.arena{
-  display:grid;
-  grid-template-columns:1fr 80px 1fr;
-  gap:1.2rem;align-items:center;
-  margin-bottom:1.5rem;position:relative;z-index:1;
-}
-.fighter{
-  background:var(--card);border-radius:28px;
-  padding:2rem 1.5rem 1.5rem;text-align:center;
-  box-shadow:var(--sh-lg);border:2px solid var(--border);
-  position:relative;overflow:visible;
-  transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;
-}
-.fighter:hover{transform:translateY(-8px);box-shadow:0 28px 70px rgba(0,0,0,.18);}
-/* Colored top accent */
-.fighter.rc{border-top:5px solid var(--r);}
-.fighter.ac{border-top:5px solid var(--a);}
-/* Rank badge */
-.rank-badge{
-  position:absolute;top:-16px;left:50%;transform:translateX(-50%);
-  width:36px;height:36px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;font-weight:900;border:3px solid var(--card);
-  box-shadow:var(--sh-md);z-index:10;transition:all .4s;
-}
-.rank-badge.gold{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#fff;}
-.rank-badge.silver{background:linear-gradient(135deg,#94a3b8,#cbd5e1);color:#fff;}
-/* WINNER glow */
-.fighter.winner-glow{box-shadow:0 0 0 3px var(--gold3),0 28px 70px rgba(251,191,36,.25);}
-.fighter.winner-glow.rc{box-shadow:0 0 0 3px var(--r),0 28px 70px rgba(2,132,199,.25);}
-.fighter.winner-glow.ac{box-shadow:0 0 0 3px var(--a),0 28px 70px rgba(225,29,72,.25);}
-/* Crown float */
-.crown-float{
-  position:absolute;top:-52px;left:50%;transform:translateX(-50%);
-  font-size:2.2rem;opacity:0;transition:all .5s;
-  filter:drop-shadow(0 4px 12px rgba(251,191,36,.8));
-}
-.fighter.winner .crown-float{opacity:1;animation:crownBob 2.5s ease-in-out infinite;}
-@keyframes crownBob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}}
+/* CARD BASE */
+.card{background:var(--card);border:1.5px solid var(--bdr);border-radius:24px;padding:1.6rem 1.4rem;margin-bottom:1.2rem;box-shadow:var(--sh);position:relative;z-index:1;}
+.card:hover{box-shadow:var(--shm);}
+.eyebrow{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--t3);margin-bottom:.3rem;}
+.sec-title{font-size:1.8rem;font-weight:900;font-family:'Outfit';letter-spacing:-1px;color:var(--txt);margin-bottom:.2rem;}
+.sec-sub{font-size:.75rem;color:var(--t3);font-weight:600;margin-bottom:1.2rem;}
 
-.fighter-emoji{font-size:5rem;line-height:1;display:block;margin:0.5rem auto 0.8rem;filter:drop-shadow(0 4px 16px rgba(0,0,0,.15));}
-.fighter-name{font-size:1.5rem;font-weight:900;margin-bottom:.2rem;}
-.fighter.rc .fighter-name{color:var(--r);}
-.fighter.ac .fighter-name{color:var(--a);}
-.fighter-steps{
-  font-size:clamp(2.8rem,7vw,4.2rem);font-weight:900;
-  line-height:1;letter-spacing:-2px;margin:.4rem 0;
-  font-family:'Outfit',sans-serif;
-}
-.fighter.rc .fighter-steps{
-  background:var(--r-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.fighter.ac .fighter-steps{
-  background:var(--a-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.fighter-lbl{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--txt3);}
-/* LVL system */
-.lvl-section{margin-top:1.2rem;padding-top:1rem;border-top:1.5px solid var(--border);}
-.lvl-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;}
-.lvl-tag{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--txt2);}
-.lvl-xp{font-size:.68rem;color:var(--txt3);font-weight:600;}
-.xp-track{height:10px;background:var(--bg);border-radius:50px;overflow:hidden;border:1.5px solid var(--border);}
-.xp-fill{height:100%;border-radius:50px;transition:width 1.8s cubic-bezier(.4,0,.2,1);}
-.fighter.rc .xp-fill{background:linear-gradient(90deg,var(--r2),var(--r));}
-.fighter.ac .xp-fill{background:linear-gradient(90deg,var(--a2),var(--a));}
+/* ARENA */
+.arena{display:grid;grid-template-columns:1fr 76px 1fr;gap:1rem;align-items:center;margin-bottom:1.2rem;position:relative;z-index:1;}
+.fc{background:var(--card);border:2px solid var(--bdr);border-radius:24px;padding:2rem 1.4rem 1.4rem;text-align:center;box-shadow:var(--shl);position:relative;overflow:visible;transition:transform .3s,box-shadow .3s;}
+.fc:hover{transform:translateY(-6px);}
+.fc.rc{border-top:5px solid var(--r);}
+.fc.ac{border-top:5px solid var(--a);}
+.fc.wg.rc{box-shadow:0 0 0 3px var(--r),0 24px 60px rgba(2,132,199,.22);}
+.fc.wg.ac{box-shadow:0 0 0 3px var(--a),0 24px 60px rgba(225,29,72,.22);}
+.crown{position:absolute;top:-50px;left:50%;transform:translateX(-50%);font-size:2rem;opacity:0;transition:all .4s;filter:drop-shadow(0 4px 10px rgba(251,191,36,.8));}
+.fc.win .crown{opacity:1;animation:cb 2.5s ease-in-out infinite;}
+@keyframes cb{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-9px)}}
+.rbdg{position:absolute;top:-15px;left:50%;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;border:3px solid var(--card);box-shadow:var(--shm);z-index:10;transition:all .4s;}
+.rbdg.gold{background:linear-gradient(135deg,#f59e0b,#fbbf24);}
+.rbdg.silver{background:linear-gradient(135deg,#94a3b8,#cbd5e1);}
+.femi{font-size:4.5rem;display:block;margin:.5rem auto .7rem;filter:drop-shadow(0 4px 14px rgba(0,0,0,.13));}
+.fname{font-size:1.4rem;font-weight:900;margin-bottom:.2rem;}
+.fc.rc .fname{color:var(--r)}.fc.ac .fname{color:var(--a)}
+.fsteps{font-size:clamp(2.5rem,6vw,3.8rem);font-weight:900;line-height:1;letter-spacing:-2px;font-family:'Outfit';}
+.fc.rc .fsteps{background:linear-gradient(135deg,var(--r),var(--r2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.fc.ac .fsteps{background:linear-gradient(135deg,var(--a),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.flbl{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--t3);}
+.lvls{margin-top:1rem;padding-top:.9rem;border-top:1.5px solid var(--bdr);}
+.lvlr{display:flex;justify-content:space-between;font-size:.7rem;font-weight:800;margin-bottom:.35rem;}
+.lvlt{color:var(--t2);text-transform:uppercase;letter-spacing:.8px;}
+.lvlx{color:var(--t3);}
+.xpt{height:9px;background:var(--bg);border-radius:50px;overflow:hidden;border:1.5px solid var(--bdr);}
+.xpf{height:100%;border-radius:50px;transition:width 1.8s cubic-bezier(.4,0,.2,1);}
+.fc.rc .xpf{background:linear-gradient(90deg,var(--r2),var(--r));}
+.fc.ac .xpf{background:linear-gradient(90deg,var(--a2),var(--a));}
+.vs{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;font-family:'Outfit';font-weight:900;font-size:1.3rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 28px rgba(15,23,42,.3);animation:vsb 3s ease-in-out infinite;justify-self:center;}
+@keyframes vsb{0%,100%{transform:scale(1)}50%{transform:scale(1.08);box-shadow:0 12px 36px rgba(15,23,42,.45),0 0 0 5px rgba(245,158,11,.15)}}
 
-/* VS orb */
-.vs-orb{
-  width:76px;height:76px;border-radius:50%;
-  background:linear-gradient(135deg,var(--txt),#1e293b);
-  color:#fff;font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  box-shadow:0 8px 32px rgba(15,23,42,.35);
-  animation:vsOrb 3s ease-in-out infinite;
-  justify-self:center;
-}
-@keyframes vsOrb{
-  0%,100%{transform:scale(1);box-shadow:0 8px 32px rgba(15,23,42,.35)}
-  50%{transform:scale(1.1);box-shadow:0 12px 40px rgba(15,23,42,.5),0 0 0 6px rgba(245,158,11,.2)}
-}
+/* WAR BAR */
+.warbar{background:var(--card);border:1.5px solid var(--bdr);border-radius:18px;padding:1.2rem 1.5rem;margin-bottom:1.2rem;box-shadow:var(--sh);position:relative;z-index:1;}
+.wbl{display:flex;justify-content:space-between;font-size:.75rem;font-weight:800;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.5px;}
+.wbr{color:var(--r)}.wba{color:var(--a)}.wbc{color:var(--t2);font-size:.72rem;}
+.wbt{height:20px;background:var(--bg);border-radius:50px;position:relative;overflow:hidden;border:2px solid var(--bdr);}
+.wbr-f{position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--r),var(--r2));border-radius:50px 0 0 50px;transition:width 1s cubic-bezier(.4,0,.2,1);}
+.wba-f{position:absolute;right:0;top:0;height:100%;background:linear-gradient(270deg,var(--a),var(--a2));border-radius:0 50px 50px 0;transition:width 1s cubic-bezier(.4,0,.2,1);}
+.wbm{position:absolute;left:50%;top:0;width:3px;height:100%;background:rgba(255,255,255,.7);z-index:1;transform:translateX(-50%);}
 
-/* ══════════════════════════════════════════════
-   WAR STATUS BAR
-══════════════════════════════════════════════ */
-.warbar{
-  background:var(--card);border-radius:20px;padding:1.4rem 1.8rem;
-  margin-bottom:1.5rem;box-shadow:var(--sh-md);border:1.5px solid var(--border);
-  position:relative;z-index:1;
-}
-.warbar-labels{display:flex;justify-content:space-between;font-size:.78rem;font-weight:800;margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.5px;}
-.warbar-labels .rl{color:var(--r);}
-.warbar-labels .al{color:var(--a);}
-.warbar-labels .cl{color:var(--txt2);font-size:.75rem;}
-.warbar-track{height:22px;background:var(--bg);border-radius:50px;position:relative;overflow:hidden;border:2px solid var(--border);}
-.wb-r{position:absolute;left:0;top:0;height:100%;background:var(--r-gradient);border-radius:50px 0 0 50px;transition:width 1s cubic-bezier(.4,0,.2,1);}
-.wb-a{position:absolute;right:0;top:0;height:100%;background:var(--a-gradient);border-radius:0 50px 50px 0;transition:width 1s cubic-bezier(.4,0,.2,1);}
-.wb-mid{position:absolute;left:50%;top:0;width:3px;height:100%;background:rgba(255,255,255,.7);z-index:1;transform:translateX(-50%);}
+/* CHIPS */
+.chips{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.2rem;position:relative;z-index:1;}
+.chip{background:var(--card);border:1.5px solid var(--bdr);border-radius:12px;padding:.65rem .9rem;text-align:center;flex:1;min-width:85px;box-shadow:var(--sh);transition:transform .2s;}
+.chip:hover{transform:translateY(-2px);}
+.cv{font-size:1.1rem;font-weight:900;font-family:'Outfit';}
+.cl{font-size:.58rem;color:var(--t3);text-transform:uppercase;letter-spacing:.8px;font-weight:800;margin-top:.15rem;}
 
-/* ══════════════════════════════════════════════
-   STAT CHIPS
-══════════════════════════════════════════════ */
-.chips{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem;z-index:1;position:relative;}
-.chip{
-  background:var(--card);border:1.5px solid var(--border);
-  border-radius:14px;padding:.75rem 1rem;text-align:center;
-  flex:1;min-width:90px;box-shadow:var(--sh);
-  transition:transform .2s,box-shadow .2s;
-}
-.chip:hover{transform:translateY(-3px);box-shadow:var(--sh-md);}
-.chip-v{font-size:1.2rem;font-weight:900;font-family:'Outfit',sans-serif;}
-.chip-l{font-size:.6rem;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;font-weight:800;margin-top:.2rem;}
+/* SECTION HEAD */
+.sh{display:flex;align-items:center;gap:.7rem;margin-bottom:1rem;}
+.sh-ico{font-size:1.4rem;}.sh-t{font-size:1.5rem;font-weight:900;font-family:'Outfit';}
+.sh-live{font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;padding:.2rem .55rem;border-radius:50px;background:var(--gl);color:var(--gold);border:1px solid var(--g2);margin-left:auto;}
 
-/* ══════════════════════════════════════════════
-   SECTION HEADERS
-══════════════════════════════════════════════ */
-.section-head{
-  display:flex;align-items:center;gap:.8rem;
-  margin-bottom:1.2rem;
-}
-.sh-icon{font-size:1.5rem;}
-.sh-title{font-size:1.5rem;font-weight:900;font-family:'Outfit';}
-.sh-badge{
-  font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;
-  padding:.2rem .6rem;border-radius:50px;
-  background:var(--gold2);color:var(--gold);border:1px solid var(--gold3);
-  margin-left:auto;
-}
+/* HUMILIATION */
+.hum{background:linear-gradient(135deg,#1a0000,#0d0000);border:2px dashed #dc2626;border-radius:24px;padding:2.2rem 1.8rem;margin-bottom:1.2rem;text-align:center;position:relative;overflow:hidden;box-shadow:0 16px 50px rgba(220,38,38,.22);z-index:1;display:none;}
+.hum::before{content:'☠️';position:absolute;font-size:15rem;opacity:.03;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.hum-pulse{position:absolute;inset:0;border-radius:24px;animation:hpulse 3s ease-in-out infinite;pointer-events:none;}
+@keyframes hpulse{0%,100%{box-shadow:inset 0 0 30px rgba(220,38,38,.04)}50%{box-shadow:inset 0 0 60px rgba(220,38,38,.14)}}
+.hum-tag{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:3px;color:#ef4444;margin-bottom:.7rem;}
+.hum-avi{font-size:5rem;margin-bottom:.4rem;animation:hsag 2.5s ease-in-out infinite;}
+@keyframes hsag{0%,100%{transform:rotate(-3deg) scale(1)}50%{transform:rotate(3deg) scale(.92)}}
+.hum-name{font-size:2.5rem;font-weight:900;font-family:'Outfit';color:#4b5563;text-decoration:line-through;margin-bottom:.7rem;letter-spacing:-1px;}
+.hum-roast{font-size:1.1rem;font-weight:700;color:#fca5a5;line-height:1.65;font-style:italic;max-width:620px;margin:0 auto;}
+.hum-roast::before{content:'"';font-size:3rem;color:#7f1d1d;line-height:0;vertical-align:-.55rem;margin-right:.15rem;font-family:'Outfit';}
+.hum-roast::after{content:'"';font-size:3rem;color:#7f1d1d;line-height:0;vertical-align:-.55rem;margin-left:.15rem;font-family:'Outfit';}
 
-/* ══════════════════════════════════════════════
-   PUBLIC HUMILIATION
-══════════════════════════════════════════════ */
-.humiliation{
-  background:linear-gradient(135deg,#1a0000,#0d0000);
-  border:2px dashed #dc2626;border-radius:28px;
-  padding:2.5rem 2rem;margin-bottom:1.5rem;
-  text-align:center;position:relative;overflow:hidden;
-  box-shadow:0 20px 60px rgba(220,38,38,.25);z-index:1;
-  display:none;
-}
-.humiliation::before{
-  content:'☠️';position:absolute;font-size:18rem;
-  opacity:.03;top:50%;left:50%;transform:translate(-50%,-50%);
-  line-height:1;pointer-events:none;
-}
-.hum-pulse{
-  position:absolute;top:0;left:0;right:0;bottom:0;border-radius:28px;
-  animation:humPulse 3s ease-in-out infinite;pointer-events:none;
-}
-@keyframes humPulse{
-  0%,100%{box-shadow:inset 0 0 30px rgba(220,38,38,.05)}
-  50%{box-shadow:inset 0 0 60px rgba(220,38,38,.15)}
-}
-.hum-tag{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:3px;color:#ef4444;margin-bottom:.8rem;}
-.hum-skull{font-size:1.5rem;margin-bottom:.3rem;}
-.hum-avatar{font-size:5.5rem;margin-bottom:.5rem;animation:humSag 2.5s ease-in-out infinite;}
-@keyframes humSag{0%,100%{transform:rotate(-3deg) scale(1)}50%{transform:rotate(3deg) scale(.92)}}
-.hum-name{font-size:2.8rem;font-weight:900;font-family:'Outfit';color:#4b5563;text-decoration:line-through;margin-bottom:.8rem;letter-spacing:-1px;}
-.hum-roast{font-size:1.2rem;font-weight:700;color:#fca5a5;line-height:1.6;font-style:italic;max-width:640px;margin:0 auto;position:relative;}
-.hum-roast::before{content:'"';font-size:3.5rem;color:#7f1d1d;line-height:0;vertical-align:-.6rem;margin-right:.2rem;font-family:'Outfit';}
-.hum-roast::after{content:'"';font-size:3.5rem;color:#7f1d1d;line-height:0;vertical-align:-.6rem;margin-left:.2rem;font-family:'Outfit';}
+/* DAILY CHAMPION */
+.dc{border-radius:24px;padding:2.2rem 1.8rem;text-align:center;margin-bottom:1.2rem;position:relative;overflow:hidden;box-shadow:var(--shl);z-index:1;}
+.dc.rc2{background:linear-gradient(135deg,#0c4a6e,#0369a1,#0284c7);}
+.dc.ac2{background:linear-gradient(135deg,#4c0519,#9f1239,#e11d48);}
+.dc.tc{background:linear-gradient(135deg,#1e293b,#334155);}
+.dc-bg{position:absolute;font-size:13rem;opacity:.04;top:-3rem;right:-2rem;pointer-events:none;font-family:'Outfit';font-weight:900;}
+.dc-lbl{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:3px;color:rgba(255,255,255,.55);margin-bottom:.5rem;}
+.dc-txt{font-size:clamp(1.1rem,2.8vw,1.7rem);font-weight:800;line-height:1.4;color:#fff;font-family:'Outfit';max-width:680px;margin:0 auto .7rem;}
+.dc-sub{font-size:.92rem;font-weight:600;color:rgba(255,255,255,.55);}
+.dc-med{position:absolute;top:1.1rem;right:1.4rem;font-size:1.8rem;animation:msp 4s linear infinite;}
+@keyframes msp{0%{transform:rotate(0)}25%{transform:rotate(-10deg)}75%{transform:rotate(10deg)}100%{transform:rotate(0)}}
 
-/* ══════════════════════════════════════════════
-   DAILY CHAMPION BANNER
-══════════════════════════════════════════════ */
-.daily-champ{
-  border-radius:28px;padding:2.5rem 2rem;
-  text-align:center;margin-bottom:1.5rem;
-  position:relative;overflow:hidden;
-  box-shadow:var(--sh-lg);z-index:1;
-}
-.daily-champ.r-champ{background:linear-gradient(135deg,#0c4a6e,#0369a1,#0284c7);}
-.daily-champ.a-champ{background:linear-gradient(135deg,#4c0519,#9f1239,#e11d48);}
-.daily-champ.tie-champ{background:linear-gradient(135deg,#1e293b,#334155,#475569);}
-.dc-bg-txt{position:absolute;font-size:14rem;opacity:.04;top:-3rem;right:-2rem;pointer-events:none;font-family:'Outfit';font-weight:900;}
-.dc-label{font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:3px;color:rgba(255,255,255,.6);margin-bottom:.6rem;}
-.dc-text{font-size:clamp(1.2rem,3vw,1.8rem);font-weight:800;line-height:1.4;color:#fff;font-family:'Outfit';max-width:700px;margin:0 auto .8rem;}
-.dc-sub{font-size:1rem;font-weight:600;color:rgba(255,255,255,.6);}
-.dc-medal{position:absolute;top:1.2rem;right:1.5rem;font-size:2rem;animation:medalSpin 4s linear infinite;}
-@keyframes medalSpin{0%{transform:rotate(0deg)}25%{transform:rotate(-10deg)}75%{transform:rotate(10deg)}100%{transform:rotate(0deg)}}
+/* SHAME */
+.shame{background:linear-gradient(160deg,#08020e,#150010,#0a0218);border:2px solid rgba(244,63,94,.32);border-radius:24px;padding:1.8rem 1.4rem;margin-bottom:1.2rem;box-shadow:0 20px 60px rgba(244,63,94,.15);position:relative;overflow:hidden;z-index:1;}
+.shame::before{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,.01) 3px,rgba(255,255,255,.01) 4px);}
+.shame::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 35% at 0% 0%,rgba(244,63,94,.09),transparent 60%),radial-gradient(ellipse 55% 35% at 100% 100%,rgba(139,92,246,.09),transparent 60%);}
+.shame-ey{text-align:center;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:3px;color:rgba(244,63,94,.65);margin-bottom:.4rem;position:relative;z-index:1;}
+.shame-t{font-size:2.4rem;font-weight:900;font-family:'Outfit';color:#f43f5e;text-align:center;letter-spacing:-1.5px;margin-bottom:.15rem;position:relative;z-index:1;animation:sg 3s ease-in-out infinite;}
+@keyframes sg{0%,100%{text-shadow:0 0 35px rgba(244,63,94,.45)}50%{text-shadow:0 0 55px rgba(244,63,94,.75),0 0 100px rgba(244,63,94,.25)}}
+.shame-div{height:1px;background:linear-gradient(90deg,transparent,rgba(244,63,94,.28),transparent);margin:.6rem 0;position:relative;z-index:1;}
+.sr3{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;position:relative;z-index:1;}
+.sb{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:1.2rem .8rem 1rem;text-align:center;position:relative;overflow:hidden;transition:all .28s;}
+.sb:hover{background:rgba(255,255,255,.07);transform:translateY(-4px);}
+.sb-rib{position:absolute;top:0;left:0;right:0;font-size:.56rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:.25rem .4rem;text-align:center;border-radius:16px 16px 0 0;}
+.sb-couch .sb-rib{background:linear-gradient(90deg,rgba(245,158,11,.28),rgba(245,158,11,.07));color:rgba(245,158,11,.9);}
+.sb-slug .sb-rib{background:linear-gradient(90deg,rgba(244,63,94,.28),rgba(244,63,94,.07));color:rgba(244,63,94,.9);}
+.sb-mir .sb-rib{background:linear-gradient(90deg,rgba(139,92,246,.28),rgba(139,92,246,.07));color:rgba(167,139,250,.9);}
+.sb-ico{font-size:2.4rem;margin:1.3rem 0 .35rem;display:block;}
+.sb-lbl{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:#94a3b8;margin-bottom:.4rem;}
+.sb-v{font-size:2.2rem;font-weight:900;font-family:'Outfit';line-height:1;letter-spacing:-1px;}
+.sb-couch .sb-v{color:#fbbf24;}.sb-slug .sb-v{color:#f87171;}.sb-mir .sb-v{color:#c4b5fd;}
+.sb-unit{font-size:.65rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.8px;margin:.15rem 0;}
+.sb-who{font-size:.77rem;font-weight:800;color:#fde68a;margin:.25rem 0;}
+.sb-q{font-size:.7rem;color:#94a3b8;font-style:italic;margin-top:.55rem;line-height:1.4;padding:.45rem .35rem 0;border-top:1px solid rgba(255,255,255,.07);}
+.sr4{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;position:relative;z-index:1;}
+.sb2{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:.9rem .7rem;text-align:center;transition:all .22s;}
+.sb2:hover{background:rgba(255,255,255,.06);transform:translateY(-2px);}
+.sb2-ico{font-size:1.7rem;margin-bottom:.35rem;}
+.sb2-lbl{font-size:.6rem;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:#fff;margin-bottom:.35rem;}
+.sb2-v{font-size:1.4rem;font-weight:900;font-family:'Outfit';color:#f1f5f9;line-height:1;}
+.sb2-sub{font-size:.63rem;color:#e2e8f0;font-weight:800;margin-top:.22rem;}
+.shame-verdict{background:linear-gradient(90deg,rgba(244,63,94,.07),rgba(139,92,246,.07));border:1px solid rgba(244,63,94,.18);border-radius:10px;padding:.85rem 1.1rem;margin-top:1.2rem;display:flex;align-items:flex-start;gap:.7rem;position:relative;z-index:1;}
+.sv-ico{font-size:1.3rem;flex-shrink:0;}
+.sv-t{font-size:.85rem;color:#cbd5e1;font-weight:600;font-style:italic;line-height:1.6;}
+.sv-t strong{color:#f87171;font-style:normal;}
 
-/* ══════════════════════════════════════════════
-   HALL OF SHAME — UPGRADED
-══════════════════════════════════════════════ */
-.shame{
-  background:linear-gradient(160deg,#08020e 0%,#150010 50%,#0a0218 100%);
-  border:2px solid rgba(244,63,94,.35);border-radius:28px;
-  padding:2.2rem 1.5rem;margin-bottom:1.5rem;
-  box-shadow:0 24px 72px rgba(244,63,94,.18),inset 0 1px 0 rgba(255,255,255,.05);
-  position:relative;overflow:hidden;z-index:1;
-}
-/* subtle scanline texture */
-.shame::before{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,.012) 3px,rgba(255,255,255,.012) 4px);
-  border-radius:28px;
-}
-/* ambient red glow corners */
-.shame::after{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 55% 35% at 0% 0%,rgba(244,63,94,.1),transparent 60%),
-    radial-gradient(ellipse 55% 35% at 100% 100%,rgba(139,92,246,.1),transparent 60%);
-}
-.shame-eyebrow{
-  text-align:center;font-size:.7rem;font-weight:800;
-  text-transform:uppercase;letter-spacing:3px;
-  color:rgba(244,63,94,.7);margin-bottom:.6rem;
-  position:relative;z-index:1;
-}
-.shame-title{
-  font-size:2.6rem;font-weight:900;font-family:'Outfit';
-  color:#f43f5e;text-align:center;letter-spacing:-1.5px;
-  margin-bottom:.2rem;position:relative;z-index:1;
-  text-shadow:0 0 40px rgba(244,63,94,.5),0 0 80px rgba(244,63,94,.2);
-  animation:shameGlow 3s ease-in-out infinite;
-}
-@keyframes shameGlow{
-  0%,100%{text-shadow:0 0 40px rgba(244,63,94,.5),0 0 80px rgba(244,63,94,.2)}
-  50%{text-shadow:0 0 60px rgba(244,63,94,.8),0 0 120px rgba(244,63,94,.35)}
-}
-.shame-divider{
-  height:1px;background:linear-gradient(90deg,transparent,rgba(244,63,94,.3),transparent);
-  margin:.8rem 0;position:relative;z-index:1;
-}
-
-/* ── ROW 1: 3 big boxes ── */
-.shame-row3{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
-  position:relative;z-index:1;margin-bottom:0;
-}
-.shame-box{
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.09);
-  border-radius:18px;padding:1.4rem 1rem 1.1rem;
-  text-align:center;position:relative;overflow:hidden;
-  transition:all .3s cubic-bezier(.34,1.56,.64,1);
-  cursor:default;
-}
-.shame-box:hover{
-  background:rgba(255,255,255,.08);
-  transform:translateY(-5px) scale(1.02);
-  border-color:rgba(244,63,94,.35);
-  box-shadow:0 12px 32px rgba(244,63,94,.15);
-}
-.sb-ribbon{
-  position:absolute;top:0;left:0;right:0;
-  background:linear-gradient(90deg,rgba(244,63,94,.3),rgba(244,63,94,.1));
-  font-size:.58rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;
-  color:rgba(244,63,94,.9);padding:.28rem .5rem;text-align:center;
-  border-radius:18px 18px 0 0;
-}
-.sb-couch .sb-ribbon{background:linear-gradient(90deg,rgba(245,158,11,.3),rgba(245,158,11,.08));color:rgba(245,158,11,.9);}
-.sb-miracle .sb-ribbon{background:linear-gradient(90deg,rgba(139,92,246,.3),rgba(139,92,246,.08));color:rgba(167,139,250,.9);}
-.sb-icon-big{font-size:2.8rem;margin:1.2rem 0 .4rem;display:block;}
-.sb-label{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:#94a3b8;margin-bottom:.5rem;}
-.sb-val{font-size:2.4rem;font-weight:900;font-family:'Outfit';color:#fff;line-height:1;letter-spacing:-1px;}
-.sb-couch .sb-val{color:#fbbf24;}
-.sb-slug .sb-val{color:#f87171;}
-.sb-miracle .sb-val{color:#c4b5fd;}
-.sb-unit{font-size:.68rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.8px;margin:.2rem 0;}
-.sb-who{font-size:.8rem;font-weight:800;color:#fde68a;margin:.3rem 0;}
-.sb-quote{
-  font-size:.73rem;color:#94a3b8;font-style:italic;
-  margin-top:.6rem;line-height:1.5;padding:.5rem .4rem 0;
-  border-top:1px solid rgba(255,255,255,.08);
-}
-
-/* ── ROW 2: 4 detail boxes ── */
-.shame-row4{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;
-  position:relative;z-index:1;
-}
-.shame-box2{
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,255,255,.07);
-  border-radius:14px;padding:1rem .8rem;text-align:center;
-  transition:all .25s;
-}
-.shame-box2:hover{background:rgba(255,255,255,.07);transform:translateY(-3px);}
-.sb2-icon{font-size:1.8rem;margin-bottom:.4rem;}
-.sb2-label{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#475569;margin-bottom:.4rem;}
-.sb2-val{font-size:1.5rem;font-weight:900;font-family:'Outfit';color:#e2e8f0;line-height:1;}
-.sb2-sub{font-size:.65rem;color:#334155;font-weight:600;margin-top:.25rem;}
-
-/* ── VERDICT BANNER ── */
-.shame-verdict{
-  background:linear-gradient(90deg,rgba(244,63,94,.08),rgba(139,92,246,.08));
-  border:1px solid rgba(244,63,94,.2);border-radius:12px;
-  padding:.9rem 1.2rem;margin-top:1.5rem;
-  display:flex;align-items:flex-start;gap:.8rem;
-  position:relative;z-index:1;
-}
-.sv-icon{font-size:1.4rem;flex-shrink:0;margin-top:.05rem;}
-.sv-text{font-size:.88rem;color:#94a3b8;font-weight:600;font-style:italic;line-height:1.6;}
-.sv-text strong{color:#f43f5e;font-style:normal;}
-
-/* ══════════════════════════════════════════════
-   PUNISHMENT HP BARS
-══════════════════════════════════════════════ */
-.punish{
-  background:var(--card);border-radius:28px;
-  padding:2rem;margin-bottom:1.5rem;
-  box-shadow:var(--sh-lg);border:1.5px solid var(--border);
-  position:relative;z-index:1;
-}
-.hp-bar{margin-bottom:1.6rem;}
-.hp-bar:last-child{margin-bottom:0;}
-.hp-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;}
-.hp-name{font-size:1rem;font-weight:800;}
-.hp-pct{font-size:1.6rem;font-weight:900;font-family:'Outfit';}
-.hp-track{height:44px;background:var(--bg);border-radius:12px;overflow:hidden;border:2px solid var(--border);box-shadow:inset 0 4px 12px rgba(0,0,0,.06);}
-.hp-fill{height:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:1rem;font-weight:900;color:#fff;font-size:.9rem;letter-spacing:1px;transition:width 1.2s cubic-bezier(.4,0,.2,1);}
+/* HP BARS */
+.punish{background:var(--card);border:1.5px solid var(--bdr);border-radius:24px;padding:1.8rem 1.4rem;margin-bottom:1.2rem;box-shadow:var(--shl);position:relative;z-index:1;}
+.hp{margin-bottom:1.4rem;}
+.hp:last-child{margin-bottom:0;}
+.hp-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.45rem;}
+.hp-name{font-size:.95rem;font-weight:800;}
+.hp-pct{font-size:1.5rem;font-weight:900;font-family:'Outfit';}
+.hp-track{height:40px;background:var(--bg);border-radius:10px;overflow:hidden;border:2px solid var(--bdr);box-shadow:inset 0 3px 10px rgba(0,0,0,.05);}
+.hp-fill{height:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:.9rem;font-weight:900;color:#fff;font-size:.85rem;letter-spacing:1px;transition:width 1.2s cubic-bezier(.4,0,.2,1);}
 .hp-pp{background:linear-gradient(90deg,#fbbf24,#f97316,#ef4444);}
 .hp-al{background:linear-gradient(90deg,#60a5fa,#3b82f6,#4f46e5);}
-.hp-status{font-size:.78rem;font-weight:700;color:var(--txt3);margin-top:.3rem;}
+.hp-st{font-size:.75rem;font-weight:700;color:var(--t3);margin-top:.25rem;}
 
-/* ══════════════════════════════════════════════
-   STREAK DOTS
-══════════════════════════════════════════════ */
-.streak-section{
-  background:var(--card);border-radius:20px;padding:1.4rem 1.8rem;
-  margin-bottom:1.5rem;box-shadow:var(--sh);border:1.5px solid var(--border);
-  position:relative;z-index:1;
-}
-.sdots{display:flex;gap:5px;flex-wrap:wrap;margin:.8rem 0 .6rem;}
-.sdot{width:16px;height:16px;border-radius:50%;flex-shrink:0;transition:transform .2s;}
-.sdot:hover{transform:scale(1.3);}
-.sdot.r{background:var(--r);}
-.sdot.a{background:var(--a);}
-.sdot.tie{background:var(--gold);}
-.sdot.n{background:var(--bg);border:2px solid var(--border);}
-.sdot-legend{display:flex;gap:1.2rem;font-size:.72rem;font-weight:700;color:var(--txt3);}
-.sdot-legend span{display:flex;align-items:center;gap:.35rem;}
+/* STREAK DOTS */
+.streak-s{background:var(--card);border:1.5px solid var(--bdr);border-radius:18px;padding:1.2rem 1.5rem;margin-bottom:1.2rem;box-shadow:var(--sh);position:relative;z-index:1;}
+.sdots{display:flex;gap:5px;flex-wrap:wrap;margin:.7rem 0 .5rem;}
+.sdot2{width:15px;height:15px;border-radius:50%;flex-shrink:0;transition:transform .18s;cursor:default;}
+.sdot2:hover{transform:scale(1.3);}
+.sdot2.r{background:var(--r)}.sdot2.a{background:var(--a)}.sdot2.tie{background:var(--gold)}.sdot2.n{background:var(--bg);border:2px solid var(--bdr);}
+.sdot-leg{display:flex;gap:1rem;font-size:.7rem;font-weight:700;color:var(--t3);}
+.sdot-leg span{display:flex;align-items:center;gap:.3rem;}
 
-/* ══════════════════════════════════════════════
-   ANALYTICS GRID
-══════════════════════════════════════════════ */
-.analytics{
-  background:var(--card);border-radius:28px;
-  padding:2rem;margin-bottom:1.5rem;
-  box-shadow:var(--sh-lg);border:1.5px solid var(--border);
-  position:relative;z-index:1;
-}
-.insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem;}
-.insight{
-  background:var(--bg);border:1.5px solid var(--border);
-  border-radius:18px;padding:1.3rem 1rem;text-align:center;
-  transition:all .25s;position:relative;overflow:hidden;
-}
-.insight::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
-.insight.ir::before{background:var(--r-gradient);}
-.insight.ia::before{background:var(--a-gradient);}
-.insight.ig::before{background:linear-gradient(90deg,var(--gold),var(--gold3));}
-.insight.ip::before{background:linear-gradient(90deg,var(--purple),#a78bfa);}
-.insight.ign::before{background:linear-gradient(90deg,var(--green),#34d399);}
-.insight:hover{transform:translateY(-4px);box-shadow:var(--sh-md);background:var(--card);}
-.insight-icon{font-size:2rem;margin-bottom:.5rem;display:block;}
-.insight-lbl{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--txt3);margin-bottom:.4rem;}
-.insight-val{font-size:1.55rem;font-weight:900;font-family:'Outfit';line-height:1;color:var(--txt);}
-.insight-sub{font-size:.72rem;color:var(--txt3);font-weight:600;margin-top:.3rem;}
+/* ANALYTICS */
+.analytics{background:var(--card);border:1.5px solid var(--bdr);border-radius:24px;padding:1.8rem 1.4rem;margin-bottom:1.2rem;box-shadow:var(--shl);position:relative;z-index:1;}
+.ig{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1.2rem;}
+.ins{background:var(--bg);border:1.5px solid var(--bdr);border-radius:16px;padding:1.2rem .9rem;text-align:center;transition:all .22s;position:relative;overflow:hidden;}
+.ins::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.ins.ir::before{background:linear-gradient(90deg,var(--r),var(--r2));}
+.ins.ia::before{background:linear-gradient(90deg,var(--a),var(--a2));}
+.ins.ig2::before{background:linear-gradient(90deg,var(--gold),var(--g2));}
+.ins.ip::before{background:linear-gradient(90deg,var(--pur),#a78bfa);}
+.ins.ign::before{background:linear-gradient(90deg,var(--grn),#34d399);}
+.ins:hover{transform:translateY(-3px);box-shadow:var(--shm);background:var(--card);}
+.ins-ico{font-size:1.9rem;margin-bottom:.4rem;display:block;}
+.ins-lbl{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--t3);margin-bottom:.35rem;}
+.ins-v{font-size:1.5rem;font-weight:900;font-family:'Outfit';color:var(--txt);}
+.ins-sub{font-size:.7rem;color:var(--t3);font-weight:600;margin-top:.25rem;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.cb{background:var(--bg);border:1.5px solid var(--bdr);border-radius:16px;padding:1rem;}
+.cb h3{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--t2);margin-bottom:.7rem;}
+.cw{position:relative;height:220px;}
 
-.charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
-.chart-box{background:var(--bg);border-radius:18px;padding:1.2rem 1rem;border:1.5px solid var(--border);}
-.chart-box h3{font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--txt2);margin-bottom:.8rem;}
-.cw{position:relative;height:240px;}
+/* BADGES */
+.badges{background:var(--card);border:1.5px solid var(--bdr);border-radius:24px;padding:1.8rem 1.4rem;margin-bottom:1.2rem;box-shadow:var(--shl);position:relative;z-index:1;}
+.btabs{display:flex;gap:.5rem;margin-bottom:1.2rem;}
+.btab{flex:1;padding:.5rem .9rem;border-radius:9px;border:2px solid var(--bdr);background:var(--bg);font-size:.82rem;font-weight:800;cursor:pointer;transition:all .18s;color:var(--t2);}
+.btab.rt{background:var(--r);color:#fff;border-color:var(--r);}
+.btab.at{background:var(--a);color:#fff;border-color:var(--a);}
+.btab:not(.rt):not(.at):hover{background:var(--bg);}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:.7rem;}
+.bdg{border-radius:14px;padding:1rem .7rem;text-align:center;position:relative;border:2px solid transparent;transition:all .28s;cursor:default;overflow:hidden;}
+.bdg.un{background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#93c5fd;}
+.bdg.un.ab{background:linear-gradient(135deg,#fff1f2,#ffe4e6);border-color:#fca5a5;}
+.bdg.un:hover{transform:translateY(-4px) scale(1.02);}
+.bdg.lk{background:var(--bg);border-color:var(--bdr);opacity:.52;filter:grayscale(.8);}
+.bdg.lk:hover{opacity:.68;filter:grayscale(.5);}
+.bshine{position:absolute;top:-50%;left:-50%;width:36px;height:200%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:rotate(25deg);animation:bsh 3s ease-in-out infinite;pointer-events:none;}
+.bdg.lk .bshine{display:none;}
+@keyframes bsh{0%,100%{left:-50%}50%{left:150%}}
+.btag{position:absolute;top:5px;right:5px;font-size:.52rem;font-weight:900;text-transform:uppercase;letter-spacing:.8px;padding:.12rem .32rem;border-radius:4px;}
+.btag.et{background:var(--r);color:#fff;}
+.bdg.ab .btag.et{background:var(--a);}
+.btag.lt{background:var(--bdr);color:var(--t3);}
+.b-ico{font-size:2.2rem;display:block;margin-bottom:.4rem;line-height:1;}
+.b-name{font-size:.7rem;font-weight:800;color:var(--txt);letter-spacing:.3px;line-height:1.3;margin-bottom:.2rem;}
+.bdg.lk .b-name{color:var(--t3);}
+.b-desc{font-size:.6rem;color:var(--t3);font-weight:600;line-height:1.4;}
+.bdg.un .b-desc{color:var(--t2);}
 
-/* ══════════════════════════════════════════════
-   ACHIEVEMENT BADGES
-══════════════════════════════════════════════ */
-.badges-section{
-  background:var(--card);border-radius:28px;
-  padding:2rem;margin-bottom:1.5rem;
-  box-shadow:var(--sh-lg);border:1.5px solid var(--border);
-  position:relative;z-index:1;
-}
-.badges-tabs{display:flex;gap:.6rem;margin-bottom:1.4rem;}
-.btab{
-  flex:1;padding:.55rem 1rem;border-radius:10px;
-  border:2px solid var(--border);background:var(--bg);
-  font-size:.85rem;font-weight:800;cursor:pointer;
-  transition:all .2s;color:var(--txt2);
-}
-.btab.active.rt{background:var(--r);color:#fff;border-color:var(--r);}
-.btab.active.at{background:var(--a);color:#fff;border-color:var(--a);}
-.btab:not(.active):hover{background:var(--bg2);}
-.badges-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
-  gap:.8rem;
-}
-.badge-card{
-  border-radius:16px;padding:1.1rem .8rem;
-  text-align:center;position:relative;
-  border:2px solid transparent;
-  transition:all .3s cubic-bezier(.34,1.56,.64,1);
-  cursor:default;overflow:hidden;
-}
-.badge-card.unlocked{
-  background:linear-gradient(135deg,#fffbeb,#fefce8);
-  border-color:#fbbf24;
-  box-shadow:0 4px 20px rgba(251,191,36,.2);
-}
-.badge-card.unlocked:hover{transform:translateY(-5px) scale(1.03);box-shadow:0 12px 32px rgba(251,191,36,.3);}
-.badge-card.locked{
-  background:var(--bg);border-color:var(--border);
-  opacity:.55;filter:grayscale(.8);
-}
-.badge-card.locked:hover{opacity:.7;filter:grayscale(.5);}
-.badge-shine{
-  position:absolute;top:-50%;left:-50%;
-  width:40px;height:200%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);
-  transform:rotate(25deg);
-  animation:badgeShine 3s ease-in-out infinite;
-  pointer-events:none;
-}
-.badge-card.locked .badge-shine{display:none;}
-@keyframes badgeShine{0%,100%{left:-50%}50%{left:150%}}
-.badge-icon{font-size:2.4rem;display:block;margin-bottom:.5rem;line-height:1;}
-.badge-name{font-size:.72rem;font-weight:800;color:var(--txt);letter-spacing:.3px;line-height:1.3;margin-bottom:.25rem;}
-.badge-card.locked .badge-name{color:var(--txt3);}
-.badge-desc{font-size:.62rem;color:var(--txt3);font-weight:600;line-height:1.4;}
-.badge-card.unlocked .badge-desc{color:var(--txt2);}
-.badge-unlocked-tag{
-  position:absolute;top:6px;right:6px;
-  background:var(--gold);color:#fff;
-  font-size:.55rem;font-weight:900;letter-spacing:.8px;
-  text-transform:uppercase;padding:.15rem .35rem;border-radius:4px;
-}
-.badge-locked-tag{
-  position:absolute;top:6px;right:6px;
-  background:var(--border);color:var(--txt3);
-  font-size:.6rem;font-weight:900;padding:.15rem .35rem;border-radius:4px;
-}
-.badge-card.r-badge.unlocked{background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#93c5fd;}
-.badge-card.r-badge.unlocked .badge-unlocked-tag{background:var(--r);}
-.badge-card.a-badge.unlocked{background:linear-gradient(135deg,#fff1f2,#ffe4e6);border-color:#fca5a5;}
-.badge-card.a-badge.unlocked .badge-unlocked-tag{background:var(--a);}
+/* WANTED POSTER */
+.wanted-w{display:flex;justify-content:center;margin-bottom:1.2rem;position:relative;z-index:1;}
+.wp{background:#f5e6c8;border:6px solid #8b6914;border-radius:4px;padding:1.8rem 1.6rem;width:100%;max-width:400px;text-align:center;position:relative;overflow:hidden;box-shadow:0 8px 36px rgba(0,0,0,.28),inset 0 0 50px rgba(139,105,20,.09);font-family:'Outfit',sans-serif;}
+.wp::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 30%,rgba(139,105,20,.06),transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(139,105,20,.06),transparent 50%);pointer-events:none;}
+.wp::after{content:'';position:absolute;inset:9px;border:2px solid rgba(139,105,20,.38);border-radius:2px;pointer-events:none;}
+.wp-s{font-size:.68rem;font-weight:900;letter-spacing:4px;color:#8b6914;text-transform:uppercase;margin-bottom:.15rem;position:relative;z-index:1;}
+.wp-sub{font-size:.62rem;font-weight:800;letter-spacing:3px;color:#7f1d1d;text-transform:uppercase;margin-bottom:.9rem;position:relative;z-index:1;}
+.wp-ph{font-size:5.5rem;line-height:1;background:rgba(139,105,20,.09);border:3px solid rgba(139,105,20,.28);border-radius:6px;padding:.4rem;margin:0 auto .7rem;width:110px;height:110px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;filter:sepia(.28);}
+.wp-name{font-size:2.2rem;font-weight:900;color:#1a1a1a;letter-spacing:-1px;line-height:1;position:relative;z-index:1;}
+.wp-alias{font-size:.78rem;font-weight:700;color:#64748b;font-style:italic;margin:.25rem 0 .55rem;position:relative;z-index:1;}
+.wp-div{height:2px;background:linear-gradient(90deg,transparent,rgba(139,105,20,.38),transparent);margin:.65rem 0;position:relative;z-index:1;}
+.wp-sg{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;position:relative;z-index:1;}
+.wp-st{background:rgba(139,105,20,.07);border:1px solid rgba(139,105,20,.18);border-radius:5px;padding:.45rem;}
+.wp-sv{font-size:1rem;font-weight:900;color:#1a1a1a;}
+.wp-sl{font-size:.55rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:#8b6914;}
+.wp-cl{font-size:.6rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#7f1d1d;margin-bottom:.25rem;position:relative;z-index:1;}
+.wp-ch{font-size:.92rem;font-weight:800;color:#1a1a1a;line-height:1.4;max-width:280px;margin:0 auto .7rem;font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;position:relative;z-index:1;}
+.wp-rw{background:#7f1d1d;color:#fef2f2;font-size:.68rem;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:.35rem .7rem;border-radius:3px;margin:.5rem auto;display:inline-block;position:relative;z-index:1;}
+.wp-auth{font-size:.55rem;font-weight:700;color:#8b6914;text-transform:uppercase;letter-spacing:1px;line-height:1.6;margin-top:.5rem;position:relative;z-index:1;}
+.wp-stamp{position:absolute;top:50%;right:10px;transform:translateY(-50%) rotate(15deg);font-size:1.8rem;font-weight:900;font-family:'Outfit';border:4px solid;border-radius:7px;padding:.18rem .55rem;letter-spacing:3px;text-transform:uppercase;line-height:1;z-index:2;}
 
-/* ══════════════════════════════════════════════
-   WANTED POSTER
-══════════════════════════════════════════════ */
-.wanted-wrap{
-  display:flex;justify-content:center;
-  margin-bottom:1.5rem;position:relative;z-index:1;
-}
-.wanted-poster{
-  background:#f5e6c8;
-  border:6px solid #8b6914;
-  border-radius:4px;
-  padding:2rem 1.8rem;
-  width:100%;max-width:420px;
-  text-align:center;
-  position:relative;overflow:hidden;
-  box-shadow:0 8px 40px rgba(0,0,0,.3),inset 0 0 60px rgba(139,105,20,.1);
-  font-family:'Outfit',sans-serif;
-}
-/* aged paper texture */
-.wanted-poster::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse at 20% 30%,rgba(139,105,20,.07),transparent 50%),
-    radial-gradient(ellipse at 80% 70%,rgba(139,105,20,.07),transparent 50%);
-  pointer-events:none;
-}
-/* border double line */
-.wanted-poster::after{
-  content:'';position:absolute;
-  inset:10px;border:2px solid rgba(139,105,20,.4);
-  border-radius:2px;pointer-events:none;
-}
-.wp-stars{
-  font-size:.7rem;font-weight:900;letter-spacing:4px;
-  color:#8b6914;text-transform:uppercase;margin-bottom:.2rem;
-  position:relative;z-index:1;
-}
-.wp-subtitle{
-  font-size:.65rem;font-weight:800;letter-spacing:3px;
-  color:#7f1d1d;text-transform:uppercase;margin-bottom:1rem;
-  position:relative;z-index:1;
-}
-.wp-photo{
-  font-size:6rem;line-height:1;
-  background:rgba(139,105,20,.1);
-  border:3px solid rgba(139,105,20,.3);
-  border-radius:8px;padding:.5rem;
-  margin:0 auto .8rem;width:120px;height:120px;
-  display:flex;align-items:center;justify-content:center;
-  position:relative;z-index:1;
-  filter:sepia(.3);
-}
-.wp-name{
-  font-size:2.4rem;font-weight:900;color:#1a1a1a;
-  letter-spacing:-1px;line-height:1;
-  position:relative;z-index:1;
-}
-.wp-alias{
-  font-size:.82rem;font-weight:700;color:#64748b;
-  font-style:italic;margin:.3rem 0 .6rem;
-  position:relative;z-index:1;
-}
-.wp-divider{
-  height:2px;
-  background:linear-gradient(90deg,transparent,rgba(139,105,20,.4),transparent);
-  margin:.8rem 0;position:relative;z-index:1;
-}
-.wp-stats-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:.5rem;
-  position:relative;z-index:1;
-}
-.wp-stat{
-  background:rgba(139,105,20,.08);border:1px solid rgba(139,105,20,.2);
-  border-radius:6px;padding:.5rem;
-}
-.wp-stat-v{font-size:1.1rem;font-weight:900;color:#1a1a1a;}
-.wp-stat-l{font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:#8b6914;}
-.wp-charge-label{
-  font-size:.62rem;font-weight:800;letter-spacing:3px;
-  text-transform:uppercase;color:#7f1d1d;margin-bottom:.3rem;
-  position:relative;z-index:1;
-}
-.wp-charge{
-  font-size:1rem;font-weight:800;color:#1a1a1a;
-  line-height:1.4;max-width:300px;margin:0 auto .8rem;
-  position:relative;z-index:1;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  font-style:italic;
-}
-.wp-reward{
-  background:#7f1d1d;color:#fef2f2;
-  font-size:.72rem;font-weight:900;letter-spacing:2px;
-  text-transform:uppercase;padding:.4rem .8rem;
-  border-radius:4px;margin:.6rem auto;display:inline-block;
-  position:relative;z-index:1;
-}
-.wp-authority{
-  font-size:.58rem;font-weight:700;color:#8b6914;
-  text-transform:uppercase;letter-spacing:1px;line-height:1.6;
-  margin-top:.6rem;position:relative;z-index:1;
-}
-.wp-stamp{
-  position:absolute;top:50%;right:12px;
-  transform:translateY(-50%) rotate(15deg);
-  font-size:2rem;font-weight:900;font-family:'Outfit';
-  color:rgba(127,29,29,.45);
-  border:4px solid rgba(127,29,29,.4);
-  border-radius:8px;padding:.2rem .6rem;
-  letter-spacing:3px;text-transform:uppercase;
-  line-height:1;z-index:2;
-  text-shadow:2px 2px 4px rgba(127,29,29,.2);
-}
-.predictor{
-  background:linear-gradient(135deg,#fffbeb,#faf5ff);
-  border:2px solid var(--gold3);border-radius:28px;
-  padding:2rem;margin-bottom:1.5rem;
-  box-shadow:0 12px 40px rgba(245,158,11,.15);
-  text-align:center;position:relative;overflow:hidden;z-index:1;
-}
-.predictor::before{content:'🔮';position:absolute;font-size:12rem;opacity:.04;bottom:-3rem;right:-2rem;line-height:1;}
-.pred-trophy{font-size:3.5rem;margin-bottom:.5rem;display:block;}
-.pred-winner{font-size:1.8rem;font-weight:900;font-family:'Outfit';}
-.pred-prob{font-size:4.5rem;font-weight:900;font-family:'Outfit';color:var(--gold);line-height:1;margin:.2rem 0;}
-.pred-lbl{font-size:.78rem;font-weight:700;color:var(--txt2);text-transform:uppercase;letter-spacing:1px;margin-bottom:1.2rem;}
-.pred-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;}
-.pred-box{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:1rem;text-align:left;}
-.pred-v{font-size:1.3rem;font-weight:900;font-family:'Outfit';}
-.pred-l{font-size:.65rem;font-weight:800;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;margin-top:.2rem;}
+/* MUMBAI VS PUNE */
+.rv{background:linear-gradient(135deg,#fff7ed,#f5f3ff,#fff7ed);border:2px solid #ddd6fe;border-radius:24px;padding:1.8rem 1.4rem;margin-bottom:1.2rem;box-shadow:var(--shl);position:relative;overflow:hidden;z-index:1;}
+.rv::before{content:'⚔️';position:absolute;font-size:13rem;opacity:.025;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;line-height:1;}
+.rv-grid{display:grid;grid-template-columns:1fr 100px 1fr;gap:.8rem;align-items:center;margin-bottom:1rem;}
+.rv-city{border-radius:18px;padding:1.2rem .8rem;text-align:center;transition:transform .22s;}
+.rv-city:hover{transform:translateY(-4px);}
+.rv-m{background:linear-gradient(135deg,#fff7ed,#ffedd5);border:2px solid #fed7aa;}
+.rv-p{background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:2px solid #ddd6fe;}
+.rv-em{font-size:2.4rem;display:block;margin-bottom:.3rem;animation:rvp 3s ease-in-out infinite;}
+@keyframes rvp{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.rv-cn{font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.4rem;}
+.rv-m .rv-cn{color:#ea580c;}.rv-p .rv-cn{color:#7c3aed;}
+.rv-sc{font-size:3.5rem;font-weight:900;font-family:'Outfit';line-height:1;}
+.rv-m .rv-sc{color:#ea580c;}.rv-p .rv-sc{color:#7c3aed;}
+.rv-dl{font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--t3);margin:.28rem 0 .4rem;}
+.rv-rep{font-size:.63rem;color:var(--t3);font-weight:600;line-height:1.5;}
+.rv-mid{text-align:center;}
+.rv-mid-sc{font-size:.9rem;font-weight:900;font-family:'Outfit';color:var(--txt);line-height:1.3;}
+.rv-mid-lb{font-size:.56rem;color:var(--t3);font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-top:.22rem;}
+.rv-bar-w{margin-bottom:1rem;}
+.rv-bt{height:15px;background:var(--bg);border-radius:50px;overflow:hidden;display:flex;border:2px solid var(--bdr);margin-bottom:.3rem;}
+.rv-bm{height:100%;background:linear-gradient(90deg,#ea580c,#fb923c);border-radius:50px 0 0 50px;transition:width .9s cubic-bezier(.4,0,.2,1);}
+.rv-bp{height:100%;background:linear-gradient(270deg,#7c3aed,#a78bfa);border-radius:0 50px 50px 0;transition:width .9s cubic-bezier(.4,0,.2,1);}
+.rv-bl{display:flex;justify-content:space-between;font-size:.7rem;font-weight:800;}
+.rv-vd{background:rgba(0,0,0,.025);border:1.5px solid var(--bdr);border-radius:12px;padding:.85rem 1rem;margin-bottom:.9rem;}
+.rv-vd-lbl{font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--t3);margin-bottom:.4rem;}
+.rv-vd-t{font-size:.9rem;font-weight:700;color:var(--txt);line-height:1.65;font-style:italic;}
+.rv-facts{display:flex;flex-direction:column;gap:.5rem;}
+.rv-f{display:flex;align-items:flex-start;gap:.6rem;border-radius:9px;padding:.6rem .8rem;}
+.rv-f.m{background:rgba(234,88,12,.06);border:1px solid rgba(234,88,12,.16);}
+.rv-f.p{background:rgba(124,58,237,.06);border:1px solid rgba(124,58,237,.16);}
+.rv-f.g{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.16);}
+.rv-f-ico{font-size:1.1rem;flex-shrink:0;margin-top:.04rem;}
+.rv-f-t{font-size:.75rem;color:var(--t2);font-weight:600;line-height:1.5;}
 
-/* ══════════════════════════════════════════════
-   TOAST
-══════════════════════════════════════════════ */
-#toast{
-  position:fixed;bottom:1.5rem;left:50%;z-index:600;
-  transform:translateX(-50%) translateY(120px);
-  background:var(--txt);color:#fff;
-  padding:.75rem 1.6rem;border-radius:50px;
-  font-weight:800;font-size:.88rem;
-  transition:transform .35s cubic-bezier(.34,1.56,.64,1);
-  pointer-events:none;white-space:nowrap;
-  box-shadow:var(--sh-lg);
-}
+/* FRIEND LEADERBOARD */
+.fl{background:var(--card);border:1.5px solid var(--bdr);border-radius:24px;padding:1.8rem 1.4rem;margin-bottom:1.2rem;box-shadow:var(--shl);position:relative;z-index:1;}
+.fl-list{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1rem;}
+.fl-row{display:grid;grid-template-columns:32px 40px 1fr auto;gap:.7rem;align-items:center;border-radius:12px;padding:.8rem .9rem;border:1.5px solid var(--bdr);background:var(--bg);transition:transform .2s,box-shadow .2s;}
+.fl-row:hover{transform:translateX(4px);box-shadow:var(--sh);}
+.fl-a{background:linear-gradient(90deg,#fff1f2,var(--bg));border-color:#fecdd3;}
+.fl-s{background:linear-gradient(90deg,#f0fdf4,var(--bg));border-color:#bbf7d0;}
+.fl-rk{font-size:1rem;font-weight:900;font-family:'Outfit';text-align:center;color:var(--t3);}
+.fl-a .fl-rk{color:var(--a);}.fl-s .fl-rk{color:var(--grn);}
+.fl-em{font-size:1.7rem;text-align:center;}
+.fl-nr{font-size:.85rem;font-weight:800;color:var(--txt);display:flex;align-items:center;gap:.35rem;flex-wrap:wrap;margin-bottom:.12rem;}
+.tag{font-size:.52rem;font-weight:900;text-transform:uppercase;letter-spacing:.8px;padding:.12rem .38rem;border-radius:4px;}
+.tc2{background:#fce7f3;color:#db2777;}.tg{background:#d1fae5;color:#059669;}.tm{background:var(--bg);color:var(--t3);border:1px solid var(--bdr);}.tb{background:#dbeafe;color:#1d4ed8;}
+.fl-det{font-size:.65rem;color:var(--t3);font-weight:600;line-height:1.4;}
+.fl-sv{font-size:1.1rem;font-weight:900;font-family:'Outfit';text-align:right;}
+.fl-sl{font-size:.55rem;color:var(--t3);font-weight:700;text-transform:uppercase;text-align:right;}
+.fl-vd{background:var(--bg);border:1.5px solid var(--bdr);border-radius:10px;padding:.85rem .95rem;font-size:.79rem;color:var(--t2);font-weight:600;line-height:1.7;}
+.fl-vd strong{color:var(--txt);}
+
+/* EXCUSE */
+.ex{background:linear-gradient(135deg,#fffbeb,#fff);border:2px solid #fde68a;border-radius:24px;padding:1.8rem 1.4rem;margin-bottom:1.2rem;box-shadow:var(--shl);position:relative;z-index:1;overflow:hidden;}
+.ex::before{content:'🎭';position:absolute;font-size:10rem;opacity:.04;bottom:-1.5rem;right:-1.5rem;line-height:1;pointer-events:none;}
+.ex-in{text-align:center;position:relative;z-index:1;}
+.ex-avi{font-size:4.2rem;display:block;margin-bottom:.4rem;animation:exw 3s ease-in-out infinite;}
+@keyframes exw{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.ex-name{font-size:1.4rem;font-weight:900;font-family:'Outfit';margin-bottom:1rem;color:var(--txt);}
+.ex-qw{display:flex;align-items:flex-start;gap:.25rem;background:rgba(0,0,0,.025);border:1.5px solid var(--bdr);border-radius:14px;padding:1rem .9rem;margin-bottom:1rem;text-align:left;}
+.ex-qm{font-size:2.7rem;font-family:'Outfit';font-weight:900;line-height:1;color:var(--g2);flex-shrink:0;margin-top:-.35rem;}
+.ex-qme{margin-top:auto;}
+.ex-t{font-size:.95rem;font-weight:700;color:var(--txt);line-height:1.65;flex:1;font-style:italic;padding:0 .2rem;}
+.ex-cl{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:var(--t3);margin-bottom:.4rem;}
+.ex-tr{height:13px;background:var(--bg);border-radius:50px;overflow:hidden;border:1.5px solid var(--bdr);margin-bottom:.35rem;}
+.ex-fi{height:100%;border-radius:50px;transition:width 1s cubic-bezier(.4,0,.2,1);}
+.ex-cv{font-size:.78rem;font-weight:800;color:var(--t2);margin-bottom:1rem;}
+.ex-btn{border:none;border-radius:11px;padding:.85rem 1.4rem;background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#fff;font-size:.92rem;font-weight:800;cursor:pointer;width:100%;box-shadow:0 4px 14px rgba(245,158,11,.28);transition:all .2s cubic-bezier(.34,1.56,.64,1);letter-spacing:.3px;}
+.ex-btn:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 8px 26px rgba(245,158,11,.42);}
+.ex-btn:active{transform:translateY(0);}
+
+/* PREDICTOR */
+.pred{background:linear-gradient(135deg,#fffbeb,#faf5ff);border:2px solid var(--g2);border-radius:24px;padding:1.8rem 1.4rem;margin-bottom:1.2rem;box-shadow:0 10px 36px rgba(245,158,11,.13);text-align:center;position:relative;overflow:hidden;z-index:1;}
+.pred::before{content:'🔮';position:absolute;font-size:10rem;opacity:.04;bottom:-2.5rem;right:-1.5rem;line-height:1;}
+.pred-trophy{font-size:3.2rem;margin-bottom:.4rem;display:block;}
+.pred-win{font-size:1.7rem;font-weight:900;font-family:'Outfit';}
+.pred-prob{font-size:4rem;font-weight:900;font-family:'Outfit';color:var(--gold);line-height:1;margin:.15rem 0;}
+.pred-lbl{font-size:.74rem;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:1px;margin-bottom:1.1rem;}
+.pred-g{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;}
+.pred-b{background:var(--card);border:1.5px solid var(--bdr);border-radius:12px;padding:.9rem;text-align:left;}
+.pred-v{font-size:1.2rem;font-weight:900;font-family:'Outfit';}
+.pred-l{font-size:.62rem;font-weight:800;color:var(--t3);text-transform:uppercase;letter-spacing:.8px;margin-top:.18rem;}
+
+/* TOAST */
+#toast{position:fixed;bottom:1.4rem;left:50%;z-index:600;transform:translateX(-50%) translateY(110px);background:#0f172a;color:#fff;padding:.65rem 1.4rem;border-radius:50px;font-weight:800;font-size:.85rem;transition:transform .32s cubic-bezier(.34,1.56,.64,1);pointer-events:none;white-space:nowrap;box-shadow:var(--shl);}
 #toast.up{transform:translateX(-50%) translateY(0);}
 
-/* ══════════════════════════════════════════════
-   CONFETTI
-══════════════════════════════════════════════ */
+/* CONFETTI */
 .cp{position:fixed;pointer-events:none;z-index:1000;border-radius:3px;}
 @keyframes cf{0%{opacity:1;transform:translateY(-10px) rotate(0)}100%{opacity:0;transform:translateY(100vh) rotate(1080deg)}}
 
-/* ══════════════════════════════════════════════
-   MOBILE
-══════════════════════════════════════════════ */
-@media(max-width:640px){
-  .arena{grid-template-columns:1fr;gap:1.5rem;}
-  .vs-orb{display:none;}
-  .shame-row3,.shame-row4,.insight-grid,.charts-grid,.pred-grid{grid-template-columns:1fr;}
-  .badges-grid{grid-template-columns:repeat(2,1fr);}
-  .wp-stats-grid{grid-template-columns:repeat(2,1fr);}
-  .rv-scoreboard{grid-template-columns:1fr;gap:.8rem;}
-  .rv-mid{order:-1;}
-  .friend-row{grid-template-columns:28px 32px 1fr auto;}.fr-badge{display:none;}
-  .hero-title{letter-spacing:-1.5px;}
-  .fighter{padding:1.5rem 1rem;}
+/* MOBILE */
+@media(max-width:620px){
+  .arena,.rv-grid{grid-template-columns:1fr;}
+  .vs,.rv-mid{display:none;}
+  .sr3,.sr4,.ig,.cg,.pred-g{grid-template-columns:1fr;}
+  .fl-row{grid-template-columns:28px 36px 1fr auto;}
+  .bgrid{grid-template-columns:repeat(2,1fr);}
+  .wp-sg{grid-template-columns:1fr 1fr;}
 }
 ::-webkit-scrollbar{width:4px;}
-::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
+::-webkit-scrollbar-thumb{background:var(--bdr);border-radius:4px;}
 </style>
 </head>
 <body>
 
-<!-- LOADING -->
-<div id="loading">
-  <div class="load-logo">⚔️</div>
-  <div class="load-title">Walk War Loading...</div>
-  <div class="load-sub">Fetching battle intel</div>
-  <div class="load-bar-wrap"><div class="load-bar"></div></div>
-</div>
+<div id="ld"><div class="ld-ico">⚔️</div><div class="ld-t">Walk War Loading...</div><div class="ld-s">Fetching battle intel</div><div class="ld-bw"><div class="ld-bf"></div></div></div>
 
 <!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-track" id="ticker-track">
-    <span class="ti">🚨 PANI PURI PROTECTION ON MAX ALERT</span><span class="ti-sep">⚡</span>
-    <span class="ti">💀 RACHIT'S LIVER IS WATCHING THIS DASHBOARD WITH GENUINE TERROR</span><span class="ti-sep">⚡</span>
-    <span class="ti">🏃 MUMBAI WALKER vs 🚶‍♀️ PUNE SITTER — THE RIVALRY CONTINUES</span><span class="ti-sep">⚡</span>
-    <span class="ti">📉 SOMEONE'S STEP COUNT LOOKS LIKE A DIAL-UP CONNECTION</span><span class="ti-sep">⚡</span>
-    <span class="ti">⚔️ 30 DAYS · 2 RIVALS · 1 YEAR OF SUFFERING</span><span class="ti-sep">⚡</span>
-    <span class="ti">🍵 FC ROAD PANI PURI BAN vs 🍺 RACHIT'S HAPPY HOUR EXTINCTION</span><span class="ti-sep">⚡</span>
-    <span class="ti">🔥 SHIVANI GOES TO THE GYM. THE REST OF PUNE DOES NOT.</span><span class="ti-sep">⚡</span>
-    <span class="ti">💍 MARRIAGE PROSPECTS ARE WATCHING THIS LEADERBOARD</span><span class="ti-sep">⚡</span>
-    <span class="ti">🏍️ RACHIT LOVES BIKE RIDES BUT THIS CHALLENGE IS ABOUT FEET</span><span class="ti-sep">⚡</span>
-    <span class="ti">🧮 THE MATH DOES NOT CARE ABOUT YOUR FEELINGS</span><span class="ti-sep">⚡</span>
-    <!-- duplicate for seamless loop -->
-    <span class="ti">🚨 PANI PURI PROTECTION ON MAX ALERT</span><span class="ti-sep">⚡</span>
-    <span class="ti">💀 RACHIT'S LIVER IS WATCHING THIS DASHBOARD WITH GENUINE TERROR</span><span class="ti-sep">⚡</span>
-    <span class="ti">🏃 MUMBAI WALKER vs 🚶‍♀️ PUNE SITTER — THE RIVALRY CONTINUES</span><span class="ti-sep">⚡</span>
-    <span class="ti">📉 SOMEONE'S STEP COUNT LOOKS LIKE A DIAL-UP CONNECTION</span><span class="ti-sep">⚡</span>
-    <span class="ti">⚔️ 30 DAYS · 2 RIVALS · 1 YEAR OF SUFFERING</span><span class="ti-sep">⚡</span>
-    <span class="ti">🍵 FC ROAD PANI PURI BAN vs 🍺 RACHIT'S HAPPY HOUR EXTINCTION</span><span class="ti-sep">⚡</span>
-    <span class="ti">🔥 SHIVANI GOES TO THE GYM. THE REST OF PUNE DOES NOT.</span><span class="ti-sep">⚡</span>
-    <span class="ti">💍 MARRIAGE PROSPECTS ARE WATCHING THIS LEADERBOARD</span><span class="ti-sep">⚡</span>
-    <span class="ti">🏍️ RACHIT LOVES BIKE RIDES BUT THIS CHALLENGE IS ABOUT FEET</span><span class="ti-sep">⚡</span>
-    <span class="ti">🧮 THE MATH DOES NOT CARE ABOUT YOUR FEELINGS</span><span class="ti-sep">⚡</span>
-  </div>
-</div>
+<div class="ticker"><div class="ticker-t">
+<span class="ti">🚨 PANI PURI PROTECTION ON MAX ALERT</span><span class="ts">⚡</span>
+<span class="ti">💀 RACHIT'S LIVER WATCHING THIS WITH GENUINE TERROR</span><span class="ts">⚡</span>
+<span class="ti">🏃 MUMBAI WALKER vs 🚶‍♀️ PUNE SITTER</span><span class="ts">⚡</span>
+<span class="ti">📉 SOMEONE'S STEP COUNT LOOKS LIKE DIAL-UP</span><span class="ts">⚡</span>
+<span class="ti">🍵 FC ROAD PANI PURI BAN vs 🍺 RACHIT'S HAPPY HOUR</span><span class="ts">⚡</span>
+<span class="ti">🔥 SHIVANI GOES TO THE GYM. THE REST OF PUNE DOES NOT.</span><span class="ts">⚡</span>
+<span class="ti">💍 MARRIAGE PROSPECTS ARE WATCHING THIS LEADERBOARD</span><span class="ts">⚡</span>
+<span class="ti">🏍️ RACHIT LOVES BIKE RIDES BUT THIS CHALLENGE IS ABOUT FEET</span><span class="ts">⚡</span>
+<span class="ti">🧮 THE MATH DOES NOT CARE ABOUT YOUR FEELINGS</span><span class="ts">⚡</span>
+<span class="ti">⚔️ 30 DAYS · 2 RIVALS · 1 YEAR OF SUFFERING</span><span class="ts">⚡</span>
+<span class="ti">🚨 PANI PURI PROTECTION ON MAX ALERT</span><span class="ts">⚡</span>
+<span class="ti">💀 RACHIT'S LIVER WATCHING THIS WITH GENUINE TERROR</span><span class="ts">⚡</span>
+<span class="ti">🏃 MUMBAI WALKER vs 🚶‍♀️ PUNE SITTER</span><span class="ts">⚡</span>
+<span class="ti">📉 SOMEONE'S STEP COUNT LOOKS LIKE DIAL-UP</span><span class="ts">⚡</span>
+<span class="ti">🍵 FC ROAD PANI PURI BAN vs 🍺 RACHIT'S HAPPY HOUR</span><span class="ts">⚡</span>
+<span class="ti">🔥 SHIVANI GOES TO THE GYM. THE REST OF PUNE DOES NOT.</span><span class="ts">⚡</span>
+<span class="ti">💍 MARRIAGE PROSPECTS ARE WATCHING THIS LEADERBOARD</span><span class="ts">⚡</span>
+<span class="ti">🏍️ RACHIT LOVES BIKE RIDES BUT THIS CHALLENGE IS ABOUT FEET</span><span class="ts">⚡</span>
+<span class="ti">🧮 THE MATH DOES NOT CARE ABOUT YOUR FEELINGS</span><span class="ts">⚡</span>
+<span class="ti">⚔️ 30 DAYS · 2 RIVALS · 1 YEAR OF SUFFERING</span><span class="ts">⚡</span>
+</div></div>
 
-<div class="wrap">
-
+<div class="w">
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-badge">🏟️ Battle Arena · June 2026</div>
-  <h1 class="hero-title impact">The Great<br><span class="wr">June</span> Walk <span class="wa">War</span></h1>
-  <div class="hero-sub">30 Days &nbsp;·&nbsp; 2 Competitors &nbsp;·&nbsp; 1 Year of Suffering</div>
-  <button class="hero-sync" onclick="fetchData()" id="sync-btn">
-    <span class="sync-dot" id="sdot"></span>
-    <span id="sync-lbl">Live Sync</span>
-  </button>
+  <div class="hero-bdg">🏟️ Battle Arena · June 2026</div>
+  <h1 class="hero-t f">The Great<br><span class="hw">June</span> Walk <span class="ha">War</span></h1>
+  <div class="hero-s">30 Days &nbsp;·&nbsp; 2 Competitors &nbsp;·&nbsp; 1 Year of Suffering</div>
+  <button class="sync-btn" onclick="fetchData()" id="sync-btn"><span class="sdot" id="sdot"></span><span id="slbl">Live Sync</span></button>
 </div>
 
 <!-- FIGHTERS -->
 <div class="arena">
-  <div class="fighter rc" id="fc-r">
-    <div class="crown-float">👑</div>
-    <div class="rank-badge gold" id="rb-r">🥇</div>
-    <span class="fighter-emoji">🏃</span>
-    <div class="fighter-name">Rachit</div>
-    <div class="fighter-steps" id="fs-r">0</div>
-    <div class="fighter-lbl">total steps</div>
-    <div class="lvl-section">
-      <div class="lvl-row">
-        <span class="lvl-tag" id="lvl-r">LVL 1</span>
-        <span class="lvl-xp" id="xp-txt-r">0 / 10k to LVL 2</span>
-      </div>
-      <div class="xp-track"><div class="xp-fill" id="xp-r" style="width:0%"></div></div>
-    </div>
-  </div>
-
-  <div class="vs-orb">VS</div>
-
-  <div class="fighter ac" id="fc-a">
-    <div class="crown-float">👑</div>
-    <div class="rank-badge silver" id="rb-a">🥈</div>
-    <span class="fighter-emoji">🚶‍♀️</span>
-    <div class="fighter-name">Anushka Ji</div>
-    <div class="fighter-steps" id="fs-a">0</div>
-    <div class="fighter-lbl">total steps</div>
-    <div class="lvl-section">
-      <div class="lvl-row">
-        <span class="lvl-tag" id="lvl-a">LVL 1</span>
-        <span class="lvl-xp" id="xp-txt-a">0 / 10k to LVL 2</span>
-      </div>
-      <div class="xp-track"><div class="xp-fill" id="xp-a" style="width:0%"></div></div>
-    </div>
-  </div>
+  <div class="fc rc" id="fc-r"><div class="crown">👑</div><div class="rbdg gold" id="rb-r">🥇</div><span class="femi">🏃</span><div class="fname">Rachit</div><div class="fsteps" id="fs-r">0</div><div class="flbl">total steps</div><div class="lvls"><div class="lvlr"><span class="lvlt" id="lvl-r">LVL 1</span><span class="lvlx" id="xp-t-r">0/10k→LVL2</span></div><div class="xpt"><div class="xpf" id="xp-r" style="width:0%"></div></div></div></div>
+  <div class="vs">VS</div>
+  <div class="fc ac" id="fc-a"><div class="crown">👑</div><div class="rbdg silver" id="rb-a">🥈</div><span class="femi">🚶‍♀️</span><div class="fname">Anushka Ji</div><div class="fsteps" id="fs-a">0</div><div class="flbl">total steps</div><div class="lvls"><div class="lvlr"><span class="lvlt" id="lvl-a">LVL 1</span><span class="lvlx" id="xp-t-a">0/10k→LVL2</span></div><div class="xpt"><div class="xpf" id="xp-a" style="width:0%"></div></div></div></div>
 </div>
 
 <!-- WAR BAR -->
 <div class="warbar">
-  <div class="warbar-labels">
-    <span class="rl">🏃 Rachit</span>
-    <span class="cl" id="wbar-center">—</span>
-    <span class="al">Anushka Ji 🚶‍♀️</span>
-  </div>
-  <div class="warbar-track">
-    <div class="wb-r" id="wb-r" style="width:50%"></div>
-    <div class="wb-mid"></div>
-    <div class="wb-a" id="wb-a" style="width:50%"></div>
-  </div>
+  <div class="wbl"><span class="wbr">🏃 Rachit</span><span class="wbc" id="wbc">—</span><span class="wba">Anushka Ji 🚶‍♀️</span></div>
+  <div class="wbt"><div class="wbr-f" id="wb-r" style="width:50%"></div><div class="wbm"></div><div class="wba-f" id="wb-a" style="width:50%"></div></div>
 </div>
 
 <!-- CHIPS -->
 <div class="chips">
-  <div class="chip"><div class="chip-v" id="ch-diff">—</div><div class="chip-l">Step Gap</div></div>
-  <div class="chip"><div class="chip-v" id="ch-days">0</div><div class="chip-l">Days Logged</div></div>
-  <div class="chip"><div class="chip-v" id="ch-left">30</div><div class="chip-l">Days Left</div></div>
-  <div class="chip"><div class="chip-v" id="ch-catch">—</div><div class="chip-l">Catch-Up/Day</div></div>
-  <div class="chip"><div class="chip-v" id="ch-km" style="font-size:.85rem">—</div><div class="chip-l">KM Covered</div></div>
+  <div class="chip"><div class="cv" id="ch-diff">—</div><div class="cl">Step Gap</div></div>
+  <div class="chip"><div class="cv" id="ch-days">0</div><div class="cl">Days Logged</div></div>
+  <div class="chip"><div class="cv" id="ch-left">30</div><div class="cl">Days Left</div></div>
+  <div class="chip"><div class="cv" id="ch-catch">—</div><div class="cl">Catch-Up/Day</div></div>
+  <div class="chip"><div class="cv" id="ch-km" style="font-size:.82rem">—</div><div class="cl">KM Covered</div></div>
 </div>
 
-<!-- PUBLIC HUMILIATION -->
-<div class="humiliation" id="hum-card">
-  <div class="hum-pulse"></div>
-  <div class="hum-tag">☠️ &nbsp; Public Humiliation Zone &nbsp; ☠️</div>
-  <div class="hum-skull">💀</div>
-  <div class="hum-avatar" id="hum-avi">😔</div>
-  <div class="hum-name" id="hum-name">—</div>
-  <div class="hum-roast" id="hum-roast">—</div>
-</div>
+<!-- HUMILIATION -->
+<div class="hum" id="hum"><div class="hum-pulse"></div><div class="hum-tag">☠️ Public Humiliation Zone ☠️</div><div class="hum-avi" id="hum-avi">😔</div><div class="hum-name" id="hum-name">—</div><div class="hum-roast" id="hum-roast">—</div></div>
 
-<!-- DAILY CHAMPION -->
-<div class="daily-champ tie-champ" id="dc">
-  <div class="dc-bg-txt" id="dc-bg">?</div>
-  <div class="dc-medal" id="dc-medal">🎖️</div>
-  <div class="dc-label">⚡ Last Battle Result</div>
-  <div class="dc-text" id="dc-text">Awaiting first battle...</div>
-  <div class="dc-sub" id="dc-sub">No data loaded yet</div>
-</div>
+<!-- DAILY CHAMP -->
+<div class="dc tc" id="dc"><div class="dc-bg" id="dc-bg">?</div><div class="dc-med" id="dc-med">🎖️</div><div class="dc-lbl">⚡ Last Battle Result</div><div class="dc-txt" id="dc-txt">Awaiting first battle...</div><div class="dc-sub" id="dc-sub">No data yet</div></div>
 
 <!-- HALL OF SHAME -->
 <div class="shame">
-  <!-- header -->
-  <div class="shame-eyebrow">☠️ &nbsp; Classified Embarrassment File &nbsp; ☠️</div>
-  <div class="shame-title">Hall of Shame</div>
-  <div class="shame-divider"></div>
-
-  <!-- row 1: big 3 -->
-  <div class="shame-row3">
-
-    <div class="shame-box sb-couch">
-      <div class="sb-ribbon">WORST DAY</div>
-      <div class="sb-icon-big">🛋️</div>
-      <div class="sb-label">Couch Potato Award</div>
-      <div class="sb-val" id="sh-low">—</div>
-      <div class="sb-unit">steps</div>
-      <div class="sb-who" id="sh-low-sub">Waiting for data</div>
-      <div class="sb-quote" id="sh-low-quote">"A number so small it's basically decorative."</div>
-    </div>
-
-    <div class="shame-box sb-slug">
-      <div class="sb-ribbon">CAREER LOWS</div>
-      <div class="sb-icon-big">📉</div>
-      <div class="sb-label">Pathetic Days Under 5,000</div>
-      <div class="sb-val" id="sh-slug">—</div>
-      <div class="sb-unit">days of shame</div>
-      <div class="sb-who" id="sh-slug-sub">Waiting for data</div>
-      <div class="sb-quote" id="sh-slug-quote">"Fewer steps than a toddler at IKEA."</div>
-    </div>
-
-    <div class="shame-box sb-miracle">
-      <div class="sb-ribbon">MATH IS BRUTAL</div>
-      <div class="sb-icon-big">🧮</div>
-      <div class="sb-label">Daily Miracle Required</div>
-      <div class="sb-val" id="sh-mir">—</div>
-      <div class="sb-unit">extra steps/day</div>
-      <div class="sb-who" id="sh-mir-sub">above rival's pace</div>
-      <div class="sb-quote" id="sh-mir-quote">"The math doesn't care about your feelings."</div>
-    </div>
-
+  <div class="shame-ey">☠️ Classified Embarrassment File ☠️</div>
+  <div class="shame-t">Hall of Shame</div>
+  <div class="shame-div"></div>
+  <div class="sr3">
+    <div class="sb sb-couch"><div class="sb-rib">WORST DAY</div><span class="sb-ico">🛋️</span><div class="sb-lbl">Couch Potato Award</div><div class="sb-v" id="sh-low">—</div><div class="sb-unit">steps</div><div class="sb-who" id="sh-low-sub">Waiting...</div><div class="sb-q" id="sh-low-q">"A number so small it's basically decorative."</div></div>
+    <div class="sb sb-slug"><div class="sb-rib">CAREER LOWS</div><span class="sb-ico">📉</span><div class="sb-lbl">Pathetic Days Under 5,000</div><div class="sb-v" id="sh-slug">—</div><div class="sb-unit">days of shame</div><div class="sb-who" id="sh-slug-sub">Waiting...</div><div class="sb-q" id="sh-slug-q">"Fewer steps than a toddler at IKEA."</div></div>
+    <div class="sb sb-mir"><div class="sb-rib">MATH IS BRUTAL</div><span class="sb-ico">🧮</span><div class="sb-lbl">Daily Miracle Required</div><div class="sb-v" id="sh-mir">—</div><div class="sb-unit">extra steps/day</div><div class="sb-who" id="sh-mir-sub">above rival's pace</div><div class="sb-q" id="sh-mir-q">"The math doesn't care about your feelings."</div></div>
   </div>
-
-  <!-- divider -->
-  <div class="shame-divider" style="margin:1.5rem 0"></div>
-
-  <!-- row 2: 4 deep stats -->
-  <div class="shame-row4">
-
-    <div class="shame-box2" id="sh-box-lazy">
-      <div class="sb2-icon">😴</div>
-      <div class="sb2-label">Laziest Streak</div>
-      <div class="sb2-val" id="sh-lazy-streak">—</div>
-      <div class="sb2-sub" id="sh-lazy-sub">consecutive days under avg</div>
-    </div>
-
-    <div class="shame-box2" id="sh-box-gap">
-      <div class="sb2-icon">🏔️</div>
-      <div class="sb2-label">Biggest Single Day Gap</div>
-      <div class="sb2-val" id="sh-gap">—</div>
-      <div class="sb2-sub" id="sh-gap-sub">steps between rivals</div>
-    </div>
-
-    <div class="shame-box2" id="sh-box-below">
-      <div class="sb2-icon">🐢</div>
-      <div class="sb2-label">Days Below 8k Steps</div>
-      <div class="sb2-val" id="sh-below">—</div>
-      <div class="sb2-sub" id="sh-below-sub">internationally recognised as mediocre</div>
-    </div>
-
-    <div class="shame-box2" id="sh-box-ratio">
-      <div class="sb2-icon">⚖️</div>
-      <div class="sb2-label">Domination Ratio</div>
-      <div class="sb2-val" id="sh-ratio">—</div>
-      <div class="sb2-sub" id="sh-ratio-sub">leader's steps per loser step</div>
-    </div>
-
+  <div class="shame-div" style="margin:1.2rem 0"></div>
+  <div class="sr4">
+    <div class="sb2" id="sh-b-lazy"><div class="sb2-ico">😴</div><div class="sb2-lbl">Laziest Streak</div><div class="sb2-v" id="sh-lazy">—</div><div class="sb2-sub" id="sh-lazy-sub">consecutive days under avg</div></div>
+    <div class="sb2" id="sh-b-gap"><div class="sb2-ico">🏔️</div><div class="sb2-lbl">Biggest Day Gap</div><div class="sb2-v" id="sh-gap">—</div><div class="sb2-sub" id="sh-gap-sub">steps between rivals</div></div>
+    <div class="sb2" id="sh-b-below"><div class="sb2-ico">🐢</div><div class="sb2-lbl">Days Below 8k</div><div class="sb2-v" id="sh-below">—</div><div class="sb2-sub" id="sh-below-sub">officially mediocre</div></div>
+    <div class="sb2" id="sh-b-ratio"><div class="sb2-ico">⚖️</div><div class="sb2-lbl">Domination Ratio</div><div class="sb2-v" id="sh-ratio">—</div><div class="sb2-sub" id="sh-ratio-sub">leader per loser step</div></div>
   </div>
-
-  <!-- verdict banner -->
-  <div class="shame-verdict" id="shame-verdict">
-    <span class="sv-icon">🎤</span>
-    <span class="sv-text" id="sv-text">Waiting for battle data to render the full verdict...</span>
-  </div>
-
+  <div class="shame-verdict"><span class="sv-ico">🎤</span><span class="sv-t" id="sv-t">Waiting for battle data...</span></div>
 </div>
 
-<!-- PUNISHMENT HP BARS -->
+<!-- HP BARS -->
 <div class="punish">
-  <div class="section-head">
-    <span class="sh-icon">☠️</span>
-    <span class="sh-title">Survival Stakes — Real Consequences</span>
-    <span class="sh-badge">LIVE</span>
-  </div>
-  <div class="hp-bar">
-    <div class="hp-top">
-      <span class="hp-name" style="color:var(--a)">🍵 Anushka's Pani Puri HP</span>
-      <span class="hp-pct" id="pp-pct" style="color:var(--a)">100%</span>
-    </div>
-    <div class="hp-track"><div class="hp-fill hp-pp" id="pp-bar" style="width:100%">PANI PURI</div></div>
-    <div class="hp-status" id="pp-status">—</div>
-  </div>
-  <div class="hp-bar">
-    <div class="hp-top">
-      <span class="hp-name" style="color:var(--r)">🍺 Rachit's Alcohol HP</span>
-      <span class="hp-pct" id="al-pct" style="color:var(--r)">100%</span>
-    </div>
-    <div class="hp-track"><div class="hp-fill hp-al" id="al-bar" style="width:100%">ALCOHOL</div></div>
-    <div class="hp-status" id="al-status">—</div>
-  </div>
+  <div class="sh"><span class="sh-ico">☠️</span><span class="sh-t">Survival Stakes</span><span class="sh-live">LIVE</span></div>
+  <div class="hp"><div class="hp-top"><span class="hp-name" style="color:var(--a)">🍵 Anushka's Pani Puri HP</span><span class="hp-pct" id="pp-pct" style="color:var(--a)">100%</span></div><div class="hp-track"><div class="hp-fill hp-pp" id="pp-bar" style="width:100%">PANI PURI</div></div><div class="hp-st" id="pp-st">—</div></div>
+  <div class="hp"><div class="hp-top"><span class="hp-name" style="color:var(--r)">🍺 Rachit's Alcohol HP</span><span class="hp-pct" id="al-pct" style="color:var(--r)">100%</span></div><div class="hp-track"><div class="hp-fill hp-al" id="al-bar" style="width:100%">ALCOHOL</div></div><div class="hp-st" id="al-st">—</div></div>
 </div>
 
 <!-- STREAK DOTS -->
-<div class="streak-section">
-  <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:var(--txt3);margin-bottom:.2rem">📅 Daily Win Timeline — All 30 Days of June</div>
+<div class="streak-s">
+  <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:var(--t3)">📅 Daily Win Timeline — All 30 Days of June</div>
   <div class="sdots" id="sdots"></div>
-  <div class="sdot-legend">
-    <span><div class="sdot r" style="display:inline-block"></div> Rachit</span>
-    <span><div class="sdot a" style="display:inline-block"></div> Anushka Ji</span>
-    <span><div class="sdot tie" style="display:inline-block"></div> Tie</span>
-    <span><div class="sdot n" style="display:inline-block"></div> Not logged</span>
-  </div>
+  <div class="sdot-leg"><span><div class="sdot2 r" style="display:inline-block"></div>Rachit</span><span><div class="sdot2 a" style="display:inline-block"></div>Anushka Ji</span><span><div class="sdot2 tie" style="display:inline-block"></div>Tie</span><span><div class="sdot2 n" style="display:inline-block"></div>Not logged</span></div>
 </div>
 
 <!-- ANALYTICS -->
 <div class="analytics">
-  <div class="section-head">
-    <span class="sh-icon">⚡</span>
-    <span class="sh-title">War Command Analytics</span>
+  <div class="sh"><span class="sh-ico">⚡</span><span class="sh-t">War Command Analytics</span></div>
+  <div class="ig">
+    <div class="ins ir"><span class="ins-ico">🔥</span><div class="ins-lbl">Win Streak</div><div class="ins-v" id="ins-streak">—</div><div class="ins-sub" id="ins-streak-sub">No momentum</div></div>
+    <div class="ins ia"><span class="ins-ico">💥</span><div class="ins-lbl">Biggest Beatdown</div><div class="ins-v" id="ins-beat">—</div><div class="ins-sub" id="ins-beat-sub">Single day</div></div>
+    <div class="ins ig2"><span class="ins-ico">🎯</span><div class="ins-lbl">Win Probability</div><div class="ins-v" id="ins-prob">50/50</div><div class="ins-sub" id="ins-prob-sub">Based on totals</div></div>
+    <div class="ins ir"><span class="ins-ico">📊</span><div class="ins-lbl">Rachit Avg/Day</div><div class="ins-v" id="ins-ravg" style="color:var(--r)">—</div><div class="ins-sub">Daily avg</div></div>
+    <div class="ins ia"><span class="ins-ico">📊</span><div class="ins-lbl">Anushka Avg/Day</div><div class="ins-v" id="ins-aavg" style="color:var(--a)">—</div><div class="ins-sub">Daily avg</div></div>
+    <div class="ins ign"><span class="ins-ico">🏆</span><div class="ins-lbl">Day Wins R / A</div><div class="ins-v" id="ins-wins">—/—</div><div class="ins-sub" id="ins-wins-sub">Head to head</div></div>
   </div>
-  <div class="insight-grid">
-    <div class="insight ir">
-      <span class="insight-icon">🔥</span>
-      <div class="insight-lbl">Win Streak</div>
-      <div class="insight-val" id="ins-streak">—</div>
-      <div class="insight-sub" id="ins-streak-sub">No momentum yet</div>
-    </div>
-    <div class="insight ia">
-      <span class="insight-icon">💥</span>
-      <div class="insight-lbl">Biggest Beatdown</div>
-      <div class="insight-val" id="ins-beat">—</div>
-      <div class="insight-sub" id="ins-beat-sub">Single day margin</div>
-    </div>
-    <div class="insight ig">
-      <span class="insight-icon">🎯</span>
-      <div class="insight-lbl">Win Probability</div>
-      <div class="insight-val" id="ins-prob">50/50</div>
-      <div class="insight-sub" id="ins-prob-sub">Based on totals</div>
-    </div>
-    <div class="insight ir">
-      <span class="insight-icon">📊</span>
-      <div class="insight-lbl">Rachit Avg/Day</div>
-      <div class="insight-val" id="ins-ravg" style="color:var(--r)">—</div>
-      <div class="insight-sub">Daily average</div>
-    </div>
-    <div class="insight ia">
-      <span class="insight-icon">📊</span>
-      <div class="insight-lbl">Anushka Avg/Day</div>
-      <div class="insight-val" id="ins-aavg" style="color:var(--a)">—</div>
-      <div class="insight-sub">Daily average</div>
-    </div>
-    <div class="insight ign">
-      <span class="insight-icon">🏆</span>
-      <div class="insight-lbl">Day Wins R / A</div>
-      <div class="insight-val" id="ins-wins">— / —</div>
-      <div class="insight-sub" id="ins-wins-sub">Head to head</div>
-    </div>
-  </div>
-  <div class="charts-grid">
-    <div class="chart-box">
-      <h3>📈 Cumulative Total Steps</h3>
-      <div class="cw"><canvas id="chartCum"></canvas></div>
-    </div>
-    <div class="chart-box">
-      <h3>⚔️ Daily Head-to-Head</h3>
-      <div class="cw"><canvas id="chartDay"></canvas></div>
-    </div>
+  <div class="cg">
+    <div class="cb"><h3>📈 Cumulative Total Steps</h3><div class="cw"><canvas id="chartCum"></canvas></div></div>
+    <div class="cb"><h3>⚔️ Daily Head-to-Head</h3><div class="cw"><canvas id="chartDay"></canvas></div></div>
   </div>
 </div>
 
-<!-- ACHIEVEMENT BADGES -->
-<div class="badges-section">
-  <div class="section-head">
-    <span class="sh-icon">🏅</span>
-    <span class="sh-title">Achievement Badges</span>
-    <span class="sh-badge">LIVE</span>
-  </div>
-  <div class="badges-tabs">
-    <button class="btab active" onclick="switchBadgeTab('r')">🏃 Rachit</button>
+<!-- BADGES -->
+<div class="badges">
+  <div class="sh"><span class="sh-ico">🏅</span><span class="sh-t">Achievement Badges</span><span class="sh-live">LIVE</span></div>
+  <div class="btabs">
+    <button class="btab rt" onclick="switchBadgeTab('r')">🏃 Rachit</button>
     <button class="btab" onclick="switchBadgeTab('a')">🚶‍♀️ Anushka Ji</button>
   </div>
-  <div class="badges-grid" id="badges-r"></div>
-  <div class="badges-grid" id="badges-a" style="display:none"></div>
+  <div class="bgrid" id="bdg-r"></div>
+  <div class="bgrid" id="bdg-a" style="display:none"></div>
 </div>
 
 <!-- WANTED POSTER -->
-<div class="wanted-wrap" id="wanted-wrap" style="display:none">
-  <div class="wanted-poster" id="wanted-poster">
-    <div class="wp-stars">★ ★ ★ WANTED ★ ★ ★</div>
-    <div class="wp-subtitle">FOR CRIMES AGAINST FITNESS</div>
-    <div class="wp-photo" id="wp-photo">🦥</div>
+<div class="wanted-w" id="wanted-w" style="display:none">
+  <div class="wp">
+    <div class="wp-s">★ ★ ★ WANTED ★ ★ ★</div>
+    <div class="wp-sub">FOR CRIMES AGAINST FITNESS</div>
+    <div class="wp-ph" id="wp-ph">🦥</div>
     <div class="wp-name" id="wp-name">—</div>
     <div class="wp-alias" id="wp-alias">"The Lazy One"</div>
-    <div class="wp-divider"></div>
-    <div class="wp-stats-grid" id="wp-stats"></div>
-    <div class="wp-divider"></div>
-    <div class="wp-charge-label">CHARGE</div>
-    <div class="wp-charge" id="wp-charge">—</div>
-    <div class="wp-reward">REWARD: 1 YEAR OF SUFFERING</div>
-    <div class="wp-authority">ISSUED BY: THE JUNE WALK WAR TRIBUNAL<br>MUMBAI DIVISION · 2026</div>
+    <div class="wp-div"></div>
+    <div class="wp-sg" id="wp-sg"></div>
+    <div class="wp-div"></div>
+    <div class="wp-cl">CHARGE</div>
+    <div class="wp-ch" id="wp-ch">—</div>
+    <div class="wp-rw">REWARD: 1 YEAR OF SUFFERING</div>
+    <div class="wp-auth">ISSUED BY: THE JUNE WALK WAR TRIBUNAL<br>MUMBAI DIVISION · 2026</div>
     <div class="wp-stamp" id="wp-stamp">GUILTY</div>
   </div>
 </div>
 
-<!-- MUMBAI VS PUNE RIVALRY CARD -->
-<div class="rivalry-card">
-  <div class="rv-header">
-    <div class="rv-eyebrow">🏟️ The Real War Beneath The War</div>
-    <div class="rv-title">Mumbai <span class="rv-vs">VS</span> Pune</div>
-    <div class="rv-sub">The debate that has no right answer. The leaderboard now has data.</div>
+<!-- MUMBAI VS PUNE -->
+<div class="rv">
+  <div style="text-align:center;margin-bottom:1.2rem;position:relative;z-index:1">
+    <div class="eyebrow">🏟️ The Real War Beneath The War</div>
+    <div class="sec-title">Mumbai <span style="color:var(--gold)">VS</span> Pune</div>
+    <div class="sec-sub">The debate that has no right answer. The leaderboard now has data.</div>
   </div>
-  <div class="rv-scoreboard">
-    <div class="rv-side rv-mumbai">
-      <div class="rv-city-emoji">🏙️</div>
-      <div class="rv-city-name">Mumbai</div>
-      <div class="rv-city-score" id="rv-mum-score">0</div>
-      <div class="rv-city-label">days won</div>
-      <div class="rv-city-rep">Local trains · Vada pav · Rachit</div>
-    </div>
-    <div class="rv-mid">
-      <div class="rv-mid-score" id="rv-mid-txt">—</div>
-      <div class="rv-mid-label">Current verdict</div>
-    </div>
-    <div class="rv-side rv-pune">
-      <div class="rv-city-emoji">🌿</div>
-      <div class="rv-city-name">Pune</div>
-      <div class="rv-city-score" id="rv-pun-score">0</div>
-      <div class="rv-city-label">days won</div>
-      <div class="rv-city-rep">Wide roads · Pani puri · Anushka Ji</div>
-    </div>
+  <div class="rv-grid">
+    <div class="rv-city rv-m"><span class="rv-em">🏙️</span><div class="rv-cn">Mumbai</div><div class="rv-sc" id="rv-mum">0</div><div class="rv-dl">days won</div><div class="rv-rep">Local trains · Vada pav<br>Rachit · No mercy</div></div>
+    <div class="rv-mid"><div class="rv-mid-sc" id="rv-mid">—</div><div class="rv-mid-lb">current verdict</div></div>
+    <div class="rv-city rv-p"><span class="rv-em">🌿</span><div class="rv-cn">Pune</div><div class="rv-sc" id="rv-pun">0</div><div class="rv-dl">days won</div><div class="rv-rep">Wide roads · Pani puri<br>Anushka Ji · Excuses</div></div>
   </div>
-  <div class="rv-bar-wrap">
-    <div class="rv-bar-track">
-      <div class="rv-bar-mum" id="rv-bar-mum" style="width:50%"></div>
-      <div class="rv-bar-pun" id="rv-bar-pun" style="width:50%"></div>
-    </div>
-    <div class="rv-bar-labels">
-      <span style="color:#f97316">Mumbai</span>
-      <span style="color:#94a3b8" id="rv-bar-center">50 / 50</span>
-      <span style="color:#8b5cf6">Pune</span>
-    </div>
+  <div class="rv-bar-w">
+    <div class="rv-bt"><div class="rv-bm" id="rv-bm" style="width:50%"></div><div class="rv-bp" id="rv-bp" style="width:50%"></div></div>
+    <div class="rv-bl"><span style="color:#ea580c;font-weight:800">Mumbai</span><span style="color:var(--t3)" id="rv-pct">50%/50%</span><span style="color:#7c3aed;font-weight:800">Pune</span></div>
   </div>
-  <div class="rv-roast-box">
-    <div class="rv-roast-label">📢 Today's Mumbai vs Pune Verdict</div>
-    <div class="rv-roast-text" id="rv-roast">—</div>
-  </div>
+  <div class="rv-vd"><div class="rv-vd-lbl">📢 Today's Mumbai vs Pune Verdict</div><div class="rv-vd-t" id="rv-roast">—</div></div>
   <div class="rv-facts">
-    <div class="rv-fact">
-      <span class="rv-fact-icon">🚆</span>
-      <span class="rv-fact-txt">Mumbai local trains require running, boarding, and fighting. Rachit has all this infrastructure and is using none of it.</span>
-    </div>
-    <div class="rv-fact">
-      <span class="rv-fact-icon">🛵</span>
-      <span class="rv-fact-txt">Pune has ring roads, wide lanes, and zero reason to walk anywhere. Anushka Ji has built a lifestyle around this and called it better.</span>
-    </div>
-    <div class="rv-fact">
-      <span class="rv-fact-icon">🌧️</span>
-      <span class="rv-fact-txt">Pune weather is objectively nicer. Anushka Ji is not using it. Mumbai is humid and Rachit is still somehow competitive.</span>
-    </div>
+    <div class="rv-f m"><span class="rv-f-ico">🚆</span><span class="rv-f-t">Mumbai local trains require running, boarding, and fighting. Rachit has all this infrastructure and is using none of it for this challenge.</span></div>
+    <div class="rv-f p"><span class="rv-f-ico">🛵</span><span class="rv-f-t">Pune has ring roads, wide lanes, and zero reason to walk. Anushka Ji built a lifestyle around this and calls it superior city planning.</span></div>
+    <div class="rv-f g"><span class="rv-f-ico">🌧️</span><span class="rv-f-t">Pune weather is objectively better for walking — cool mornings, low humidity, green hills. Anushka Ji is not using any of this. Mumbai is a furnace and Rachit is still competitive.</span></div>
   </div>
 </div>
 
 <!-- FRIEND LEADERBOARD -->
-<div class="friends-card">
-  <div class="fc-header">
-    <div class="fc-eyebrow">👯 The Support Squad (Unsupporting)</div>
-    <div class="fc-title">Anushka Ji's Friend Leaderboard</div>
-    <div class="fc-sub">Ranked by contribution to this challenge. Data verified. Results devastating.</div>
+<div class="fl">
+  <div style="text-align:center;margin-bottom:1.2rem">
+    <div class="eyebrow">👯 The Support Squad (Firmly Unsupporting)</div>
+    <div class="sec-title">Anushka Ji's Friend Leaderboard</div>
+    <div class="sec-sub">Ranked by contribution to this challenge. Data verified. Results devastating.</div>
   </div>
-  <div class="friends-list">
-    <div class="friend-row fr-anushka">
-      <div class="fr-rank">1</div>
-      <div class="fr-emoji">🚶‍♀️</div>
-      <div class="fr-info">
-        <div class="fr-name">Anushka Ji <span class="fr-tag ft-competitor">COMPETITOR</span></div>
-        <div class="fr-detail">Senior QA Engineer · Makeup Artist · Pune · Actually in the challenge</div>
-      </div>
-      <div class="fr-stat">
-        <div class="fr-steps" id="fr-anushka-steps">—</div>
-        <div class="fr-steps-lbl">steps logged</div>
-      </div>
-      <div class="fr-badge fb-active">🏃 Active</div>
-    </div>
-    <div class="friend-row fr-shivani">
-      <div class="fr-rank">2</div>
-      <div class="fr-emoji">💪</div>
-      <div class="fr-info">
-        <div class="fr-name">Shivani <span class="fr-tag ft-gym">GYM MEMBER</span></div>
-        <div class="fr-detail">Pune · The only one in this group with any athletic credibility</div>
-      </div>
-      <div class="fr-stat">
-        <div class="fr-steps">0</div>
-        <div class="fr-steps-lbl">contribution</div>
-      </div>
-      <div class="fr-badge fb-gym">🏋️ At least she tries</div>
-    </div>
-    <div class="friend-row fr-shreenidhi">
-      <div class="fr-rank">3</div>
-      <div class="fr-emoji">🛋️</div>
-      <div class="fr-info">
-        <div class="fr-name">Shreenidhi <span class="fr-tag ft-couch">MORAL SUPPORT ONLY</span></div>
-        <div class="fr-detail">Pune · Watching this leaderboard with concern but zero steps</div>
-      </div>
-      <div class="fr-stat">
-        <div class="fr-steps">0</div>
-        <div class="fr-steps-lbl">contribution</div>
-      </div>
-      <div class="fr-badge fb-couch">🛋️ Solidly Seated</div>
-    </div>
-    <div class="friend-row fr-hrutuja">
-      <div class="fr-rank">4</div>
-      <div class="fr-emoji">🛋️</div>
-      <div class="fr-info">
-        <div class="fr-name">Hrutuja <span class="fr-tag ft-couch">MORAL SUPPORT ONLY</span></div>
-        <div class="fr-detail">Pune · Has not walked with Anushka Ji once this month. Documented.</div>
-      </div>
-      <div class="fr-stat">
-        <div class="fr-steps">0</div>
-        <div class="fr-steps-lbl">contribution</div>
-      </div>
-      <div class="fr-badge fb-couch">🛋️ Solidly Seated</div>
-    </div>
-    <div class="friend-row fr-shweta">
-      <div class="fr-rank">5</div>
-      <div class="fr-emoji">🛋️</div>
-      <div class="fr-info">
-        <div class="fr-name">Shweta <span class="fr-tag ft-couch">MORAL SUPPORT ONLY</span></div>
-        <div class="fr-detail">Pune · Sends encouraging texts. Steps sent: 0. Texts sent: many.</div>
-      </div>
-      <div class="fr-stat">
-        <div class="fr-steps">0</div>
-        <div class="fr-steps-lbl">contribution</div>
-      </div>
-      <div class="fr-badge fb-couch">🛋️ Solidly Seated</div>
-    </div>
+  <div class="fl-list">
+    <div class="fl-row fl-a"><div class="fl-rk">1</div><div class="fl-em">🚶‍♀️</div><div><div class="fl-nr">Anushka Ji<span class="tag tc2">COMPETITOR</span><span class="tag tb">IN THE RING</span></div><div class="fl-det">Senior QA Engineer · Makeup Artist · Pune · Actually in this challenge</div></div><div><div class="fl-sv" id="fl-a" style="color:var(--a)">—</div><div class="fl-sl">steps logged</div></div></div>
+    <div class="fl-row fl-s"><div class="fl-rk">2</div><div class="fl-em">💪</div><div><div class="fl-nr">Shivani<span class="tag tg">GYM MEMBER</span></div><div class="fl-det">Pune · Only one with gym credibility. While others debate fitness, Shivani is lifting. Carry the group, queen. Literally.</div></div><div><div class="fl-sv" style="color:var(--grn);font-size:.85rem">🏋️</div><div class="fl-sl">the chosen one</div></div></div>
+    <div class="fl-row"><div class="fl-rk">3</div><div class="fl-em">🛋️</div><div><div class="fl-nr">Shreenidhi<span class="tag tm">MORAL SUPPORT ONLY</span></div><div class="fl-det">Pune · You send the most 🫶 in the chat and the fewest steps on the pavement. Emotional output: elite. Cardio output: clinically zero. Pick a lane.</div></div><div><div class="fl-sv" style="color:var(--red)">0</div><div class="fl-sl">steps. zero.</div></div></div>
+    <div class="fl-row"><div class="fl-rk">4</div><div class="fl-em">🛋️</div><div><div class="fl-nr">Hrutuja<span class="tag tm">MORAL SUPPORT ONLY</span></div><div class="fl-det">Pune · At what point does watching someone else exercise make you feel fit by association? That point has passed. The screen is not a treadmill.</div></div><div><div class="fl-sv" style="color:var(--red)">0</div><div class="fl-sl">still zero.</div></div></div>
+    <div class="fl-row"><div class="fl-rk">5</div><div class="fl-em">🛋️</div><div><div class="fl-nr">Shweta<span class="tag tm">MORAL SUPPORT ONLY</span></div><div class="fl-det">Pune · "You've got this babe 💖" burns 0 calories. A 20-min walk burns 80. The math is right there. Texts sent: many. Steps sent: 0.</div></div><div><div class="fl-sv" style="color:var(--red)">0</div><div class="fl-sl">texts≠steps</div></div></div>
   </div>
-  <div class="friends-verdict">
-    💬 <em>The Pune friend group has 5 members. Combined fitness contribution: 1 gym membership (Shivani), 4 couches, and a group chat full of heart emojis. Solidarity without steps is just sympathy.</em>
-  </div>
+  <div class="fl-vd">💬 <strong>To the friend group:</strong> <em>Shivani is the only one who understood that fitness isn't a personality trait you borrow from your fit friend. Shreenidhi, Hrutuja, Shweta — you live in Pune. Mulshi, Sinhagad, Baner Hills, Vetal Tekdi are literally outside your window. Free, beautiful, walkable terrain — and you are choosing the couch. Anushka Ji is losing and none of you are walking with her. You could be her comeback story. Instead you are her most comfortable audience. <strong>Get up.</strong></em></div>
 </div>
 
 <!-- EXCUSE OF THE DAY -->
-<div class="excuse-card">
-  <div class="ex-header">
-    <div class="ex-eyebrow">🎭 Official Excuse Registry</div>
-    <div class="ex-title">Excuse of the Day</div>
-    <div class="ex-sub" id="ex-sub">Automatically generated for today's loser. Accuracy: suspicious.</div>
+<div class="ex" id="ex-wrap">
+  <div style="text-align:center;margin-bottom:1.2rem;position:relative;z-index:1">
+    <div class="eyebrow">🎭 Official Excuse Registry</div>
+    <div class="sec-title">Excuse of the Day</div>
+    <div class="sec-sub" id="ex-sub">Auto-generated for today's loser. Credibility rating included.</div>
   </div>
-  <div class="ex-body" id="ex-body">
-    <div class="ex-avatar" id="ex-avatar">🤷</div>
+  <div class="ex-in">
+    <span class="ex-avi" id="ex-avi">🤷</span>
     <div class="ex-name" id="ex-name">—</div>
-    <div class="ex-excuse-wrap">
-      <div class="ex-quote-mark">"</div>
-      <div class="ex-excuse" id="ex-excuse">Loading today's excuse...</div>
-      <div class="ex-quote-mark">"</div>
-    </div>
-    <div class="ex-credibility">
-      <div class="ex-cred-label">Excuse Credibility Score</div>
-      <div class="ex-cred-bar-wrap">
-        <div class="ex-cred-bar" id="ex-cred-bar"></div>
-      </div>
-      <div class="ex-cred-val" id="ex-cred-val">—</div>
-    </div>
+    <div class="ex-qw"><div class="ex-qm">"</div><div class="ex-t" id="ex-t">Loading...</div><div class="ex-qm ex-qme">"</div></div>
+    <div class="ex-cl">Excuse Credibility Score</div>
+    <div class="ex-tr"><div class="ex-fi" id="ex-fi" style="width:5%"></div></div>
+    <div class="ex-cv" id="ex-cv">—</div>
   </div>
-  <button class="ex-btn" id="ex-btn" onclick="rollExcuse()">🎲 Generate Another Excuse</button>
-</div>
-<div class="predictor">
-  <span class="pred-trophy" id="pred-trophy">🔮</span>
-  <div class="pred-winner" id="pred-winner">Battle outcome pending</div>
-  <div class="pred-prob" id="pred-prob">—</div>
-  <div class="pred-lbl">Predicted win probability</div>
-  <div class="pred-grid">
-    <div class="pred-box"><div class="pred-v" id="pred-rf" style="color:var(--r)">—</div><div class="pred-l">Rachit projected final</div></div>
-    <div class="pred-box"><div class="pred-v" id="pred-af" style="color:var(--a)">—</div><div class="pred-l">Anushka projected final</div></div>
-    <div class="pred-box"><div class="pred-v" id="pred-df" style="color:var(--gold)">—</div><div class="pred-l">Predicted margin</div></div>
-    <div class="pred-box"><div class="pred-v" id="pred-pun">—</div><div class="pred-l">Most likely punishment</div></div>
-  </div>
+  <button class="ex-btn" onclick="rollExcuse()">🎲 &nbsp;Generate Another Excuse</button>
 </div>
 
-</div><!-- /wrap -->
+<!-- PREDICTOR -->
+<div class="pred">
+  <span class="pred-trophy" id="pred-t">🔮</span>
+  <div class="pred-win" id="pred-w">Battle outcome pending</div>
+  <div class="pred-prob" id="pred-p">—</div>
+  <div class="pred-lbl">Predicted win probability</div>
+  <div class="pred-g">
+    <div class="pred-b"><div class="pred-v" id="pred-rf" style="color:var(--r)">—</div><div class="pred-l">Rachit projected final</div></div>
+    <div class="pred-b"><div class="pred-v" id="pred-af" style="color:var(--a)">—</div><div class="pred-l">Anushka projected final</div></div>
+    <div class="pred-b"><div class="pred-v" id="pred-df" style="color:var(--gold)">—</div><div class="pred-l">Predicted margin</div></div>
+    <div class="pred-b"><div class="pred-v" id="pred-pun">—</div><div class="pred-l">Most likely punishment</div></div>
+  </div>
+</div>
+</div>
 
 <div id="toast">✅ Done!</div>
 
 <script>
-// ══════════════════════════════════════════════
-// MUMBAI VS PUNE RIVALRY
-// ══════════════════════════════════════════════
-const RV_ROASTS_MUM_WIN=[
-  "Mumbai is winning. This is the correct outcome. A city where people run to catch trains is beating a city where people drive 400m to buy bread. As expected.",
-  "Mumbai leads the geographical debate today. Rachit, who walks through Bandra traffic without thinking, is defeating someone who considers a Zomato order a physical activity.",
-  "Mumbai: 1. The city where every commute is cardio is proving its point against the city where every commute is an Uber Pool.",
-  "Rachit is from a city where the local train platform requires a 200m sprint at 8:47am. That infrastructure is finally showing up in the data.",
-  "Today Mumbai wins. Anushka Ji will now argue the Pune weather, Pune food, Pune roads, Pune quality of life. She will not mention the step count. That's fine. The leaderboard mentions it for her.",
-  "Mumbai's chaotic infrastructure — the crowds, the stairs, the platforms — builds passive fitness. Pune's ring roads build passive sitting. Today's scoreline reflects this.",
-];
-const RV_ROASTS_PUN_WIN=[
-  "Pune wins today. Anushka Ji is walking through a city with decent pavements and breathing air that isn't 80% humidity and 20% diesel. She is using this advantage wisely.",
-  "Pune leads. The city with better roads, nicer weather, and apparently more walking than Mumbai today. Anushka Ji will text this to Rachit immediately. Probably with a map emoji.",
-  "Anushka Ji wins the day for Pune. She will now remind Rachit about Pune's weather for the next 48 hours. She is not wrong. She is also barely walking. These are both true.",
-  "Today: Pune 1, Mumbai 0. Anushka Ji is doing Pune proud while simultaneously eating non-veg near FC Road and calling it a training meal.",
-  "Pune takes the day. Somewhere in Mumbai, Rachit is on a bike ride and calling it research. The leaderboard is not counting bike steps, Rachit.",
-  "Pune leads today. Anushka Ji walked more than a man from the city that invented the concept of 'no choice but to walk.' This is historically significant.",
-];
-const RV_ROASTS_TIE=[
-  "The Mumbai vs Pune debate remains statistically unresolved. Both cities contributed equally to their representative's mediocrity today.",
-  "A tie. Neither Mumbai nor Pune can claim superiority today. Both should be embarrassed. The misal and the pani puri are equally safe. For now.",
-  "Neither city wins today. The debate continues. As it always does. Over food, usually.",
-];
-
-function renderRivalry(DATA,rT,aT){
-  const mumWins=DATA.filter(d=>d.r>d.a).length;
-  const punWins=DATA.filter(d=>d.a>d.r).length;
-  const ties=DATA.filter(d=>d.r===d.a&&d.r>0).length;
-  const n=DATA.length;
-  document.getElementById('rv-mum-score').textContent=mumWins;
-  document.getElementById('rv-pun-score').textContent=punWins;
-  const tot2=mumWins+punWins||1;
-  const mPct=Math.round(mumWins/tot2*100);
-  const pPct=100-mPct;
-  document.getElementById('rv-bar-mum').style.width=mPct+'%';
-  document.getElementById('rv-bar-pun').style.width=pPct+'%';
-  document.getElementById('rv-bar-center').textContent=`${mPct}% / ${pPct}%`;
-  let verdict='',roast='';
-  if(mumWins>punWins){
-    verdict=`🏙️ Mumbai leads ${mumWins}–${punWins}${ties?' ('+ties+' ties)':''}. The debate is settling.`;
-    roast=seededRnd(RV_ROASTS_MUM_WIN);
-  }else if(punWins>mumWins){
-    verdict=`🌿 Pune leads ${punWins}–${mumWins}${ties?' ('+ties+' ties)':''}. Shocking. Audacious. Temporary.`;
-    roast=seededRnd(RV_ROASTS_PUN_WIN);
-  }else{
-    verdict=`⚖️ ${mumWins}–${punWins} — The great debate remains statistically unresolved.`;
-    roast=seededRnd(RV_ROASTS_TIE);
-  }
-  document.getElementById('rv-mid-txt').textContent=n?verdict:'No data yet';
-  document.getElementById('rv-roast').textContent=roast;
-}
-
-// ══════════════════════════════════════════════
-// FRIEND LEADERBOARD
-// ══════════════════════════════════════════════
-function renderFriendLeaderboard(aT){
-  document.getElementById('fr-anushka-steps').textContent=aT?new Intl.NumberFormat('en-IN').format(aT):'0';
-}
-
-// ══════════════════════════════════════════════
-// EXCUSE ENGINE
-// ══════════════════════════════════════════════
-const EXCUSES_R=[
-  {e:"I went on a long bike ride along Marine Drive. That definitely counts as steps. The wind resistance alone was cardio.",c:12},
-  {e:"I was in the middle of a very deep conversation with a friend and it would have been rude to walk while listening. The conversation was important. The steps were not.",c:8},
-  {e:"I had misal pav for breakfast and it hit different today. The kind that makes you philosophical, not physical. I needed to sit with it.",c:6},
-  {e:"I was writing. A long message. Very expressive. About life and connection and what it means to really show up for people. I was showing up for people. Just not on this leaderboard.",c:4},
-  {e:"I was optimising Folk Creations' Amazon A+ content and then I just kept going. You can't stop mid-optimisation. The algorithm doesn't wait.",c:11},
-  {e:"I was debugging the SP-API integration and it took 6 hours and by the end I didn't have legs anymore. Medically, walking wasn't viable.",c:7},
-  {e:"I was researching a new bike route. Research is important. You can't just ride somewhere without planning. Planning is also exercise. For the brain.",c:5},
-  {e:"I was on a call with a Meta Ads consultant and the call ran long and then it was dark outside and walking in the dark is dangerous. Safety first.",c:9},
-  {e:"I made misal pav, I ate misal pav, I appreciated misal pav. This is a spiritual practice and should not be interrupted by cardiovascular activity.",c:3},
-  {e:"I was thinking about my watch roll collection and how each piece deserves proper consideration. You don't rush presence. I was being present.",c:7},
-  {e:"My Python automation script had a bug. I couldn't leave it. People depend on the P&L report. The report required me to be seated. The steps required me to not be.",c:10},
-  {e:"I was going to go for a walk but then someone sent a really interesting voice note and I had to reply properly. The reply took 40 minutes. It was a good reply.",c:6},
-];
-const EXCUSES_A=[
-  {e:"I had an 11am standup, a 2pm deployment review, a 4pm regression testing session, and a 6pm bug triage. My legs were not included in any of these calendar invites.",c:14},
-  {e:"Baner Road traffic at 7pm is not survivable. I was going to walk outside but the traffic was genuinely faster than a pedestrian and the footpath was a suggestion, not infrastructure.",c:18},
-  {e:"I was doing a full glam look. Contour, highlight, cut crease, setting spray. Two hours minimum. You cannot rush art. The steps waited. The contour could not.",c:9},
-  {e:"Shreenidhi called and we were talking and then Hrutuja joined and then Shweta joined and then it was a three-hour group call. I was stationary but emotionally very active.",c:5},
-  {e:"I was writing automated test cases and I genuinely lost track of time. The irony of failing to automate my step count while automating test cases is not lost on me. It is, however, documented here.",c:16},
-  {e:"It was raining in Pune. Not Mumbai rain which is aggressive and unavoidable. Pune rain, which is pleasant and perfect for sitting indoors with chai and not walking.",c:11},
-  {e:"I had a skincare routine to complete and you cannot rush hyaluronic acid. It needs time to absorb. During that time I could not sweat. Walking causes sweating. I was protecting my skin.",c:8},
-  {e:"I was evaluating marriage prospects and the process is mentally exhausting. It drains you in ways that are invisible but real. My step count reflects my emotional bandwidth today.",c:12},
-  {e:"There was a new pani puri stall that opened near Aundh and I went there to eat and sat there for two hours and then came home and sat more. It was worth it. Probably.",c:7},
-  {e:"My QA automation pipeline had a flaky test and I couldn't just ignore it. A flaky test is a sign. I investigated. It took all evening. The steps can wait for a stable build.",c:15},
-  {e:"Shivani said she was going to the gym and I felt guilty but not guilty enough to actually go. There's a zone between guilt and action. I lived there all day.",c:6},
-  {e:"I was doing makeup tutorials on Instagram for reference and then I accidentally watched 4 hours of content. The algorithm is more powerful than competitive walking motivation.",c:10},
-];
-
-let currentExcuseIdx=-1;
-let currentExcusePool=[];
-
-function rollExcuse(forceLoser){
-  const ldr=window._currentLdr||'tie';
-  const isR=ldr==='anushka'; // rachit is loser when anushka leads
-  const pool=isR?EXCUSES_R:EXCUSES_A;
-  currentExcusePool=pool;
-  let idx=Math.floor(Math.random()*pool.length);
-  while(idx===currentExcuseIdx&&pool.length>1)idx=Math.floor(Math.random()*pool.length);
-  currentExcuseIdx=idx;
-  const ex=pool[idx];
-  document.getElementById('ex-avatar').textContent=isR?'🏃':'🚶‍♀️';
-  document.getElementById('ex-name').textContent=(isR?'Rachit':'Anushka Ji')+' explains:';
-  document.getElementById('ex-sub').textContent=`Today's official excuse from ${isR?'Rachit (Mumbai)':'Anushka Ji (Pune)'}. Credibility rating included.`;
-  document.getElementById('ex-excuse').textContent=ex.e;
-  const cPct=ex.c;
-  const bar=document.getElementById('ex-cred-bar');
-  bar.style.width=cPct+'%';
-  bar.style.background=cPct<20?'linear-gradient(90deg,#ef4444,#f87171)':cPct<50?'linear-gradient(90deg,#f59e0b,#fbbf24)':'linear-gradient(90deg,#10b981,#34d399)';
-  const labels=['Completely fabricated','Nobody believes this','Questionable at best','Technically possible','Remotely plausible'];
-  document.getElementById('ex-cred-val').textContent=`${cPct}% credible — "${cPct<20?labels[0]:cPct<35?labels[1]:cPct<50?labels[2]:cPct<70?labels[3]:labels[4]}"`;
-}
-
-function renderExcuse(ldr){
-  window._currentLdr=ldr;
-  const exCard=document.querySelector('.excuse-card');
-  if(ldr==='tie'){
-    exCard.style.display='none';return;
-  }
-  exCard.style.display='block';
-  rollExcuse();
-}
-
-// ══════════════════════════════════════════════
-// ACHIEVEMENT BADGES
-// ══════════════════════════════════════════════
-const BADGE_DEFS=[
-  {id:'first10k',icon:'🔥',name:'First 10k Day',desc:'Log a single day with 10,000+ steps',
-    check:(D,tot)=>D.some(d=>d.r>=10000||d.a>=10000),
-    checkR:(D)=>D.some(d=>d.r>=10000),
-    checkA:(D)=>D.some(d=>d.a>=10000)},
-  {id:'streak3',icon:'⚡',name:'3-Day Streak',desc:'Win 3 consecutive days',
-    checkR:(D)=>{let s=0,m=0;D.forEach(d=>{s=d.r>d.a?s+1:0;m=Math.max(m,s);});return m>=3;},
-    checkA:(D)=>{let s=0,m=0;D.forEach(d=>{s=d.a>d.r?s+1:0;m=Math.max(m,s);});return m>=3;}},
-  {id:'marathon',icon:'🏅',name:'Marathon Walker',desc:'Accumulate 42,195+ steps total (marathon distance)',
-    checkR:(D)=>D.reduce((s,d)=>s+d.r,0)>=42195,
-    checkA:(D)=>D.reduce((s,d)=>s+d.a,0)>=42195},
-  {id:'comeback',icon:'👑',name:'Comeback King',desc:'Win 3 days in a row after being behind',
-    checkR:(D,rT,aT)=>{if(rT<=aT)return false;let s=0;D.forEach(d=>{s=d.r>d.a?s+1:0;});return s>=3;},
-    checkA:(D,rT,aT)=>{if(aT<=rT)return false;let s=0;D.forEach(d=>{s=d.a>d.r?s+1:0;});return s>=3;}},
-  {id:'beast20k',icon:'💪',name:'Beast Mode',desc:'Log a single day with 20,000+ steps',
-    checkR:(D)=>D.some(d=>d.r>=20000),
-    checkA:(D)=>D.some(d=>d.a>=20000)},
-  {id:'consistent',icon:'📅',name:'Iron Routine',desc:'Log 7 consecutive days',
-    checkR:(D)=>D.filter(d=>d.r>0).length>=7,
-    checkA:(D)=>D.filter(d=>d.a>0).length>=7},
-  {id:'dominator',icon:'⚔️',name:'Dominator',desc:'Beat rival by 5,000+ steps in a single day',
-    checkR:(D)=>D.some(d=>d.r-d.a>=5000),
-    checkA:(D)=>D.some(d=>d.a-d.r>=5000)},
-  {id:'century',icon:'💯',name:'Century Club',desc:'Reach 100,000 total steps',
-    checkR:(D)=>D.reduce((s,d)=>s+d.r,0)>=100000,
-    checkA:(D)=>D.reduce((s,d)=>s+d.a,0)>=100000},
-  {id:'noshame',icon:'🛡️',name:'No Shame',desc:'Never log a day below 8,000 steps (min 5 days)',
-    checkR:(D)=>{const v=D.filter(d=>d.r>0);return v.length>=5&&v.every(d=>d.r>=8000);},
-    checkA:(D)=>{const v=D.filter(d=>d.a>0);return v.length>=5&&v.every(d=>d.a>=8000);}},
-  {id:'halfmonth',icon:'🌗',name:'Half-Month Hero',desc:'Win at least 15 days',
-    checkR:(D)=>D.filter(d=>d.r>d.a).length>=15,
-    checkA:(D)=>D.filter(d=>d.a>d.r).length>=15},
-  {id:'revenge',icon:'😤',name:'Revenge Arc',desc:'Beat your own previous best day',
-    checkR:(D)=>{let prev=0,rev=false;D.forEach(d=>{if(d.r>prev&&prev>0)rev=true;prev=Math.max(prev,d.r);});return rev;},
-    checkA:(D)=>{let prev=0,rev=false;D.forEach(d=>{if(d.a>prev&&prev>0)rev=true;prev=Math.max(prev,d.a);});return rev;}},
-  {id:'moonshot',icon:'🚀',name:'Moonshot',desc:'Log 25,000+ steps in a single day',
-    checkR:(D)=>D.some(d=>d.r>=25000),
-    checkA:(D)=>D.some(d=>d.a>=25000)},
-];
-
-function renderBadges(D,rT,aT,rW,aW,diff,ldr,n){
-  ['r','a'].forEach(side=>{
-    const grid=document.getElementById('badges-'+side);
-    grid.innerHTML='';
-    BADGE_DEFS.forEach(b=>{
-      const unlocked=side==='r'?b.checkR(D,rT,aT):b.checkA(D,aT,rT);
-      const card=document.createElement('div');
-      card.className=`badge-card ${unlocked?'unlocked':'locked'} ${side}-badge`;
-      card.innerHTML=`
-        ${unlocked?'<div class="badge-shine"></div>':''}
-        <div class="${unlocked?'badge-unlocked-tag':'badge-locked-tag'}">${unlocked?'✓ EARNED':'🔒'}</div>
-        <span class="badge-icon">${unlocked?b.icon:'🔒'}</span>
-        <div class="badge-name">${b.name}</div>
-        <div class="badge-desc">${b.desc}</div>
-      `;
-      grid.appendChild(card);
-    });
-  });
-  // style active tab
-  document.querySelectorAll('.btab').forEach((t,i)=>{
-    t.className='btab'+(i===0?' active rt':' at');
-  });
-}
-
-let activeBadgeTab='r';
-function switchBadgeTab(side){
-  activeBadgeTab=side;
-  document.getElementById('badges-r').style.display=side==='r'?'grid':'none';
-  document.getElementById('badges-a').style.display=side==='a'?'grid':'none';
-  document.querySelectorAll('.btab').forEach((t,i)=>{
-    const s=i===0?'r':'a';
-    t.className='btab'+(s===side?' active '+(side==='r'?'rt':'at'):'');
-  });
-}
-
-// ══════════════════════════════════════════════
-// WANTED POSTER
-// ══════════════════════════════════════════════
-const WP_ALIASES_R=[
-  '"The Macro Counter Who Forgot His Legs"',
-  '"The SP-API Dev With Zero Step API"',
-  '"The D2C Founder Who Can\'t Deliver Steps"',
-  '"The RTO King of His Own Fitness"',
-];
-const WP_ALIASES_A=[
-  '"The Pani Puri Martyr"',
-  '"Mumbai\'s Most Reluctant Walker"',
-  '"The Stall Visitor Who Forgot to Walk There"',
-  '"The Accused of Sedentary Crimes"',
-];
-const WP_CHARGES_R=[
-  'Deliberate neglect of lower limbs. Willful underperformance of cardiovascular activity. Attempting to win a walking challenge without adequate walking.',
-  'First degree laziness. Conspiracy to waste a perfectly good pair of legs. Operating a fitness challenge without fitness.',
-  'Gross negligence of step count duties. Misrepresentation of athletic intent. Failure to deploy limbs in a timely manner.',
-];
-const WP_CHARGES_A=[
-  'Criminal endangerment of pani puri access rights. Systematic failure to protect said rights through adequate locomotion.',
-  'Wilful abandonment of competitive walking obligations. Reckless disregard for the welfare of her own street food privileges.',
-  'Conspiracy to surrender pani puri for one calendar year through inaction. The streets are watching.',
-];
-
-function renderWantedPoster(D,rT,aT,ldr,diff,rSl,aSl,n){
-  const wrap=document.getElementById('wanted-wrap');
-  if(!n||ldr==='tie'){wrap.style.display='none';return;}
-  wrap.style.display='flex';
-  const isR=ldr==='anushka'; // rachit is the LOSER when anushka leads
-  const name=isR?'Rachit':'Anushka Ji';
-  const emoji=isR?'🏃':'🚶‍♀️';
-  const tot=isR?rT:aT;
-  const sl=isR?rSl:aSl;
-  const avgSteps=n?Math.round(tot/n):0;
-  const daysLeft=Math.max(0,30-n);
-  const catchUp=daysLeft>0?Math.ceil(diff/daysLeft):0;
-  document.getElementById('wp-photo').textContent=emoji;
-  document.getElementById('wp-name').textContent=name;
-  document.getElementById('wp-alias').textContent=rnd(isR?WP_ALIASES_R:WP_ALIASES_A);
-  document.getElementById('wp-charge').textContent=rnd(isR?WP_CHARGES_R:WP_CHARGES_A);
-  document.getElementById('wp-stamp').textContent=diff>10000?'GUILTY':'SUSPECT';
-  document.getElementById('wp-stamp').style.color=diff>10000?'rgba(127,29,29,.5)':'rgba(180,83,9,.5)';
-  document.getElementById('wp-stamp').style.borderColor=diff>10000?'rgba(127,29,29,.4)':'rgba(180,83,9,.4)';
-  document.getElementById('wp-stats').innerHTML=`
-    <div class="wp-stat"><div class="wp-stat-v">${fmt(tot)}</div><div class="wp-stat-l">Total Steps</div></div>
-    <div class="wp-stat"><div class="wp-stat-v" style="color:#7f1d1d">−${fmt(diff)}</div><div class="wp-stat-l">Step Deficit</div></div>
-    <div class="wp-stat"><div class="wp-stat-v">${fmt(avgSteps)}</div><div class="wp-stat-l">Avg / Day</div></div>
-    <div class="wp-stat"><div class="wp-stat-v" style="color:#7f1d1d">+${fmt(catchUp)}/d</div><div class="wp-stat-l">Miracle Required</div></div>
-    <div class="wp-stat"><div class="wp-stat-v">${sl}</div><div class="wp-stat-l">Pathetic Days</div></div>
-    <div class="wp-stat"><div class="wp-stat-v">${daysLeft}</div><div class="wp-stat-l">Days Remaining</div></div>
-  `;
-}
-
-// ══════════════════════════════════════════════
-// CONFIG — Both endpoints wired in
-// ══════════════════════════════════════════════
-const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbzQ4MYa4I-6-mGmrkAQVyxBYHWwijlAnf3-ZWoOzZ6nbb2G-5p8udmj4VfatKEHkvCL/exec';
 const SHEET_ID='1K6WUxncClRoJHHmyYKk1UxmS6snqEYCvospB6iHlt04';
-let DATA=[];
-let charts={c:null,d:null};
+const AS_URL='https://script.google.com/macros/s/AKfycbzQ4MYa4I-6-mGmrkAQVyxBYHWwijlAnf3-ZWoOzZ6nbb2G-5p8udmj4VfatKEHkvCL/exec';
+let DATA=[],charts={c:null,d:null};
 
-// ══════════════════════════════════════════════
-// ROAST LIBRARIES
-// ══════════════════════════════════════════════
-// ── Seed roasts so they feel fresh each day ──
-function dailySeed(){const d=new Date();return d.getDate()*31+d.getMonth()*7;}
-function seededRnd(arr){return arr[(dailySeed()+arr.length*17)%arr.length];}
-
-const LOSER_R=[
-  // Business / tech roasts
-  "You automated Folk Creations' entire P&L with SP-API, Ads API, and Google Sheets — but apparently there is no API endpoint for 'walking more than Anushka Ji.' A critical gap in your tech stack.",
-  "You track TACoS, RoAS, CAC, CPP, and breakeven across 15 SKUs with surgical precision. Your step count is performing at RTO quality. 0% delivered. Return to origin: the couch.",
-  "The same person who built Meta Ads master prompts using Hook Model and 3C Framework logic cannot apply any of that logic to moving his feet forward. The hook did not land.",
-  "You write long, deeply expressive messages about life, meaning, and connection. None of those messages said 'I walked 10,000 steps today.' Coincidence? The leaderboard doesn't think so.",
+// ── ROASTS ──
+const LR=[
+  "You automated Folk Creations' P&L with SP-API and Ads API — but there's no API endpoint for 'walking more than Anushka Ji'. A critical gap in the tech stack.",
+  "You track TACoS, RoAS, CAC across 15 SKUs with surgical precision. Your step count is performing at RTO quality. 0% delivered. Return to origin: the couch.",
+  "You built Meta Ads master prompts using Hook Model and 3C Framework logic. None of that logic is being applied to moving your feet forward.",
+  "You write long, deeply expressive messages about life and connection. None of them said 'I walked 10,000 steps today.' The leaderboard noticed.",
   "Rachit went on a bike ride and called it cardio. The challenge is about steps, not stories.",
   "Nova Bloom sells a Bio-Collagen Overnight Glass Skin Mask. No amount of collagen can restore the dignity of this step count.",
   "Your Folk Creations watch organiser holds 10 watches. None of those watches are counting enough steps on your wrist.",
-  "You built a full Supabase-backed brain dump app with realtime sync and a 12-week heatmap. Your step heatmap for this month looks like a server outage.",
-  "Rachit loves deep conversations. He and Anushka Ji are currently having one — it's called this leaderboard, and she's the only one saying something.",
-  "You track 136g protein daily to the gram. Your steps, by contrast, have not been tracked, logged, hit, or acknowledged.",
-  "Claude can run your Amazon automation. Claude cannot run your legs. That remains entirely on you and it shows.",
-  // Marriage / relationship roasts
-  "Rachit does not want to get married. He also apparently does not want to walk. A man fully committed to his own peace and comfort.",
-  "7 years. One relationship. Ended badly. His ex cheated on him, and now he won't even let his step count commit to a number above 8,000.",
-  "The only long-term commitment Rachit currently has is to Folk Creations, misal pav, and losing this challenge.",
-  // Mumbai v/s Pune
-  "Rachit is from Mumbai — a city where people walk everywhere, cross roads through traffic, and climb 6 floors because the lift is broken. And somehow he is losing a walking challenge to someone from Pune who drives an Activa to buy groceries.",
-  "Mumbai local trains require boarding, alighting, and sprinting across platforms. Rachit has access to all of this infrastructure and is still behind a Punekaar who thinks a 2km drive is exercise.",
-  "Mumbai: the city that never sleeps, never sits, and never stops walking. Except apparently Rachit, who is defying the entire character of his hometown.",
-  // Misal / food roasts
+  "You built a full Supabase-backed brain dump app with a 12-week heatmap. Your step heatmap looks like a server outage.",
+  "Rachit loves deep conversations. He and Anushka Ji are having one — it's this leaderboard, and she's the only one saying something meaningful.",
+  "You track 136g protein daily to the gram. Your steps, by contrast, have not been tracked, hit, or acknowledged.",
+  "Claude can run your Amazon automation. Claude cannot run your legs. That remains entirely on you.",
+  "7 years. One relationship. Ended badly. And now he won't even let his step count commit to a number above 8,000.",
+  "Rachit does not want to get married. He also apparently does not want to walk. A man committed to his own peace and couch.",
+  "Mumbai: a city where people walk everywhere. Rachit: a person from Mumbai losing a walking challenge to someone from Pune who Ubers 2km.",
   "Every morning Rachit eats misal pav and feels powerful. The misal is not converting to steps. Investigate.",
-  "Misal pav has more energy per bite than any pre-workout on the market. Rachit is eating it and then sitting down. This is a misallocation of resources.",
-  // Friends / social life roast
-  "Rachit loves making friends and having deep conversations. His friends should have a deep conversation with him about this step count because it needs intervention.",
 ];
-
-const LOSER_A=[
-  // Job / career roasts
-  "Anushka Ji is a Senior QA Automation Engineer. Her job is literally to find failures and fix them. And yet she cannot QA her own step count, which is failing all test cases.",
-  "As a QA engineer, Anushka Ji writes automated tests to catch bugs. Her step count has had a critical bug since Day 1 and she has not opened a single ticket.",
-  "Anushka Ji does automation testing at an IT firm. She has automated everything at work except, apparently, the action of walking.",
-  "She also does makeup artistry on the side. Full contour, highlight, setting spray — and then sits down for the rest of the day. The fit is immaculate. The step count is not.",
-  "Anushka Ji's makeup looks take 2 hours to do. Her daily walk takes 20 minutes. The priorities are documented and they are concerning.",
-  // Pune v/s Mumbai roasts
-  "Anushka Ji lives in Pune and claims Pune is better than Mumbai. Pune has wider roads, cleaner air, and apparently zero reason to walk anywhere because everything is an Uber away.",
-  "Pune is a city built for bikes and cars. Mumbai is built for walkers. And somehow the Mumbaikar is ahead on this leaderboard. Let that sink in, Punekaar.",
-  "Anushka Ji will defend Pune to the death. She will argue Pune has better weather, better roads, and better quality of life. None of those qualities are visible in her step count.",
-  "Pune has Mulshi, Sinhagad, Lavasa — literally surrounded by hills people trek. Anushka Ji is not trekking any of them. She is in her flat, defending Pune's honour without using her legs.",
-  "Pune traffic is Anushka Ji's reason for not walking. Except her step count suggests she is not walking inside her own apartment either.",
-  // Pani puri roasts
-  "The pani puri stalls near FC Road, Pune are already practising lockout procedures. In advance. With quiet certainty.",
+const LA=[
+  "Anushka Ji is a Senior QA Automation Engineer. Her job is literally to find failures. And yet she cannot QA her own step count, which is failing all test cases.",
+  "She does makeup artistry on the side. Full contour, highlight, setting spray — then sits down. The fit is immaculate. The step count is not.",
+  "Anushka Ji's makeup looks take 2 hours. Her daily walk takes 20 minutes. The priorities are documented and they are concerning.",
+  "Anushka Ji lives in Pune and claims it's better than Mumbai. Pune has wider roads, cleaner air, and apparently zero reason to walk anywhere.",
+  "Pune has Mulshi, Sinhagad, Lavasa — literally surrounded by trekking hills. Anushka Ji is not trekking any of them. She is on her couch defending Pune's honour without using her legs.",
+  "The pani puri stalls near FC Road are already practising lockout procedures. In advance. With quiet certainty.",
   "Anushka Ji's 3 past relationships all ended, but none of them hurt as much as what is about to happen to her and pani puri.",
   "Her father builds aluminium windows and glass structures. He is going to have to build a glass case to display the last pani puri she ate before the ban.",
-  "Dad installs windows. Anushka Ji is about to spend a year looking through them at pani puri stalls she cannot enter.",
-  "Anushka Ji eats non-veg. She survives on flavour. The pani puri ban will remove the most important flavour from her life and she is doing nothing to stop it.",
-  // Friend group roasts
-  "Shreenidhi, Hrutuja, Shivani, and Shweta are all watching this leaderboard from Pune. None of them are helping. None of them are walking with her. Solidarity without steps.",
-  "Shivani still goes to the gym. Shivani is the only one in this friend group with any athletic credibility. The rest of them, including Anushka Ji, are a collective liability.",
-  "The Pune friend group has 4 members: Shreenidhi, Hrutuja, Shivani, and Shweta. Combined step count contribution to this challenge: 0. Supportive? Yes. Useful? No.",
-  "Shreenidhi, Hrutuja, and Shweta are not into fitness. This is documented. But they could at least WALK WITH HER. They have chosen not to. Pune solidarity has failed Anushka Ji.",
-  "Shivani goes to the gym. If Shivani was in this challenge instead of Anushka Ji, Mumbai would be losing. That's how bad this is.",
-  // Marriage / prospects roast
-  "Anushka Ji is looking for marriage prospects. Any serious prospect watching this leaderboard right now is reconsidering. The step count is a personality test and she is not passing.",
-  "Imagine explaining to a marriage prospect: yes I lost a walking challenge to a man from Mumbai. For one full year. He gets to drink. I do not get pani puri. This is the first story of our life together.",
+  "Shreenidhi, Hrutuja, Shivani, and Shweta are all watching from Pune. None of them are helping. None of them are walking with her.",
+  "Shivani still goes to the gym. Shivani is the only one with athletic credibility. The rest of the group, including Anushka Ji, are a collective liability.",
+  "Anushka Ji is looking for marriage prospects. Any prospect watching this leaderboard is reconsidering.",
   "Height 5'8\". Senior QA Engineer. Makeup artist. Excellent on paper. Step count: needs improvement. Marriage prospects are watching.",
+  "Anushka Ji writes automated test cases for bugs. Her step count has had a critical bug since Day 1. No ticket has been opened.",
+  "Baner Road traffic is Anushka Ji's reason for not walking. Her step count suggests she is not walking inside her own apartment either.",
+  "At Anushka's current pace, Rachit could take a full weekend off and still win comfortably.",
 ];
+const DR=["Rachit obliterated today. Anushka Ji is somewhere in Pune explaining this to Shreenidhi.","Today Rachit chose violence toward Anushka Ji's pani puri future.","Rachit walked more today than Anushka Ji has walked this week. The misal pav is finally converting.","Today's winner: Rachit. The misal hit. The legs delivered.","Rachit brought receipts. In step form. Notarised. Devastating.","Today Rachit did what Mumbai people do: walked somewhere, came back, walked more. Cultural.","The man who loves bike rides walked more than the woman from the city of bike rides. Let that land.","Today Rachit proved that vegan leather watch organiser energy transfers directly to calves."];
+const DA=["Anushka Ji owns the pavement today. Rachit's bar tab is filing a complaint.","Today Anushka Ji QA-tested her own step count and it passed. Rare event. Documented.","The streets of Pune feared Anushka Ji today. Even the Activas moved aside.","Pune: 1. Mumbai: 0. Going into the debate as Exhibit A.","Anushka Ji walked today with the energy of someone protecting their pani puri rights. It shows.","Today Anushka Ji showed up. Rachit showed intent. The leaderboard only recognises one of those.","Anushka Ji did her full makeup and then walked 15,000 steps. The complete package.","Anushka Ji is not just walking. She is systematically dismantling Rachit's bar tab, one step at a time."];
+const RVM=["Mumbai leads. A city where people run to catch the 8:47 Virar fast is proving its point against a city where people Uber 400m.","Mumbai wins today. Rachit is from a city where the footpath IS the gym. The infrastructure is doing its job.","Mumbai takes it. Anushka Ji will argue Pune weather, Pune food, Pune roads. She will not mention the step count. The leaderboard will.","Mumbai leads. The city that invented 'standing room only in a moving vehicle' is beating the city that invented 'we'll Uber 2km'.","Mumbai wins. Rachit walked more today than someone who lives surrounded by trekking routes and uses none of them."];
+const RVP=["Pune wins today. Anushka Ji is walking through a city with actual pavements and breathing air that isn't 80% humidity. She is using this advantage.","Pune leads. The city with nicer weather, better roads, and apparently more walking than Mumbai today. Anushka Ji will text this to Rachit immediately.","Pune takes it. Anushka Ji walked today with the energy of someone protecting their pani puri rights. It converted into actual steps.","Pune leads. Anushka Ji walked more than a man from the city that invented 'no choice but to walk'. Historically significant.","Pune wins. Somewhere in Mumbai, Rachit is on a bike ride calling it research. The leaderboard is not counting bike research."];
+const RVT=["Tied. Neither city can claim superiority. Both are equally embarrassed. The misal and pani puri are safe. For now.","Dead heat. The Mumbai vs Pune debate remains statistically unresolved. Both contributed equally to their mediocrity today."];
+const WPA_R=['"The Macro Counter Who Forgot His Legs"','"The SP-API Dev With Zero Step API"','"The D2C Founder Who Can\'t Deliver Steps"','"The RTO King of His Own Fitness"'];
+const WPA_A=['"The Pani Puri Martyr"','"Mumbai\'s Most Reluctant Walker"','"The Stall Visitor Who Forgot to Walk There"','"The Accused of Sedentary Crimes"'];
+const WPC_R=['Deliberate neglect of lower limbs. Willful underperformance of cardiovascular activity. Attempting to win a walking challenge without adequate walking.','First degree laziness. Conspiracy to waste a perfectly good pair of legs. Operating a fitness challenge without fitness.','Gross negligence of step count duties. Misrepresentation of athletic intent. Failure to deploy limbs in a timely manner.'];
+const WPC_A=['Criminal endangerment of pani puri access rights. Systematic failure to protect said rights through adequate locomotion.','Wilful abandonment of competitive walking obligations. Reckless disregard for the welfare of her own street food privileges.','Conspiracy to surrender pani puri for one calendar year through inaction. The streets are watching.'];
+const EXR=[{e:"I went on a long bike ride along Marine Drive. That counts as steps. Wind resistance alone was cardio.",c:12},{e:"I was in a very deep conversation and it would've been rude to walk while listening. The conversation was important. The steps were not.",c:8},{e:"I had misal pav for breakfast and it hit different. The kind that makes you philosophical, not physical. I needed to sit with it.",c:6},{e:"I was writing a long expressive message about life and connection. I was showing up for people. Just not on this leaderboard.",c:4},{e:"I was optimising Folk Creations' Amazon A+ content. You can't stop mid-optimisation. The algorithm doesn't wait.",c:11},{e:"I was debugging the SP-API integration. Took 6 hours. By the end I had no legs. Medically, walking wasn't viable.",c:7},{e:"I was researching a new bike route. Research is exercise. For the brain.",c:5},{e:"I was on a Meta Ads call that ran long, then it was dark, and walking in the dark is dangerous. Safety first.",c:9},{e:"I made misal pav, ate it, appreciated it. This is a spiritual practice. It cannot be interrupted by cardiovascular activity.",c:3},{e:"My Python script had a bug. I couldn't leave it. The P&L report is mission critical. The steps had to wait.",c:10}];
+const EXA=[{e:"I had an 11am standup, 2pm deployment review, 4pm regression testing, 6pm bug triage. My legs were not in any of these calendar invites.",c:14},{e:"Baner Road traffic at 7pm is not survivable. The footpath was a suggestion, not infrastructure.",c:18},{e:"I was doing a full glam look. Contour, highlight, cut crease, setting spray. You cannot rush art.",c:9},{e:"Shreenidhi called, then Hrutuja joined, then Shweta joined. Three-hour group call. I was stationary but emotionally very active.",c:5},{e:"I was writing automated test cases and lost track of time. The irony of failing to automate my step count is not lost on me.",c:16},{e:"It was raining in Pune. Not Mumbai rain, which is aggressive. Pune rain, which is pleasant and perfect for sitting with chai.",c:11},{e:"I had a skincare routine. You cannot rush hyaluronic acid. Walking causes sweating. I was protecting my skin.",c:8},{e:"I was evaluating marriage prospects. The process is mentally exhausting. My step count reflects my emotional bandwidth.",c:12},{e:"New pani puri stall near Aundh. I went, sat for two hours, came home and sat more. Worth it. Probably.",c:7},{e:"My QA pipeline had a flaky test. I couldn't just ignore it. A flaky test is a sign. It took all evening.",c:15}];
 
-const DAILY_R=[
-  "Rachit obliterated today. Anushka Ji is somewhere in Pune explaining this to Shreenidhi.",
-  "Today's result: Rachit 1, Pani Puri 0. The FC Road stalls are worried.",
-  "Rachit walked more today than Anushka Ji has walked this week. The misal pav is finally converting.",
-  "Rachit chose violence today. Specifically, violence toward Anushka Ji's pani puri access rights.",
-  "Today Rachit did what Mumbai people do: walked somewhere, came back, walked more. It's cultural.",
-  "Rachit's step count today arrived, did the job, and left. Professional. Devastating. Very Mumbai.",
-  "The man who loves bike rides walked more than the woman from the city of bike rides. Let that land.",
-  "Today's hero: Rachit. Today's victim: Anushka Ji's pani puri subscription.",
-  "Rachit wrote a long message about today's walk. It was moving. Literally.",
-  "Today Rachit proved that vegan leather watch organiser energy transfers directly to calves.",
-];
-
-const DAILY_A=[
-  "Anushka Ji owns the pavement today. Rachit's bar tab is filing a complaint.",
-  "Anushka Ji walked today with the energy of someone who just remembered what pani puri tastes like.",
-  "Today Anushka Ji QA-tested her own step count and it passed all assertions. Rare event. Documented.",
-  "The streets of Pune feared Anushka Ji today. Even the Activas moved aside.",
-  "Today's winner: Anushka Ji. Today's loser: every bartender within 2km of Rachit's house.",
-  "Anushka Ji is not just walking. She is systematically cancelling Rachit's social life one step at a time.",
-  "Anushka Ji walked today and Shivani saw it. For the first time, the gym friend is proud.",
-  "Pune: 1. Mumbai: 0. Today's result is going into the Mumbai vs Pune debate as Exhibit A.",
-  "Anushka Ji did her makeup, looked great, and then walked 15,000 steps. The complete package.",
-  "Today Anushka Ji showed up. Rachit showed intent. The leaderboard only recognises one of those.",
-];
-
-// Mumbai vs Pune roasts — shown in ticker and verdict section
-const MUMBAI_VS_PUNE=[
-  "Mumbai: 12.5 million people walking everywhere because parking costs ₹200/hour. Pune: same 12.5 million but they all own a bike. The walking culture gap is self-explanatory.",
-  "Rachit is from Mumbai. Anushka Ji is from Pune. One city has local trains that require running. The other has ring roads that require driving. The leaderboard reflects this infrastructure.",
-  "Pune people love telling Mumbai people that Pune is cleaner, calmer, and better. They say this from inside their car, in traffic, on their way to MG Road to eat pani puri.",
-  "Mumbai has no space, no parking, and no choice but to walk. Rachit has somehow still found a way to lose. This is a personal failure that transcends geography.",
-  "Anushka Ji argues Pune is better than Mumbai. The pani puri ban she is about to receive is Pune-flavoured. The karma is local.",
+// ── BADGE DEFS ──
+const BDEFS=[
+  {id:'f10k',ico:'🔥',name:'First 10k Day',desc:'Single day 10,000+ steps',cr:(D)=>D.some(d=>d.r>=10000),ca:(D)=>D.some(d=>d.a>=10000)},
+  {id:'s3',ico:'⚡',name:'3-Day Streak',desc:'Win 3 consecutive days',cr:(D)=>{let s=0,m=0;D.forEach(d=>{s=d.r>d.a?s+1:0;m=Math.max(m,s)});return m>=3},ca:(D)=>{let s=0,m=0;D.forEach(d=>{s=d.a>d.r?s+1:0;m=Math.max(m,s)});return m>=3}},
+  {id:'mar',ico:'🏅',name:'Marathon Walker',desc:'42,195+ total steps',cr:(D)=>D.reduce((s,d)=>s+d.r,0)>=42195,ca:(D)=>D.reduce((s,d)=>s+d.a,0)>=42195},
+  {id:'ck',ico:'👑',name:'Comeback King',desc:'3 wins in a row after being behind',cr:(D,rT,aT)=>{if(rT<=aT)return false;let s=0;D.forEach(d=>{s=d.r>d.a?s+1:0});return s>=3},ca:(D,rT,aT)=>{if(aT<=rT)return false;let s=0;D.forEach(d=>{s=d.a>d.r?s+1:0});return s>=3}},
+  {id:'b20',ico:'💪',name:'Beast Mode',desc:'Single day 20,000+ steps',cr:(D)=>D.some(d=>d.r>=20000),ca:(D)=>D.some(d=>d.a>=20000)},
+  {id:'ir',ico:'📅',name:'Iron Routine',desc:'Log 7+ consecutive days',cr:(D)=>D.filter(d=>d.r>0).length>=7,ca:(D)=>D.filter(d=>d.a>0).length>=7},
+  {id:'dom',ico:'⚔️',name:'Dominator',desc:'Beat rival by 5,000+ in one day',cr:(D)=>D.some(d=>d.r-d.a>=5000),ca:(D)=>D.some(d=>d.a-d.r>=5000)},
+  {id:'cc',ico:'💯',name:'Century Club',desc:'100,000+ total steps',cr:(D)=>D.reduce((s,d)=>s+d.r,0)>=100000,ca:(D)=>D.reduce((s,d)=>s+d.a,0)>=100000},
+  {id:'ns',ico:'🛡️',name:'No Shame',desc:'Never below 8k (min 5 days)',cr:(D)=>{const v=D.filter(d=>d.r>0);return v.length>=5&&v.every(d=>d.r>=8000)},ca:(D)=>{const v=D.filter(d=>d.a>0);return v.length>=5&&v.every(d=>d.a>=8000)}},
+  {id:'hm',ico:'🌗',name:'Half-Month Hero',desc:'Win 15+ days',cr:(D)=>D.filter(d=>d.r>d.a).length>=15,ca:(D)=>D.filter(d=>d.a>d.r).length>=15},
+  {id:'ra',ico:'😤',name:'Revenge Arc',desc:'Beat your own previous best',cr:(D)=>{let p=0,rv=false;D.forEach(d=>{if(d.r>p&&p>0)rv=true;p=Math.max(p,d.r)});return rv},ca:(D)=>{let p=0,rv=false;D.forEach(d=>{if(d.a>p&&p>0)rv=true;p=Math.max(p,d.a)});return rv}},
+  {id:'ms',ico:'🚀',name:'Moonshot',desc:'Single day 25,000+ steps',cr:(D)=>D.some(d=>d.r>=25000),ca:(D)=>D.some(d=>d.a>=25000)},
 ];
 
 function fmt(n){return new Intl.NumberFormat('en-IN').format(Math.round(n||0));}
-function rnd(arr){return arr[Math.floor(Math.random()*arr.length)];}
+function rnd(a){return a[Math.floor(Math.random()*a.length)];}
+function srnd(a){const d=new Date();return a[(d.getDate()*31+d.getMonth()*7)%a.length];}
+let lastEx=-1;
 
-// ══════════════════════════════════════════════
-// FETCH — tries Apps Script first, falls back to gviz
-// ══════════════════════════════════════════════
+// ── FETCH ──
 async function fetchData(silent=false){
-  if(!silent){setSyncState('spin','Syncing...');}
+  if(!silent)setSS('spin','Syncing...');
   let ok=false;
-
-  // Method 1: Apps Script endpoint
   try{
-    const res=await fetch(APPS_SCRIPT_URL+'?t='+Date.now(),{mode:'cors'});
-    const raw=await res.json();
-    if(Array.isArray(raw)&&raw.length){
-      DATA=raw.map(row=>({
-        date:String(row.date||row.Date||'').trim(),
-        r:parseInt(row.rachit||row.Rachit||row['Rachit Steps']||0)||0,
-        a:parseInt(row.anushka||row.Anushka||row['Anushka Steps']||0)||0
-      })).filter(d=>d.date&&(d.r>0||d.a>0));
-      DATA.sort((x,y)=>x.date.localeCompare(y.date));
-      ok=true;
+    const r=await fetch(AS_URL+'?t='+Date.now(),{mode:'cors'});
+    const j=await r.json();
+    if(Array.isArray(j)&&j.length){
+      DATA=j.map(row=>({date:String(row.date||row.Date||'').trim(),r:parseInt(row.rachit||row.Rachit||row['Rachit Steps']||0)||0,a:parseInt(row.anushka||row.Anushka||row['Anushka Steps']||0)||0})).filter(d=>d.date&&(d.r>0||d.a>0));
+      DATA.sort((x,y)=>x.date.localeCompare(y.date));ok=true;
     }
-  }catch(e){console.warn('Apps Script failed, trying gviz...',e);}
-
-  // Method 2: gviz fallback
+  }catch(e){}
   if(!ok){
     try{
       const url=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Sheet1&cb=${Date.now()}`;
-      const res=await fetch(url);
-      const text=await res.text();
+      const r=await fetch(url);const text=await r.text();
       const json=JSON.parse(text.slice(text.indexOf('{'),(text.lastIndexOf('}')+1)));
       DATA=[];
       (json.table.rows||[]).forEach(row=>{
@@ -1658,395 +694,238 @@ async function fetchData(silent=false){
         let ds=typeof row.c[0].v==='string'?row.c[0].v.trim():(row.c[0].f||'').trim();
         if(!ds)return;
         if(/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(ds)){const[m,d,y]=ds.split('/');ds=`${y}-${m.padStart(2,'0')}-${d.padStart(2,'0')}`;}
-        const r=parseInt(row.c[1]?.v||0)||0;
-        const a=parseInt(row.c[2]?.v||0)||0;
-        if(r>0||a>0)DATA.push({date:ds,r,a});
+        const rv=parseInt(row.c[1]?.v||0)||0,av=parseInt(row.c[2]?.v||0)||0;
+        if(rv>0||av>0)DATA.push({date:ds,r:rv,a:av});
       });
-      DATA.sort((x,y)=>x.date.localeCompare(y.date));
-      ok=true;
-    }catch(e){console.error('gviz also failed',e);}
+      DATA.sort((x,y)=>x.date.localeCompare(y.date));ok=true;
+    }catch(e){}
   }
-
-  if(ok){
-    setSyncState('live',`Live · ${new Date().toLocaleTimeString()}`);
-    if(!silent)toast(`✅ ${DATA.length} battle day${DATA.length!==1?'s':''} loaded!`);
-    if(DATA.length>0)confetti();
-  }else{
-    setSyncState('err','Sync failed');
-    if(!silent)toast('❌ Could not load data','#ef4444');
-  }
-
+  if(ok){setSS('live',`Live · ${new Date().toLocaleTimeString()}`);if(!silent){toast(`✅ ${DATA.length} battle days loaded!`);if(DATA.length)confetti();}}
+  else{setSS('err','Sync failed');if(!silent)toast('❌ Could not load data','#ef4444');}
   renderAll();
-  setTimeout(()=>document.getElementById('loading').classList.add('out'),400);
+  setTimeout(()=>document.getElementById('ld').classList.add('out'),400);
 }
+function setSS(s,l){const d=document.getElementById('sdot'),lb=document.getElementById('slbl');d.className='sdot'+(s==='spin'?' spin':s==='err'?' err':'');lb.textContent=l;}
 
-function setSyncState(s,lbl){
-  const d=document.getElementById('sdot');
-  const l=document.getElementById('sync-lbl');
-  d.className='sync-dot'+(s==='spin'?' spin':s==='err'?' err':'');
-  l.textContent=lbl;
-}
-
-// ══════════════════════════════════════════════
-// RENDER
-// ══════════════════════════════════════════════
+// ── RENDER ──
 function renderAll(){
-  if(!DATA.length){
-    document.getElementById('loading').classList.add('out');
-    return;
-  }
+  if(!DATA.length){document.getElementById('ld').classList.add('out');return;}
+  let rT=0,aT=0,rSl=0,aSl=0,rW=0,aW=0,lR=Infinity,lA=Infinity;
+  DATA.forEach(d=>{rT+=d.r;aT+=d.a;if(d.r>0&&d.r<5000)rSl++;if(d.a>0&&d.a<5000)aSl++;if(d.r>0)lR=Math.min(lR,d.r);if(d.a>0)lA=Math.min(lA,d.a);if(d.r>d.a)rW++;else if(d.a>d.r)aW++;});
+  lR=lR===Infinity?0:lR;lA=lA===Infinity?0:lA;
+  const lowWho=lR<=lA?'Rachit':'Anushka Ji';const actLow=Math.min(lR,lA)||0;
+  const n=DATA.length,tot=rT+aT||1,rP=Math.round(rT/tot*100),aP=100-rP;
+  const diff=Math.abs(rT-aT),ldr=rT>aT?'rachit':aT>rT?'anushka':'tie';
+  window._ldr=ldr;
 
-  let rT=0,aT=0,rSl=0,aSl=0,rW=0,aW=0;
-  let lowestR=Infinity,lowestA=Infinity;
-  DATA.forEach(d=>{
-    rT+=d.r;aT+=d.a;
-    if(d.r>0&&d.r<5000)rSl++;
-    if(d.a>0&&d.a<5000)aSl++;
-    if(d.r>0)lowestR=Math.min(lowestR,d.r);
-    if(d.a>0)lowestA=Math.min(lowestA,d.a);
-    if(d.r>d.a)rW++;else if(d.a>d.r)aW++;
-  });
-  lowestR=lowestR===Infinity?0:lowestR;
-  lowestA=lowestA===Infinity?0:lowestA;
-  const lowestWho=lowestR<=lowestA?'Rachit':'Anushka Ji';
-  const actualLow=Math.min(lowestR,lowestA)||0;
-
-  const n=DATA.length;
-  const tot=rT+aT||1;
-  const rPct=Math.round(rT/tot*100);
-  const aPct=100-rPct;
-  const diff=Math.abs(rT-aT);
-  const ldr=rT>aT?'rachit':aT>rT?'anushka':'tie';
-
-  // ── FIGHTER CARDS ──
+  // Fighters
   document.getElementById('fs-r').textContent=fmt(rT);
   document.getElementById('fs-a').textContent=fmt(aT);
+  const fcr=document.getElementById('fc-r'),fca=document.getElementById('fc-a');
+  fcr.classList.toggle('win',ldr==='rachit');fca.classList.toggle('win',ldr==='anushka');
+  fcr.classList.toggle('wg',ldr==='rachit');fca.classList.toggle('wg',ldr==='anushka');
+  const rbr=document.getElementById('rb-r'),rba=document.getElementById('rb-a');
+  if(ldr==='rachit'){rbr.textContent='🥇';rbr.className='rbdg gold';rba.textContent='🥈';rba.className='rbdg silver';}
+  else if(ldr==='anushka'){rba.textContent='🥇';rba.className='rbdg gold';rbr.textContent='🥈';rbr.className='rbdg silver';}
+  else{rbr.textContent='⚖️';rbr.className='rbdg silver';rba.textContent='⚖️';rba.className='rbdg silver';}
+  setLvl(rT,'lvl-r','xp-r','xp-t-r');setLvl(aT,'lvl-a','xp-a','xp-t-a');
 
-  const fcR=document.getElementById('fc-r');
-  const fcA=document.getElementById('fc-a');
-  fcR.classList.toggle('winner',ldr==='rachit');
-  fcA.classList.toggle('winner',ldr==='anushka');
-  fcR.classList.toggle('winner-glow',ldr==='rachit');
-  fcA.classList.toggle('winner-glow',ldr==='anushka');
+  // War bar
+  document.getElementById('wb-r').style.width=rP+'%';document.getElementById('wb-a').style.width=aP+'%';
+  const wbc=document.getElementById('wbc');
+  wbc.textContent=ldr==='tie'?'⚖️ Perfectly tied':ldr==='rachit'?`🔵 ${fmt(diff)} step lead`:`🔴 ${fmt(diff)} step lead`;
 
-  const rbR=document.getElementById('rb-r');
-  const rbA=document.getElementById('rb-a');
-  if(ldr==='rachit'){
-    rbR.textContent='🥇';rbR.className='rank-badge gold';
-    rbA.textContent='🥈';rbA.className='rank-badge silver';
-  }else if(ldr==='anushka'){
-    rbA.textContent='🥇';rbA.className='rank-badge gold';
-    rbR.textContent='🥈';rbR.className='rank-badge silver';
-  }else{
-    rbR.textContent='⚖️';rbR.className='rank-badge silver';
-    rbA.textContent='⚖️';rbA.className='rank-badge silver';
-  }
+  // Chips
+  const cd=document.getElementById('ch-diff');cd.textContent=fmt(diff);cd.style.color=ldr==='rachit'?'var(--r)':ldr==='anushka'?'var(--a)':'var(--txt)';
+  document.getElementById('ch-days').textContent=n;document.getElementById('ch-left').textContent=Math.max(0,30-n);
+  const dL=Math.max(1,30-n);
+  document.getElementById('ch-catch').textContent=ldr!=='tie'&&diff>0?'+'+fmt(Math.ceil(diff/dL))+'/d':'0';
+  document.getElementById('ch-km').innerHTML=`<span style="color:var(--r)">${(rT*.0008).toFixed(1)}</span>/<span style="color:var(--a)">${(aT*.0008).toFixed(1)}</span>km`;
 
-  setLvl(rT,'lvl-r','xp-r','xp-txt-r');
-  setLvl(aT,'lvl-a','xp-a','xp-txt-a');
-
-  // ── WAR BAR ──
-  document.getElementById('wb-r').style.width=rPct+'%';
-  document.getElementById('wb-a').style.width=aPct+'%';
-  const wbc=document.getElementById('wbar-center');
-  if(ldr==='tie')wbc.textContent='⚖️ Perfectly tied';
-  else wbc.innerHTML=`${ldr==='rachit'?'🔵':'🔴'} <strong>${fmt(diff)}</strong> step lead`;
-
-  // ── CHIPS ──
-  const ch=document.getElementById('ch-diff');
-  ch.textContent=fmt(diff);
-  ch.style.color=ldr==='rachit'?'var(--r)':ldr==='anushka'?'var(--a)':'var(--txt)';
-  document.getElementById('ch-days').textContent=n;
-  document.getElementById('ch-left').textContent=Math.max(0,30-n);
-  const dLeft=Math.max(1,30-n);
-  if(ldr!=='tie'&&diff>0){
-    document.getElementById('ch-catch').textContent='+'+fmt(Math.ceil(diff/dLeft))+'/d';
-  }else document.getElementById('ch-catch').textContent='0';
-  const rKm=(rT*.0008).toFixed(1),aKm=(aT*.0008).toFixed(1);
-  document.getElementById('ch-km').innerHTML=`<span style="color:var(--r)">${rKm}</span>/<span style="color:var(--a)">${aKm}</span>km`;
-
-  // ── PUBLIC HUMILIATION ──
-  const hc=document.getElementById('hum-card');
+  // Humiliation
+  const hc=document.getElementById('hum');
   if(rT>0&&aT>0&&ldr!=='tie'){
     hc.style.display='block';
-    if(ldr==='rachit'){
-      document.getElementById('hum-avi').textContent='🚶‍♀️';
-      document.getElementById('hum-name').textContent='Anushka Ji';
-      document.getElementById('hum-roast').textContent=seededRnd(LOSER_A);
-    }else{
-      document.getElementById('hum-avi').textContent='🏃';
-      document.getElementById('hum-name').textContent='Rachit';
-      document.getElementById('hum-roast').textContent=seededRnd(LOSER_R);
-    }
+    if(ldr==='rachit'){document.getElementById('hum-avi').textContent='🚶‍♀️';document.getElementById('hum-name').textContent='Anushka Ji';document.getElementById('hum-roast').textContent=srnd(LA);}
+    else{document.getElementById('hum-avi').textContent='🏃';document.getElementById('hum-name').textContent='Rachit';document.getElementById('hum-roast').textContent=srnd(LR);}
   }else hc.style.display='none';
 
-  // ── DAILY CHAMP ──
-  const latest=DATA[DATA.length-1];
-  const dc=document.getElementById('dc');
-  const dcText=document.getElementById('dc-text');
-  const dcSub=document.getElementById('dc-sub');
-  const dcBg=document.getElementById('dc-bg');
-  const dcMedal=document.getElementById('dc-medal');
-  dc.className='daily-champ';
-  if(latest.r>latest.a){
-    dc.classList.add('r-champ');dcBg.textContent='R';dcMedal.textContent='🔵';
-    dcText.textContent='"'+seededRnd(DAILY_R)+'"';
-    dcSub.innerHTML=`${latest.date.slice(5)} &nbsp;·&nbsp; <strong>Rachit won by ${fmt(latest.r-latest.a)} steps</strong>`;
-  }else if(latest.a>latest.r){
-    dc.classList.add('a-champ');dcBg.textContent='A';dcMedal.textContent='🔴';
-    dcText.textContent='"'+seededRnd(DAILY_A)+'"';
-    dcSub.innerHTML=`${latest.date.slice(5)} &nbsp;·&nbsp; <strong>Anushka Ji won by ${fmt(latest.a-latest.r)} steps</strong>`;
-  }else{
-    dc.classList.add('tie-champ');dcBg.textContent='=';dcMedal.textContent='⚖️';
-    dcText.textContent='"A dead heat. Pathetic from both. Pune and Mumbai equally embarrassed."';
-    dcSub.innerHTML=`${latest.date.slice(5)} &nbsp;·&nbsp; <strong>Tie. The worst possible outcome for everyone.</strong>`;
-  }
+  // Daily champ
+  const lt=DATA[DATA.length-1],dc=document.getElementById('dc');
+  dc.className='dc';
+  if(lt.r>lt.a){dc.classList.add('rc2');document.getElementById('dc-bg').textContent='R';document.getElementById('dc-med').textContent='🔵';document.getElementById('dc-txt').textContent='"'+srnd(DR)+'"';document.getElementById('dc-sub').innerHTML=`${lt.date.slice(5)} · <strong>Rachit won by ${fmt(lt.r-lt.a)} steps</strong>`;}
+  else if(lt.a>lt.r){dc.classList.add('ac2');document.getElementById('dc-bg').textContent='A';document.getElementById('dc-med').textContent='🔴';document.getElementById('dc-txt').textContent='"'+srnd(DA)+'"';document.getElementById('dc-sub').innerHTML=`${lt.date.slice(5)} · <strong>Anushka Ji won by ${fmt(lt.a-lt.r)} steps</strong>`;}
+  else{dc.classList.add('tc');document.getElementById('dc-bg').textContent='=';document.getElementById('dc-med').textContent='⚖️';document.getElementById('dc-txt').textContent='"A dead heat. Pathetic from both. Pune and Mumbai equally embarrassed."';document.getElementById('dc-sub').innerHTML=`${lt.date.slice(5)} · <strong>Tie. The worst possible outcome.</strong>`;}
 
-  // ── HALL OF SHAME ──
-  const LOW_QUOTES=[
-    '"A number so small it\'s basically decorative."',
-    '"Fewer steps than a toddler at IKEA."',
-    '"The Fitbit wept when it recorded this."',
-    '"This is not a step count. This is a cry for help."',
-    '"Historically low. Medically concerning. Personally embarrassing."',
-  ];
-  const SLUG_QUOTES=[
-    '"Days where the only movement was scrolling this leaderboard."',
-    '"Fewer steps than the walk to the bathroom."',
-    '"A pattern of behaviour that concerns everyone who knows them."',
-    '"Scientists are baffled. Doctors are worried. Rivals are thrilled."',
-  ];
-  const MIR_QUOTES=[
-    '"The math doesn\'t care about your feelings."',
-    '"A number that increases daily. Like regret."',
-    '"Physics, unfortunately, is non-negotiable."',
-    '"This is what happens when you take rest days on a challenge."',
-  ];
-  document.getElementById('sh-low').textContent=actualLow?fmt(actualLow):'—';
-  document.getElementById('sh-low-sub').textContent=actualLow?`Logged by ${lowestWho} 💀`:'No data yet';
-  document.getElementById('sh-low-quote').textContent=rnd(LOW_QUOTES);
-
+  // Shame
+  const LQ=['"A number so small it\'s basically decorative."','"Fewer steps than a toddler at IKEA."','"The Fitbit wept when it recorded this."','"Historically low. Medically concerning. Personally embarrassing."'];
+  const SQ=['"Days where the only movement was scrolling this leaderboard."','"Fewer steps than the walk to the bathroom."','"Scientists baffled. Doctors worried. Rivals thrilled."'];
+  const MQ=['"The math doesn\'t care about your feelings."','"A number that increases daily. Like regret."','"Physics, unfortunately, is non-negotiable."'];
+  document.getElementById('sh-low').textContent=actLow?fmt(actLow):'—';document.getElementById('sh-low-sub').textContent=actLow?`Logged by ${lowWho} 💀`:'No data';document.getElementById('sh-low-q').textContent=srnd(LQ);
   const slugWho=rSl>=aSl?'Rachit':'Anushka Ji';
-  document.getElementById('sh-slug').textContent=fmt(Math.max(rSl,aSl));
-  document.getElementById('sh-slug-sub').textContent=`${slugWho}'s career low moments`;
-  document.getElementById('sh-slug-quote').textContent=rnd(SLUG_QUOTES);
+  document.getElementById('sh-slug').textContent=fmt(Math.max(rSl,aSl));document.getElementById('sh-slug-sub').textContent=`${slugWho}'s career lows`;document.getElementById('sh-slug-q').textContent=srnd(SQ);
+  if(ldr!=='tie'&&diff>0){const mir=Math.ceil(diff/dL);const behind=ldr==='rachit'?'Anushka Ji':'Rachit';document.getElementById('sh-mir').textContent='+'+fmt(mir)+'/d';document.getElementById('sh-mir-sub').textContent=`${behind} above rival's pace`;}
+  else{document.getElementById('sh-mir').textContent='0/d';document.getElementById('sh-mir-sub').textContent='Battle even';}
+  document.getElementById('sh-mir-q').textContent=srnd(MQ);
 
-  const dLeft2=Math.max(1,30-n);
-  if(ldr!=='tie'&&diff>0){
-    const mir=Math.ceil(diff/dLeft2);
-    const behind=ldr==='rachit'?'Anushka Ji':'Rachit';
-    document.getElementById('sh-mir').textContent='+'+fmt(mir)+'/d';
-    document.getElementById('sh-mir-sub').textContent=`${behind} above rival's daily pace`;
-  }else{
-    document.getElementById('sh-mir').textContent='0/d';
-    document.getElementById('sh-mir-sub').textContent='Battle even — no miracle needed';
-  }
-  document.getElementById('sh-mir-quote').textContent=rnd(MIR_QUOTES);
-
-  // ── SHAME ROW 2: deep stats ──
-  // Laziest streak (consecutive days both under combined avg)
-  const globalAvg=n?((rT+aT)/n/2):8000;
-  let lazyR=0,lazyA=0,maxLazyR=0,maxLazyA=0,curLR=0,curLA=0;
-  DATA.forEach(d=>{
-    if(d.r<globalAvg){curLR++;maxLazyR=Math.max(maxLazyR,curLR);}else curLR=0;
-    if(d.a<globalAvg){curLA++;maxLazyA=Math.max(maxLazyA,curLA);}else curLA=0;
-  });
-  const lazyWho=maxLazyR>=maxLazyA?'Rachit':'Anushka Ji';
-  const lazyDays=Math.max(maxLazyR,maxLazyA);
-  document.getElementById('sh-lazy-streak').textContent=lazyDays?lazyDays+' days':'—';
-  document.getElementById('sh-lazy-sub').textContent=lazyDays?`${lazyWho} — consecutive days under avg`:'No streak yet';
-  document.getElementById('sh-box-lazy').style.borderColor=lazyDays>2?'rgba(245,158,11,.3)':'rgba(255,255,255,.07)';
-
-  // Biggest single day gap
-  let maxGap=0,maxGapWinner='',maxGapDate='';
-  DATA.forEach(d=>{const g=Math.abs(d.r-d.a);if(g>maxGap){maxGap=g;maxGapWinner=d.r>d.a?'Rachit':'Anushka Ji';maxGapDate=d.date.slice(5);}});
-  document.getElementById('sh-gap').textContent=maxGap?fmt(maxGap):'—';
-  document.getElementById('sh-gap-sub').textContent=maxGap?`${maxGapWinner} on ${maxGapDate}`:'No data yet';
-  document.getElementById('sh-box-gap').style.borderColor=maxGap>5000?'rgba(244,63,94,.3)':'rgba(255,255,255,.07)';
-
-  // Days below 8k
-  let below8R=0,below8A=0;
-  DATA.forEach(d=>{if(d.r>0&&d.r<8000)below8R++;if(d.a>0&&d.a<8000)below8A++;});
-  const below8Who=below8R>=below8A?'Rachit':'Anushka Ji';
-  const below8Max=Math.max(below8R,below8A);
-  document.getElementById('sh-below').textContent=below8Max||'—';
-  document.getElementById('sh-below-sub').textContent=below8Max?`${below8Who} — officially mediocre`:'Everyone OK so far';
-
-  // Domination ratio
-  const domRatio=ldr==='rachit'&&aT>0?(rT/aT).toFixed(2):ldr==='anushka'&&rT>0?(aT/rT).toFixed(2):null;
-  const domWho=ldr==='rachit'?'Rachit':'Anushka Ji';
-  document.getElementById('sh-ratio').textContent=domRatio?domRatio+'×':'⚖️';
-  document.getElementById('sh-ratio-sub').textContent=domRatio?`${domWho} steps per loser step`:'Too close to call';
-  document.getElementById('sh-box-ratio').style.borderColor=domRatio>1.1?'rgba(139,92,246,.3)':'rgba(255,255,255,.07)';
+  // Shame row 2
+  const gAvg=n?((rT+aT)/n/2):8000;let mlR=0,mlA=0,clR=0,clA=0;
+  DATA.forEach(d=>{if(d.r<gAvg){clR++;mlR=Math.max(mlR,clR);}else clR=0;if(d.a<gAvg){clA++;mlA=Math.max(mlA,clA);}else clA=0;});
+  const lazW=mlR>=mlA?'Rachit':'Anushka Ji';const lazD=Math.max(mlR,mlA);
+  document.getElementById('sh-lazy').textContent=lazD?lazD+' days':'—';document.getElementById('sh-lazy-sub').textContent=lazD?`${lazW} — consecutive days under avg`:'No streak yet';
+  document.getElementById('sh-b-lazy').style.borderColor=lazD>2?'rgba(245,158,11,.3)':'rgba(255,255,255,.07)';
+  let maxG=0,mgW='',mgD='';DATA.forEach(d=>{const g=Math.abs(d.r-d.a);if(g>maxG){maxG=g;mgW=d.r>d.a?'Rachit':'Anushka Ji';mgD=d.date.slice(5);}});
+  document.getElementById('sh-gap').textContent=maxG?fmt(maxG):'—';document.getElementById('sh-gap-sub').textContent=maxG?`${mgW} on ${mgD}`:'No data';
+  document.getElementById('sh-b-gap').style.borderColor=maxG>5000?'rgba(244,63,94,.3)':'rgba(255,255,255,.07)';
+  let b8R=0,b8A=0;DATA.forEach(d=>{if(d.r>0&&d.r<8000)b8R++;if(d.a>0&&d.a<8000)b8A++;});
+  const b8W=b8R>=b8A?'Rachit':'Anushka Ji';const b8M=Math.max(b8R,b8A);
+  document.getElementById('sh-below').textContent=b8M||'—';document.getElementById('sh-below-sub').textContent=b8M?`${b8W} — officially mediocre`:'Everyone OK so far';
+  const domR=ldr==='rachit'&&aT>0?(rT/aT).toFixed(2):ldr==='anushka'&&rT>0?(aT/rT).toFixed(2):null;
+  document.getElementById('sh-ratio').textContent=domR?domR+'×':'⚖️';document.getElementById('sh-ratio-sub').textContent=domR?`${ldr==='rachit'?'Rachit':'Anushka Ji'} per loser step`:'Too close';
+  document.getElementById('sh-b-ratio').style.borderColor=domR>1.1?'rgba(139,92,246,.3)':'rgba(255,255,255,.07)';
 
   // Verdict
-  const VERDICTS_R=[
-    `After ${n} days, <strong>Anushka Ji</strong> — Senior QA Automation Engineer, makeup artist, proud Punekaar — is losing a walking challenge to a man from Mumbai. Her QA skills have failed to catch the most obvious bug: her own step count. The test suite is red. Shreenidhi, Hrutuja, Shivani, and Shweta are watching. The FC Road pani puri stalls are preparing farewell menus.`,
-    `<strong>Rachit</strong> leads by ${fmt(diff)} steps. The same man who eats misal pav, goes on bike rides, and writes long messages about deep feelings is currently making Anushka Ji's 3 past relationships look like the most recoverable losses of her life. The pani puri ban is not a risk. It is a projection.`,
-    `The evidence is clear: <strong>Anushka Ji</strong> chose Pune over Mumbai and the Pune lifestyle over fitness. Wider roads. Cleaner air. Slower step count. Her father builds aluminium windows and glass facades — he is going to need to build a display case for the last pani puri she eats before the ban. The Hall of Shame simply documents.`,
-  ];
-  const VERDICTS_A=[
-    `After ${n} days, <strong>Rachit</strong> — D2C founder, gym-goer, Mumbai local, misal pav enthusiast — is losing a walking challenge to a woman from Pune. He automated his entire P&L with SP-API, wrote Python scripts for Amazon Ads, and built a Supabase brain dump app. His legs remain the only unoptimised asset in his entire operation.`,
-    `<strong>Anushka Ji</strong> leads by ${fmt(diff)} steps. Rachit has had 1 relationship in his life, it lasted 7 years and ended badly, and now he can't even commit to 10,000 steps a day. The bar tab is in mourning. The misal pav is not converting to steps. The investigation is ongoing.`,
-    `The record shows: <strong>Rachit</strong> is being beaten by a QA engineer from Pune who also does makeup artistry on the side. Mumbai vs Pune is supposed to be a debate. This leaderboard has settled it for today and the answer is embarrassing for the Mumbai side. This Hall does not judge. It archives.`,
-  ];
-  const VERDICTS_TIE=[
-    `After ${n} days: a Mumbai ecommerce founder and a Pune QA engineer are perfectly tied. The pani puri is safe. The alcohol is safe. The Mumbai vs Pune debate is unresolved. Shivani is the only one in this entire situation who is actually fit.`,
-  ];
-  const verdict=ldr==='rachit'?seededRnd(VERDICTS_R):ldr==='anushka'?seededRnd(VERDICTS_A):seededRnd(VERDICTS_TIE);
-  document.getElementById('sv-text').innerHTML=verdict;
+  const VR=[`After ${n} days, <strong>Anushka Ji</strong> — Senior QA Engineer, makeup artist, proud Punekaar — is losing a walking challenge to a man from Mumbai. Her QA skills failed to catch the most obvious bug: her own step count. The test suite is red. Shreenidhi, Hrutuja, Shivani, and Shweta are watching. The FC Road pani puri stalls are preparing farewell menus.`,`<strong>Rachit</strong> leads by ${fmt(diff)} steps. The same man who eats misal pav, goes on bike rides, and writes long messages about deep feelings is making Anushka Ji's 3 past relationships look like the most recoverable losses of her life.`,`The evidence is clear: <strong>Anushka Ji</strong> chose Pune over Mumbai and the Pune lifestyle over fitness. Her father builds aluminium windows — he will need to build a glass case for the last pani puri before the ban.`];
+  const VA=[`After ${n} days, <strong>Rachit</strong> — D2C founder, gym-goer, misal pav enthusiast — is losing to a woman from Pune. He automated his entire P&L with SP-API. He built a Supabase brain dump app. His legs remain the only unoptimised asset in his entire operation.`,`<strong>Anushka Ji</strong> leads by ${fmt(diff)} steps. Rachit has had 1 relationship in his life, it lasted 7 years, ended badly, and now he can't commit to 10,000 steps a day. The bar tab is in mourning.`,`The record shows: <strong>Rachit</strong> is being beaten by a QA engineer from Pune who also does makeup artistry on the side. Mumbai vs Pune is a debate. This leaderboard has settled today's round and it is embarrassing for the Mumbai side.`];
+  const VT=[`After ${n} days: a Mumbai ecommerce founder and a Pune QA engineer are perfectly tied. The pani puri is safe. The alcohol is safe. Shivani is the only person in this situation who is actually fit.`];
+  document.getElementById('sv-t').innerHTML=ldr==='rachit'?srnd(VR):ldr==='anushka'?srnd(VA):srnd(VT);
 
-  // ── HP BARS ──
-  let ppPct=100,alPct=100;
-  if(tot>0){
-    const rs=rT/tot,as=aT/tot;
-    if(rs>.5)ppPct=Math.max(0,Math.round(100-(rs-.5)*400));
-    if(as>.5)alPct=Math.max(0,Math.round(100-(as-.5)*400));
-  }
-  document.getElementById('pp-pct').textContent=ppPct+'%';
-  document.getElementById('pp-bar').style.width=ppPct+'%';
-  document.getElementById('pp-status').textContent=ppPct<20?'🚨 CRITICAL — Ban almost certain':ppPct<40?'😰 Danger zone — stall access threatened':ppPct<60?'🤞 Survival uncertain':'✅ Safe for now';
-  document.getElementById('al-pct').textContent=alPct+'%';
-  document.getElementById('al-bar').style.width=alPct+'%';
-  document.getElementById('al-status').textContent=alPct<20?'🚨 CRITICAL — Dry year inevitable':alPct<40?'😰 Happy hour endangered':alPct<60?'🤞 Conditional safety':'✅ Drinking in peace';
+  // HP
+  let ppP=100,alP=100;
+  if(tot>0){const rs=rT/tot,as=aT/tot;if(rs>.5)ppP=Math.max(0,Math.round(100-(rs-.5)*400));if(as>.5)alP=Math.max(0,Math.round(100-(as-.5)*400));}
+  document.getElementById('pp-pct').textContent=ppP+'%';document.getElementById('pp-bar').style.width=ppP+'%';
+  document.getElementById('pp-st').textContent=ppP<20?'🚨 CRITICAL — Ban almost certain':ppP<40?'😰 Danger zone — stall access threatened':ppP<60?'🤞 Survival uncertain':'✅ Safe for now';
+  document.getElementById('al-pct').textContent=alP+'%';document.getElementById('al-bar').style.width=alP+'%';
+  document.getElementById('al-st').textContent=alP<20?'🚨 CRITICAL — Dry year inevitable':alP<40?'😰 Happy hour endangered':alP<60?'🤞 Conditional safety':'✅ Drinking in peace';
 
-  // ── STREAK DOTS ──
-  const dotRow=document.getElementById('sdots');
-  dotRow.innerHTML='';
-  for(let i=1;i<=30;i++){
-    const d2=`2026-06-${String(i).padStart(2,'0')}`;
-    const e=DATA.find(x=>x.date===d2);
-    const dot=document.createElement('div');
-    if(!e)dot.className='sdot n';
-    else if(e.r>e.a)dot.className='sdot r';
-    else if(e.a>e.r)dot.className='sdot a';
-    else dot.className='sdot tie';
-    dot.title=`Jun ${i}: ${e?`R:${fmt(e.r)} A:${fmt(e.a)}`:'Not logged'}`;
-    dotRow.appendChild(dot);
-  }
+  // Streak dots
+  const dr=document.getElementById('sdots');dr.innerHTML='';
+  for(let i=1;i<=30;i++){const d2=`2026-06-${String(i).padStart(2,'0')}`;const e=DATA.find(x=>x.date===d2);const dot=document.createElement('div');dot.className='sdot2 '+(e?e.r>e.a?'r':e.a>e.r?'a':'tie':'n');dot.title=`Jun ${i}: ${e?`R:${fmt(e.r)} A:${fmt(e.a)}`:'Not logged'}`;dr.appendChild(dot);}
 
-  // ── ANALYTICS ──
-  let streak=0,streakWho='';
-  for(let i=DATA.length-1;i>=0;i--){
-    const d2=DATA[i];
-    if(!streak){if(d2.r>d2.a){streak=1;streakWho='Rachit';}else if(d2.a>d2.r){streak=1;streakWho='Anushka Ji';}else break;}
-    else{if(streakWho==='Rachit'&&d2.r>d2.a)streak++;else if(streakWho==='Anushka Ji'&&d2.a>d2.r)streak++;else break;}
-  }
-  const sEl=document.getElementById('ins-streak');
-  sEl.textContent=streak?streak+' Days':'—';
-  sEl.style.color=streakWho==='Rachit'?'var(--r)':streakWho==='Anushka Ji'?'var(--a)':'var(--txt)';
-  document.getElementById('ins-streak-sub').textContent=streak?streakWho+' on fire':'No active streak';
+  // Analytics
+  let stk=0,stkW='';for(let i=DATA.length-1;i>=0;i--){const d2=DATA[i];if(!stk){if(d2.r>d2.a){stk=1;stkW='Rachit';}else if(d2.a>d2.r){stk=1;stkW='Anushka Ji';}else break;}else{if(stkW==='Rachit'&&d2.r>d2.a)stk++;else if(stkW==='Anushka Ji'&&d2.a>d2.r)stk++;else break;}}
+  const sel=document.getElementById('ins-streak');sel.textContent=stk?stk+' Days':'—';sel.style.color=stkW==='Rachit'?'var(--r)':stkW==='Anushka Ji'?'var(--a)':'var(--txt)';document.getElementById('ins-streak-sub').textContent=stk?stkW+' on fire':'No active streak';
+  let mxB=0,bW='',bDt='';DATA.forEach(d2=>{const d3=Math.abs(d2.r-d2.a);if(d3>mxB){mxB=d3;bW=d2.r>d2.a?'Rachit':'Anushka Ji';bDt=d2.date.slice(5);}});
+  document.getElementById('ins-beat').textContent=fmt(mxB)||'—';document.getElementById('ins-beat-sub').textContent=mxB?`By ${bW} on ${bDt}`:'No data';
+  document.getElementById('ins-prob').textContent=rP+'% / '+aP+'%';document.getElementById('ins-prob-sub').innerHTML=`<span style="color:var(--r)">R</span> / <span style="color:var(--a)">A</span>`;
+  document.getElementById('ins-ravg').textContent=n?fmt(rT/n):'—';document.getElementById('ins-aavg').textContent=n?fmt(aT/n):'—';
+  document.getElementById('ins-wins').textContent=rW+'/'+aW;document.getElementById('ins-wins-sub').textContent='Rachit / Anushka Ji';
 
-  let maxBeat=0,beatWho='',beatDate='';
-  DATA.forEach(d2=>{const d3=Math.abs(d2.r-d2.a);if(d3>maxBeat){maxBeat=d3;beatWho=d2.r>d2.a?'Rachit':'Anushka Ji';beatDate=d2.date.slice(5);}});
-  document.getElementById('ins-beat').textContent=fmt(maxBeat)||'—';
-  document.getElementById('ins-beat-sub').textContent=maxBeat?`By ${beatWho} on ${beatDate}`:'No data';
+  // Badges
+  renderBadges(rT,aT);
 
-  document.getElementById('ins-prob').textContent=rPct+'% / '+aPct+'%';
-  document.getElementById('ins-prob-sub').innerHTML=`<span style="color:var(--r)">Rachit</span> / <span style="color:var(--a)">Anushka Ji</span>`;
-  document.getElementById('ins-ravg').textContent=n?fmt(rT/n):'—';
-  document.getElementById('ins-aavg').textContent=n?fmt(aT/n):'—';
-  document.getElementById('ins-wins').textContent=rW+' / '+aW;
-  document.getElementById('ins-wins-sub').textContent=`Rachit / Anushka Ji`;
+  // Wanted
+  renderWanted(rT,aT,ldr,diff,rSl,aSl,n);
 
-  // ── PREDICTOR ──
-  const rem=Math.max(0,30-n);
-  const avgR=n?rT/n:0,avgA=n?aT/n:0;
-  const pR=Math.round(rT+avgR*rem);
-  const pA=Math.round(aT+avgA*rem);
-  const pD=Math.abs(pR-pA);
-  const pLdr=pR>pA?'Rachit':pA>pR?'Anushka Ji':'Tie';
-  const prob=pR+pA?Math.round(Math.max(pR,pA)/(pR+pA)*100):50;
-  document.getElementById('pred-trophy').textContent=pLdr==='Rachit'?'🔵':pLdr==='Anushka Ji'?'🔴':'🔮';
-  const pw=document.getElementById('pred-winner');
-  pw.textContent=n?pLdr==='Tie'?'Projected Tie':`${pLdr} projected to win`:'Need data to predict';
-  pw.style.color=pLdr==='Rachit'?'var(--r)':pLdr==='Anushka Ji'?'var(--a)':'var(--gold)';
-  document.getElementById('pred-prob').textContent=n?prob+'%':'—';
-  document.getElementById('pred-rf').textContent=fmt(pR);
-  document.getElementById('pred-af').textContent=fmt(pA);
-  document.getElementById('pred-df').textContent=fmt(pD);
-  document.getElementById('pred-pun').textContent=pLdr==='Rachit'?'🍵 No Pani Puri':pLdr==='Anushka Ji'?'🍺 No Alcohol':'⚖️ TBD';
+  // Rivalry
+  renderRivalry();
 
-  renderBadges(DATA,rT,aT,rW,aW,diff,ldr,n);
-  renderWantedPoster(DATA,rT,aT,ldr,diff,rSl,aSl,n);
-  renderRivalry(DATA,rT,aT);
-  renderFriendLeaderboard(aT);
+  // Friends
+  document.getElementById('fl-a').textContent=aT?fmt(aT):'0';
+
+  // Excuse
   renderExcuse(ldr);
-  renderCharts(rT,aT,n);
+
+  // Predictor
+  const rem=Math.max(0,30-n);const aR=n?rT/n:0,aA=n?aT/n:0;
+  const pR=Math.round(rT+aR*rem),pA=Math.round(aT+aA*rem),pD=Math.abs(pR-pA);
+  const pL=pR>pA?'Rachit':pA>pR?'Anushka Ji':'Tie';const prob=pR+pA?Math.round(Math.max(pR,pA)/(pR+pA)*100):50;
+  document.getElementById('pred-t').textContent=pL==='Rachit'?'🔵':pL==='Anushka Ji'?'🔴':'🔮';
+  const pw=document.getElementById('pred-w');pw.textContent=n?pL==='Tie'?'Projected Tie':`${pL} projected to win`:'Need data';pw.style.color=pL==='Rachit'?'var(--r)':pL==='Anushka Ji'?'var(--a)':'var(--gold)';
+  document.getElementById('pred-p').textContent=n?prob+'%':'—';document.getElementById('pred-rf').textContent=fmt(pR);document.getElementById('pred-af').textContent=fmt(pA);document.getElementById('pred-df').textContent=fmt(pD);
+  document.getElementById('pred-pun').textContent=pL==='Rachit'?'🍵 No Pani Puri':pL==='Anushka Ji'?'🍺 No Alcohol':'⚖️ TBD';
+
+  renderCharts();
 }
 
-function setLvl(total,lEl,xEl,tEl){
-  const lvl=Math.floor(total/10000)+1;
-  const rem=total%10000;
-  const pct=(rem/10000)*100;
-  document.getElementById(lEl).textContent='LVL '+lvl;
-  document.getElementById(xEl).style.width=pct+'%';
-  document.getElementById(tEl).textContent=fmt(rem)+' / 10k → LVL '+(lvl+1);
+function setLvl(tot,le,xe,te){const lv=Math.floor(tot/10000)+1;const rm=tot%10000;document.getElementById(le).textContent='LVL '+lv;document.getElementById(xe).style.width=(rm/10000*100)+'%';document.getElementById(te).textContent=fmt(rm)+'/10k→LVL'+(lv+1);}
+
+function renderBadges(rT,aT){
+  ['r','a'].forEach(side=>{
+    const g=document.getElementById('bdg-'+side);g.innerHTML='';
+    BDEFS.forEach(b=>{
+      const un=side==='r'?b.cr(DATA,rT,aT):b.ca(DATA,aT,rT);
+      const c=document.createElement('div');c.className=`bdg ${un?'un'+(side==='a'?' ab':''):'lk'}`;
+      c.innerHTML=`${un?'<div class="bshine"></div>':''}<div class="btag ${un?'et':'lt'}">${un?'✓':'🔒'}</div><span class="b-ico">${un?b.ico:'🔒'}</span><div class="b-name">${b.name}</div><div class="b-desc">${b.desc}</div>`;
+      g.appendChild(c);
+    });
+  });
+  document.querySelectorAll('.btab').forEach((t,i)=>{t.className='btab'+(i===0?' rt':'');});
+}
+function switchBadgeTab(s){
+  document.getElementById('bdg-r').style.display=s==='r'?'grid':'none';
+  document.getElementById('bdg-a').style.display=s==='a'?'grid':'none';
+  document.querySelectorAll('.btab').forEach((t,i)=>{t.className='btab'+((i===0&&s==='r')||(i===1&&s==='a')?' '+(s==='r'?'rt':'at'):'');});
 }
 
-// ══════════════════════════════════════════════
-// CHARTS
-// ══════════════════════════════════════════════
+function renderWanted(rT,aT,ldr,diff,rSl,aSl,n){
+  const w=document.getElementById('wanted-w');
+  if(!n||ldr==='tie'){w.style.display='none';return;}
+  w.style.display='flex';
+  const isR=ldr==='anushka';const nm=isR?'Rachit':'Anushka Ji';
+  const tot=isR?rT:aT;const sl=isR?rSl:aSl;const avg=n?Math.round(tot/n):0;
+  const dL=Math.max(0,30-n);const cu=dL>0?Math.ceil(diff/dL):0;
+  document.getElementById('wp-ph').textContent=isR?'🏃':'🚶‍♀️';
+  document.getElementById('wp-name').textContent=nm;
+  document.getElementById('wp-alias').textContent=rnd(isR?WPA_R:WPA_A);
+  document.getElementById('wp-ch').textContent=rnd(isR?WPC_R:WPC_A);
+  const st=document.getElementById('wp-stamp');
+  st.textContent=diff>10000?'GUILTY':'SUSPECT';
+  st.style.color=diff>10000?'rgba(127,29,29,.48)':'rgba(180,83,9,.48)';
+  st.style.borderColor=diff>10000?'rgba(127,29,29,.38)':'rgba(180,83,9,.38)';
+  document.getElementById('wp-sg').innerHTML=`<div class="wp-st"><div class="wp-sv">${fmt(tot)}</div><div class="wp-sl">Total Steps</div></div><div class="wp-st"><div class="wp-sv" style="color:#7f1d1d">−${fmt(diff)}</div><div class="wp-sl">Deficit</div></div><div class="wp-st"><div class="wp-sv">${fmt(avg)}</div><div class="wp-sl">Avg/Day</div></div><div class="wp-st"><div class="wp-sv" style="color:#7f1d1d">+${fmt(cu)}/d</div><div class="wp-sl">Miracle Req.</div></div><div class="wp-st"><div class="wp-sv">${sl}</div><div class="wp-sl">Pathetic Days</div></div><div class="wp-st"><div class="wp-sv">${dL}</div><div class="wp-sl">Days Left</div></div>`;
+}
+
+function renderRivalry(){
+  const mW=DATA.filter(d=>d.r>d.a).length,pW=DATA.filter(d=>d.a>d.r).length;
+  document.getElementById('rv-mum').textContent=mW;document.getElementById('rv-pun').textContent=pW;
+  const t2=mW+pW||1;const mP=Math.round(mW/t2*100),pP=100-mP;
+  document.getElementById('rv-bm').style.width=mP+'%';document.getElementById('rv-bp').style.width=pP+'%';
+  document.getElementById('rv-pct').textContent=`${mP}% / ${pP}%`;
+  document.getElementById('rv-mid').textContent=mW>pW?`🏙️ Mumbai ${mW}–${pW}`:pW>mW?`🌿 Pune ${pW}–${mW}`:`⚖️ ${mW}–${pW}`;
+  document.getElementById('rv-roast').textContent=mW>pW?srnd(RVM):pW>mW?srnd(RVP):srnd(RVT);
+}
+
+function renderExcuse(ldr){
+  if(ldr==='tie'){document.getElementById('ex-wrap').style.display='none';return;}
+  document.getElementById('ex-wrap').style.display='block';
+  rollExcuse();
+}
+function rollExcuse(){
+  const ldr=window._ldr||'tie';if(ldr==='tie')return;
+  const isR=ldr==='anushka';const pool=isR?EXR:EXA;
+  let i=Math.floor(Math.random()*pool.length);while(i===lastEx&&pool.length>1)i=Math.floor(Math.random()*pool.length);lastEx=i;
+  const ex=pool[i];
+  document.getElementById('ex-avi').textContent=isR?'🏃':'🚶‍♀️';
+  document.getElementById('ex-name').textContent=(isR?'Rachit':'Anushka Ji')+' explains:';
+  document.getElementById('ex-sub').textContent=`Today's official excuse from ${isR?'Rachit (Mumbai)':'Anushka Ji (Pune)'}. Credibility included.`;
+  document.getElementById('ex-t').textContent=ex.e;
+  const c=ex.c,fi=document.getElementById('ex-fi');
+  fi.style.width=c+'%';fi.style.background=c<20?'linear-gradient(90deg,#ef4444,#f87171)':c<50?'linear-gradient(90deg,#f59e0b,#fbbf24)':'linear-gradient(90deg,#10b981,#34d399)';
+  const lbl=c<20?'Completely fabricated':c<35?'Nobody believes this':c<50?'Questionable at best':c<70?'Technically possible':'Remotely plausible';
+  document.getElementById('ex-cv').textContent=`${c}% credible — "${lbl}"`;
+}
+
+// ── CHARTS ──
 function renderCharts(){
-  const labels=DATA.map(d=>d.date.slice(5));
-  const rD=DATA.map(d=>d.r);
-  const aD=DATA.map(d=>d.a);
-  let rc=0,ac=0;
-  const rC=DATA.map(d=>{rc+=d.r;return rc;});
-  const aC=DATA.map(d=>{ac+=d.a;return ac;});
-
-  Chart.defaults.font.family="'Plus Jakarta Sans',sans-serif";
-  Chart.defaults.color='#64748b';
-
-  if(charts.c)charts.c.destroy();
-  if(charts.d)charts.d.destroy();
-
-  const ctxC=document.getElementById('chartCum').getContext('2d');
-  const gR=ctxC.createLinearGradient(0,0,0,240);gR.addColorStop(0,'rgba(2,132,199,.22)');gR.addColorStop(1,'rgba(2,132,199,.01)');
-  const gA=ctxC.createLinearGradient(0,0,0,240);gA.addColorStop(0,'rgba(225,29,72,.22)');gA.addColorStop(1,'rgba(225,29,72,.01)');
-  charts.c=new Chart(ctxC,{type:'line',data:{labels,datasets:[
-    {label:'Rachit',data:rC,borderColor:'#0284c7',backgroundColor:gR,fill:true,tension:.4,borderWidth:3,pointRadius:4,pointHoverRadius:6,pointBackgroundColor:'#0284c7'},
-    {label:'Anushka Ji',data:aC,borderColor:'#e11d48',backgroundColor:gA,fill:true,tension:.4,borderWidth:3,pointRadius:4,pointHoverRadius:6,pointBackgroundColor:'#e11d48'},
-  ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom',labels:{boxWidth:12,padding:14,font:{size:11}}}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:'rgba(0,0,0,.04)'},ticks:{font:{size:10},callback:v=>v>=1000?Math.round(v/1000)+'k':v}}}}});
-
-  const ctxD=document.getElementById('chartDay').getContext('2d');
-  charts.d=new Chart(ctxD,{type:'bar',data:{labels,datasets:[
-    {label:'Rachit',data:rD,backgroundColor:'rgba(2,132,199,.8)',hoverBackgroundColor:'#0284c7',borderRadius:6,borderSkipped:false},
-    {label:'Anushka Ji',data:aD,backgroundColor:'rgba(225,29,72,.8)',hoverBackgroundColor:'#e11d48',borderRadius:6,borderSkipped:false},
-  ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom',labels:{boxWidth:12,padding:14,font:{size:11}}}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:'rgba(0,0,0,.04)'},ticks:{font:{size:10},callback:v=>v>=1000?Math.round(v/1000)+'k':v}}}}});
+  const labs=DATA.map(d=>d.date.slice(5));const rD=DATA.map(d=>d.r);const aD=DATA.map(d=>d.a);
+  let rc=0,ac=0;const rC=DATA.map(d=>{rc+=d.r;return rc;});const aC=DATA.map(d=>{ac+=d.a;return ac;});
+  Chart.defaults.font.family="'Plus Jakarta Sans',sans-serif";Chart.defaults.color='#64748b';
+  if(charts.c)charts.c.destroy();if(charts.d)charts.d.destroy();
+  const gR=document.getElementById('chartCum').getContext('2d');const g1=gR.createLinearGradient(0,0,0,220);g1.addColorStop(0,'rgba(2,132,199,.2)');g1.addColorStop(1,'rgba(2,132,199,.01)');const g2=gR.createLinearGradient(0,0,0,220);g2.addColorStop(0,'rgba(225,29,72,.2)');g2.addColorStop(1,'rgba(225,29,72,.01)');
+  charts.c=new Chart(gR,{type:'line',data:{labels:labs,datasets:[{label:'Rachit',data:rC,borderColor:'#0284c7',backgroundColor:g1,fill:true,tension:.4,borderWidth:3,pointRadius:4,pointBackgroundColor:'#0284c7'},{label:'Anushka Ji',data:aC,borderColor:'#e11d48',backgroundColor:g2,fill:true,tension:.4,borderWidth:3,pointRadius:4,pointBackgroundColor:'#e11d48'}]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom',labels:{boxWidth:12,padding:12,font:{size:11}}}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:'rgba(0,0,0,.04)'},ticks:{font:{size:10},callback:v=>v>=1000?Math.round(v/1000)+'k':v}}}}});
+  const gD=document.getElementById('chartDay').getContext('2d');
+  charts.d=new Chart(gD,{type:'bar',data:{labels:labs,datasets:[{label:'Rachit',data:rD,backgroundColor:'rgba(2,132,199,.75)',hoverBackgroundColor:'#0284c7',borderRadius:6,borderSkipped:false},{label:'Anushka Ji',data:aD,backgroundColor:'rgba(225,29,72,.75)',hoverBackgroundColor:'#e11d48',borderRadius:6,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom',labels:{boxWidth:12,padding:12,font:{size:11}}}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:'rgba(0,0,0,.04)'},ticks:{font:{size:10},callback:v=>v>=1000?Math.round(v/1000)+'k':v}}}}});
 }
 
-// ══════════════════════════════════════════════
-// CONFETTI
-// ══════════════════════════════════════════════
-function confetti(){
-  const colors=['#0284c7','#38bdf8','#e11d48','#fb7185','#f59e0b','#10b981','#8b5cf6'];
-  for(let i=0;i<50;i++){
-    const p=document.createElement('div');
-    p.className='cp';
-    const sz=6+Math.random()*8;
-    p.style.cssText=`left:${Math.random()*100}vw;top:-10px;width:${sz}px;height:${sz}px;background:${colors[~~(Math.random()*colors.length)]};transform:rotate(${Math.random()*360}deg);animation:cf ${1.5+Math.random()*2}s linear ${Math.random()*.8}s forwards`;
-    document.body.appendChild(p);
-    setTimeout(()=>p.remove(),4000);
-  }
-}
+// ── CONFETTI ──
+function confetti(){const cs=['#0284c7','#38bdf8','#e11d48','#fb7185','#f59e0b','#10b981','#8b5cf6'];for(let i=0;i<50;i++){const p=document.createElement('div');p.className='cp';const sz=6+Math.random()*8;p.style.cssText=`left:${Math.random()*100}vw;top:-10px;width:${sz}px;height:${sz}px;background:${cs[~~(Math.random()*cs.length)]};transform:rotate(${Math.random()*360}deg);animation:cf ${1.5+Math.random()*2}s linear ${Math.random()*.8}s forwards`;document.body.appendChild(p);setTimeout(()=>p.remove(),4000);}}
 
-// ══════════════════════════════════════════════
-// TOAST
-// ══════════════════════════════════════════════
-let tT;
-function toast(msg,bg='#0f172a'){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.style.background=bg;
-  t.classList.add('up');
-  clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('up'),3200);
-}
+// ── TOAST ──
+let tT;function toast(m,bg='#0f172a'){const t=document.getElementById('toast');t.textContent=m;t.style.background=bg;t.classList.add('up');clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('up'),3000);}
 
-// ══════════════════════════════════════════════
-// INIT
-// ══════════════════════════════════════════════
-fetchData();
-setInterval(()=>fetchData(true),60000);
+// ── INIT ──
+fetchData();setInterval(()=>fetchData(true),60000);
 </script>
 </body>
 </html>
