@@ -742,19 +742,25 @@ h1,h2,h3,.impact{font-family:'Outfit',sans-serif;}
   <div class="ticker-track" id="ticker-track">
     <span class="ti">🚨 PANI PURI PROTECTION ON MAX ALERT</span><span class="ti-sep">⚡</span>
     <span class="ti">💀 RACHIT'S LIVER IS WATCHING THIS DASHBOARD WITH GENUINE TERROR</span><span class="ti-sep">⚡</span>
-    <span class="ti">🏃 THE STREETS OF MUMBAI WILL NEVER BE THE SAME</span><span class="ti-sep">⚡</span>
+    <span class="ti">🏃 MUMBAI WALKER vs 🚶‍♀️ PUNE SITTER — THE RIVALRY CONTINUES</span><span class="ti-sep">⚡</span>
     <span class="ti">📉 SOMEONE'S STEP COUNT LOOKS LIKE A DIAL-UP CONNECTION</span><span class="ti-sep">⚡</span>
     <span class="ti">⚔️ 30 DAYS · 2 RIVALS · 1 YEAR OF SUFFERING</span><span class="ti-sep">⚡</span>
-    <span class="ti">🍵 PANI PURI BAN vs 🍺 ALCOHOL EXTINCTION</span><span class="ti-sep">⚡</span>
-    <span class="ti">🔥 NO MERCY. NO REFUNDS. NO EXCEPTIONS.</span><span class="ti-sep">⚡</span>
+    <span class="ti">🍵 FC ROAD PANI PURI BAN vs 🍺 RACHIT'S HAPPY HOUR EXTINCTION</span><span class="ti-sep">⚡</span>
+    <span class="ti">🔥 SHIVANI GOES TO THE GYM. THE REST OF PUNE DOES NOT.</span><span class="ti-sep">⚡</span>
+    <span class="ti">💍 MARRIAGE PROSPECTS ARE WATCHING THIS LEADERBOARD</span><span class="ti-sep">⚡</span>
+    <span class="ti">🏍️ RACHIT LOVES BIKE RIDES BUT THIS CHALLENGE IS ABOUT FEET</span><span class="ti-sep">⚡</span>
+    <span class="ti">🧮 THE MATH DOES NOT CARE ABOUT YOUR FEELINGS</span><span class="ti-sep">⚡</span>
     <!-- duplicate for seamless loop -->
     <span class="ti">🚨 PANI PURI PROTECTION ON MAX ALERT</span><span class="ti-sep">⚡</span>
     <span class="ti">💀 RACHIT'S LIVER IS WATCHING THIS DASHBOARD WITH GENUINE TERROR</span><span class="ti-sep">⚡</span>
-    <span class="ti">🏃 THE STREETS OF MUMBAI WILL NEVER BE THE SAME</span><span class="ti-sep">⚡</span>
+    <span class="ti">🏃 MUMBAI WALKER vs 🚶‍♀️ PUNE SITTER — THE RIVALRY CONTINUES</span><span class="ti-sep">⚡</span>
     <span class="ti">📉 SOMEONE'S STEP COUNT LOOKS LIKE A DIAL-UP CONNECTION</span><span class="ti-sep">⚡</span>
     <span class="ti">⚔️ 30 DAYS · 2 RIVALS · 1 YEAR OF SUFFERING</span><span class="ti-sep">⚡</span>
-    <span class="ti">🍵 PANI PURI BAN vs 🍺 ALCOHOL EXTINCTION</span><span class="ti-sep">⚡</span>
-    <span class="ti">🔥 NO MERCY. NO REFUNDS. NO EXCEPTIONS.</span><span class="ti-sep">⚡</span>
+    <span class="ti">🍵 FC ROAD PANI PURI BAN vs 🍺 RACHIT'S HAPPY HOUR EXTINCTION</span><span class="ti-sep">⚡</span>
+    <span class="ti">🔥 SHIVANI GOES TO THE GYM. THE REST OF PUNE DOES NOT.</span><span class="ti-sep">⚡</span>
+    <span class="ti">💍 MARRIAGE PROSPECTS ARE WATCHING THIS LEADERBOARD</span><span class="ti-sep">⚡</span>
+    <span class="ti">🏍️ RACHIT LOVES BIKE RIDES BUT THIS CHALLENGE IS ABOUT FEET</span><span class="ti-sep">⚡</span>
+    <span class="ti">🧮 THE MATH DOES NOT CARE ABOUT YOUR FEELINGS</span><span class="ti-sep">⚡</span>
   </div>
 </div>
 
@@ -1226,53 +1232,102 @@ let charts={c:null,d:null};
 // ══════════════════════════════════════════════
 // ROAST LIBRARIES
 // ══════════════════════════════════════════════
+// ── Seed roasts so they feel fresh each day ──
+function dailySeed(){const d=new Date();return d.getDate()*31+d.getMonth()*7;}
+function seededRnd(arr){return arr[(dailySeed()+arr.length*17)%arr.length];}
+
 const LOSER_R=[
-  "Meticulous about hitting 136g of protein, tracking every macro to the gram — and still getting demolished on the pavement by someone who likes street food.",
-  "You built automated P&L dashboards with SP-API and Ads API. Your legs are the only thing in your life that refuse to be optimised.",
-  "The same person who monitors Folk Creations CAC daily cannot walk 10,000 steps. The cognitive dissonance is staggering.",
-  "Rachit's step count is currently delivering worse ROI than a zero-review Amazon listing on a keyword with no search volume.",
-  "You track breakeven CPP across 15 SKUs. Your daily steps are performing at RTO quality. 0% delivered.",
-  "You built a Meta Ads master prompt with Hook Model and 3C Framework logic. None of that logic is being applied to your feet.",
-  "Even the Nova Bloom collagen face mask cannot regenerate the dignity lost from this step count.",
-  "Rachit is spending more time optimising Amazon A+ content than his own cardiovascular health.",
-  "Your watch roll comes in premium vegan leather. Your step count comes in budget embarrassment.",
-  "The only thing getting more steps than Rachit is his scrolling finger checking this leaderboard.",
-  "Claude can run your Amazon automation. Claude cannot run your legs. That part is on you.",
-  "At this pace, Rachit's bar tab will outlive this challenge by pure mathematical inevitability.",
+  // Business / tech roasts
+  "You automated Folk Creations' entire P&L with SP-API, Ads API, and Google Sheets — but apparently there is no API endpoint for 'walking more than Anushka Ji.' A critical gap in your tech stack.",
+  "You track TACoS, RoAS, CAC, CPP, and breakeven across 15 SKUs with surgical precision. Your step count is performing at RTO quality. 0% delivered. Return to origin: the couch.",
+  "The same person who built Meta Ads master prompts using Hook Model and 3C Framework logic cannot apply any of that logic to moving his feet forward. The hook did not land.",
+  "You write long, deeply expressive messages about life, meaning, and connection. None of those messages said 'I walked 10,000 steps today.' Coincidence? The leaderboard doesn't think so.",
+  "Rachit went on a bike ride and called it cardio. The challenge is about steps, not stories.",
+  "Nova Bloom sells a Bio-Collagen Overnight Glass Skin Mask. No amount of collagen can restore the dignity of this step count.",
+  "Your Folk Creations watch organiser holds 10 watches. None of those watches are counting enough steps on your wrist.",
+  "You built a full Supabase-backed brain dump app with realtime sync and a 12-week heatmap. Your step heatmap for this month looks like a server outage.",
+  "Rachit loves deep conversations. He and Anushka Ji are currently having one — it's called this leaderboard, and she's the only one saying something.",
+  "You track 136g protein daily to the gram. Your steps, by contrast, have not been tracked, logged, hit, or acknowledged.",
+  "Claude can run your Amazon automation. Claude cannot run your legs. That remains entirely on you and it shows.",
+  // Marriage / relationship roasts
+  "Rachit does not want to get married. He also apparently does not want to walk. A man fully committed to his own peace and comfort.",
+  "7 years. One relationship. Ended badly. His ex cheated on him, and now he won't even let his step count commit to a number above 8,000.",
+  "The only long-term commitment Rachit currently has is to Folk Creations, misal pav, and losing this challenge.",
+  // Mumbai v/s Pune
+  "Rachit is from Mumbai — a city where people walk everywhere, cross roads through traffic, and climb 6 floors because the lift is broken. And somehow he is losing a walking challenge to someone from Pune who drives an Activa to buy groceries.",
+  "Mumbai local trains require boarding, alighting, and sprinting across platforms. Rachit has access to all of this infrastructure and is still behind a Punekaar who thinks a 2km drive is exercise.",
+  "Mumbai: the city that never sleeps, never sits, and never stops walking. Except apparently Rachit, who is defying the entire character of his hometown.",
+  // Misal / food roasts
+  "Every morning Rachit eats misal pav and feels powerful. The misal is not converting to steps. Investigate.",
+  "Misal pav has more energy per bite than any pre-workout on the market. Rachit is eating it and then sitting down. This is a misallocation of resources.",
+  // Friends / social life roast
+  "Rachit loves making friends and having deep conversations. His friends should have a deep conversation with him about this step count because it needs intervention.",
 ];
+
 const LOSER_A=[
-  "At this pace, Anushka Ji will be explaining the pani puri ban at every social event for 365 consecutive days.",
-  "The pani puri stalls have started playing sad background music when Anushka Ji's step count updates.",
-  "Anushka Ji is walking with the urgency of someone who has mentally accepted the ban and is entering the grief phase.",
-  "The Juhu Beach stalls are pre-printing 'Closed for Anushka Ji' signs. They believe in planning ahead.",
-  "Anushka Ji's daily steps are dropping faster than a soggy pani puri on a humid Mumbai afternoon.",
-  "Anushka Ji's sneakers came here for a walking challenge. They didn't sign up for being fashion accessories.",
-  "The stall vendors are already writing touching farewell notes. In advance. With certainty.",
-  "At Anushka's current pace, Rachit could take a full weekend off and still win by a meaningful margin.",
-  "Anushka Ji is walking like she's saving her energy for a more important month. There is no more important month.",
-  "Pani puri vendors across Mumbai are scheduling their most emotional farewell since the last monsoon.",
-  "Anushka Ji's step count and her competitive spirit are both conspicuously absent today.",
-  "The pani puri ban is looking so certain that the Supreme Court has pre-drafted the injunction in Anushka Ji's name.",
+  // Job / career roasts
+  "Anushka Ji is a Senior QA Automation Engineer. Her job is literally to find failures and fix them. And yet she cannot QA her own step count, which is failing all test cases.",
+  "As a QA engineer, Anushka Ji writes automated tests to catch bugs. Her step count has had a critical bug since Day 1 and she has not opened a single ticket.",
+  "Anushka Ji does automation testing at an IT firm. She has automated everything at work except, apparently, the action of walking.",
+  "She also does makeup artistry on the side. Full contour, highlight, setting spray — and then sits down for the rest of the day. The fit is immaculate. The step count is not.",
+  "Anushka Ji's makeup looks take 2 hours to do. Her daily walk takes 20 minutes. The priorities are documented and they are concerning.",
+  // Pune v/s Mumbai roasts
+  "Anushka Ji lives in Pune and claims Pune is better than Mumbai. Pune has wider roads, cleaner air, and apparently zero reason to walk anywhere because everything is an Uber away.",
+  "Pune is a city built for bikes and cars. Mumbai is built for walkers. And somehow the Mumbaikar is ahead on this leaderboard. Let that sink in, Punekaar.",
+  "Anushka Ji will defend Pune to the death. She will argue Pune has better weather, better roads, and better quality of life. None of those qualities are visible in her step count.",
+  "Pune has Mulshi, Sinhagad, Lavasa — literally surrounded by hills people trek. Anushka Ji is not trekking any of them. She is in her flat, defending Pune's honour without using her legs.",
+  "Pune traffic is Anushka Ji's reason for not walking. Except her step count suggests she is not walking inside her own apartment either.",
+  // Pani puri roasts
+  "The pani puri stalls near FC Road, Pune are already practising lockout procedures. In advance. With quiet certainty.",
+  "Anushka Ji's 3 past relationships all ended, but none of them hurt as much as what is about to happen to her and pani puri.",
+  "Her father builds aluminium windows and glass structures. He is going to have to build a glass case to display the last pani puri she ate before the ban.",
+  "Dad installs windows. Anushka Ji is about to spend a year looking through them at pani puri stalls she cannot enter.",
+  "Anushka Ji eats non-veg. She survives on flavour. The pani puri ban will remove the most important flavour from her life and she is doing nothing to stop it.",
+  // Friend group roasts
+  "Shreenidhi, Hrutuja, Shivani, and Shweta are all watching this leaderboard from Pune. None of them are helping. None of them are walking with her. Solidarity without steps.",
+  "Shivani still goes to the gym. Shivani is the only one in this friend group with any athletic credibility. The rest of them, including Anushka Ji, are a collective liability.",
+  "The Pune friend group has 4 members: Shreenidhi, Hrutuja, Shivani, and Shweta. Combined step count contribution to this challenge: 0. Supportive? Yes. Useful? No.",
+  "Shreenidhi, Hrutuja, and Shweta are not into fitness. This is documented. But they could at least WALK WITH HER. They have chosen not to. Pune solidarity has failed Anushka Ji.",
+  "Shivani goes to the gym. If Shivani was in this challenge instead of Anushka Ji, Mumbai would be losing. That's how bad this is.",
+  // Marriage / prospects roast
+  "Anushka Ji is looking for marriage prospects. Any serious prospect watching this leaderboard right now is reconsidering. The step count is a personality test and she is not passing.",
+  "Imagine explaining to a marriage prospect: yes I lost a walking challenge to a man from Mumbai. For one full year. He gets to drink. I do not get pani puri. This is the first story of our life together.",
+  "Height 5'8\". Senior QA Engineer. Makeup artist. Excellent on paper. Step count: needs improvement. Marriage prospects are watching.",
 ];
+
 const DAILY_R=[
-  "Rachit obliterated today's session. Anushka Ji is apparently researching new hobbies.",
-  "Today's result: Rachit 1, Pani Puri 0. The math is doing what math does.",
-  "Rachit walked more today than Anushka Ji has walked this week. Allegedly.",
-  "Rachit brought receipts today. In step form. Notarised.",
-  "Today's daily domination brought to you by Rachit and a complete absence of restraint.",
-  "Rachit's legs are doing what his excuse list is not: functioning at full capacity.",
-  "Today Rachit chose violence. Specifically, violence toward Anushka Ji's pani puri future.",
-  "Rachit's step count today arrived, did the job, and left. Professional. Devastating.",
+  "Rachit obliterated today. Anushka Ji is somewhere in Pune explaining this to Shreenidhi.",
+  "Today's result: Rachit 1, Pani Puri 0. The FC Road stalls are worried.",
+  "Rachit walked more today than Anushka Ji has walked this week. The misal pav is finally converting.",
+  "Rachit chose violence today. Specifically, violence toward Anushka Ji's pani puri access rights.",
+  "Today Rachit did what Mumbai people do: walked somewhere, came back, walked more. It's cultural.",
+  "Rachit's step count today arrived, did the job, and left. Professional. Devastating. Very Mumbai.",
+  "The man who loves bike rides walked more than the woman from the city of bike rides. Let that land.",
+  "Today's hero: Rachit. Today's victim: Anushka Ji's pani puri subscription.",
+  "Rachit wrote a long message about today's walk. It was moving. Literally.",
+  "Today Rachit proved that vegan leather watch organiser energy transfers directly to calves.",
 ];
+
 const DAILY_A=[
-  "Anushka Ji owns the pavement today. Rachit's bar tab is nervously updating.",
-  "Anushka Ji walked with the energy of someone personally invested in another person's suffering. It shows.",
-  "Today Anushka Ji did the thing. Rachit did not do the thing.",
-  "The streets feared Anushka Ji today. Rightfully and appropriately.",
-  "Today's winner: Anushka Ji. Today's loser: Rachit's social calendar for the next year.",
-  "Anushka Ji is not just walking. She is systematically removing Rachit's evening plans.",
-  "Today Anushka Ji showed up. Rachit showed intent. The scoreboard does not recognise intent.",
-  "Anushka Ji today: a menace to happy hour. Documented. Witnessed. Devastating.",
+  "Anushka Ji owns the pavement today. Rachit's bar tab is filing a complaint.",
+  "Anushka Ji walked today with the energy of someone who just remembered what pani puri tastes like.",
+  "Today Anushka Ji QA-tested her own step count and it passed all assertions. Rare event. Documented.",
+  "The streets of Pune feared Anushka Ji today. Even the Activas moved aside.",
+  "Today's winner: Anushka Ji. Today's loser: every bartender within 2km of Rachit's house.",
+  "Anushka Ji is not just walking. She is systematically cancelling Rachit's social life one step at a time.",
+  "Anushka Ji walked today and Shivani saw it. For the first time, the gym friend is proud.",
+  "Pune: 1. Mumbai: 0. Today's result is going into the Mumbai vs Pune debate as Exhibit A.",
+  "Anushka Ji did her makeup, looked great, and then walked 15,000 steps. The complete package.",
+  "Today Anushka Ji showed up. Rachit showed intent. The leaderboard only recognises one of those.",
+];
+
+// Mumbai vs Pune roasts — shown in ticker and verdict section
+const MUMBAI_VS_PUNE=[
+  "Mumbai: 12.5 million people walking everywhere because parking costs ₹200/hour. Pune: same 12.5 million but they all own a bike. The walking culture gap is self-explanatory.",
+  "Rachit is from Mumbai. Anushka Ji is from Pune. One city has local trains that require running. The other has ring roads that require driving. The leaderboard reflects this infrastructure.",
+  "Pune people love telling Mumbai people that Pune is cleaner, calmer, and better. They say this from inside their car, in traffic, on their way to MG Road to eat pani puri.",
+  "Mumbai has no space, no parking, and no choice but to walk. Rachit has somehow still found a way to lose. This is a personal failure that transcends geography.",
+  "Anushka Ji argues Pune is better than Mumbai. The pani puri ban she is about to receive is Pune-flavoured. The karma is local.",
 ];
 
 function fmt(n){return new Intl.NumberFormat('en-IN').format(Math.round(n||0));}
@@ -1427,11 +1482,11 @@ function renderAll(){
     if(ldr==='rachit'){
       document.getElementById('hum-avi').textContent='🚶‍♀️';
       document.getElementById('hum-name').textContent='Anushka Ji';
-      document.getElementById('hum-roast').textContent=rnd(LOSER_A);
+      document.getElementById('hum-roast').textContent=seededRnd(LOSER_A);
     }else{
       document.getElementById('hum-avi').textContent='🏃';
       document.getElementById('hum-name').textContent='Rachit';
-      document.getElementById('hum-roast').textContent=rnd(LOSER_R);
+      document.getElementById('hum-roast').textContent=seededRnd(LOSER_R);
     }
   }else hc.style.display='none';
 
@@ -1445,16 +1500,16 @@ function renderAll(){
   dc.className='daily-champ';
   if(latest.r>latest.a){
     dc.classList.add('r-champ');dcBg.textContent='R';dcMedal.textContent='🔵';
-    dcText.textContent='"'+rnd(DAILY_R)+'"';
+    dcText.textContent='"'+seededRnd(DAILY_R)+'"';
     dcSub.innerHTML=`${latest.date.slice(5)} &nbsp;·&nbsp; <strong>Rachit won by ${fmt(latest.r-latest.a)} steps</strong>`;
   }else if(latest.a>latest.r){
     dc.classList.add('a-champ');dcBg.textContent='A';dcMedal.textContent='🔴';
-    dcText.textContent='"'+rnd(DAILY_A)+'"';
+    dcText.textContent='"'+seededRnd(DAILY_A)+'"';
     dcSub.innerHTML=`${latest.date.slice(5)} &nbsp;·&nbsp; <strong>Anushka Ji won by ${fmt(latest.a-latest.r)} steps</strong>`;
   }else{
     dc.classList.add('tie-champ');dcBg.textContent='=';dcMedal.textContent='⚖️';
-    dcText.textContent='"A dead heat. Pathetic from both parties."';
-    dcSub.innerHTML=`${latest.date.slice(5)} &nbsp;·&nbsp; <strong>Tie. The worst possible outcome.</strong>`;
+    dcText.textContent='"A dead heat. Pathetic from both. Pune and Mumbai equally embarrassed."';
+    dcSub.innerHTML=`${latest.date.slice(5)} &nbsp;·&nbsp; <strong>Tie. The worst possible outcome for everyone.</strong>`;
   }
 
   // ── HALL OF SHAME ──
@@ -1536,19 +1591,19 @@ function renderAll(){
 
   // Verdict
   const VERDICTS_R=[
-    `After ${n} days, <strong>Anushka Ji</strong> is walking like someone who has already mentally processed the pani puri ban and entered the acceptance stage. The numbers are unkind. The leaderboard is merciless. The stall vendors are already arranging a farewell dinner.`,
-    `<strong>Rachit</strong> is currently ahead by ${fmt(diff)} steps. Statistically, Anushka Ji would need to start walking in her sleep to catch up. The pani puri ban is not a possibility — it is a projection.`,
-    `The evidence is clear: <strong>Anushka Ji</strong> has logged ${aSl} sub-5k days, a single-day low of ${fmt(lowestA)} steps, and a deficit that grows daily. The Hall of Shame does not judge. The Hall of Shame simply documents.`,
+    `After ${n} days, <strong>Anushka Ji</strong> — Senior QA Automation Engineer, makeup artist, proud Punekaar — is losing a walking challenge to a man from Mumbai. Her QA skills have failed to catch the most obvious bug: her own step count. The test suite is red. Shreenidhi, Hrutuja, Shivani, and Shweta are watching. The FC Road pani puri stalls are preparing farewell menus.`,
+    `<strong>Rachit</strong> leads by ${fmt(diff)} steps. The same man who eats misal pav, goes on bike rides, and writes long messages about deep feelings is currently making Anushka Ji's 3 past relationships look like the most recoverable losses of her life. The pani puri ban is not a risk. It is a projection.`,
+    `The evidence is clear: <strong>Anushka Ji</strong> chose Pune over Mumbai and the Pune lifestyle over fitness. Wider roads. Cleaner air. Slower step count. Her father builds aluminium windows and glass facades — he is going to need to build a display case for the last pani puri she eats before the ban. The Hall of Shame simply documents.`,
   ];
   const VERDICTS_A=[
-    `After ${n} days, <strong>Rachit</strong> is walking like someone who has already accepted that sparkling water will replace all social activity for the next 365 days. His step count is performing at RTO quality.`,
-    `<strong>Anushka Ji</strong> leads by ${fmt(diff)} steps. Rachit's bar tab is in active mourning. Every sub-10k day from Rachit is statistically equivalent to pouring a drink down the drain. Voluntarily.`,
-    `The record shows: <strong>Rachit</strong> has logged ${rSl} sub-5k days, a lowest single day of ${fmt(lowestR)} steps, and a deficit that compounds with interest. This Hall does not judge. It only archives.`,
+    `After ${n} days, <strong>Rachit</strong> — D2C founder, gym-goer, Mumbai local, misal pav enthusiast — is losing a walking challenge to a woman from Pune. He automated his entire P&L with SP-API, wrote Python scripts for Amazon Ads, and built a Supabase brain dump app. His legs remain the only unoptimised asset in his entire operation.`,
+    `<strong>Anushka Ji</strong> leads by ${fmt(diff)} steps. Rachit has had 1 relationship in his life, it lasted 7 years and ended badly, and now he can't even commit to 10,000 steps a day. The bar tab is in mourning. The misal pav is not converting to steps. The investigation is ongoing.`,
+    `The record shows: <strong>Rachit</strong> is being beaten by a QA engineer from Pune who also does makeup artistry on the side. Mumbai vs Pune is supposed to be a debate. This leaderboard has settled it for today and the answer is embarrassing for the Mumbai side. This Hall does not judge. It archives.`,
   ];
   const VERDICTS_TIE=[
-    `After ${n} days, both competitors have managed to be equally unremarkable. The Hall of Shame records this as a double entry. The pani puri and the alcohol are both nervous. As they should be.`,
+    `After ${n} days: a Mumbai ecommerce founder and a Pune QA engineer are perfectly tied. The pani puri is safe. The alcohol is safe. The Mumbai vs Pune debate is unresolved. Shivani is the only one in this entire situation who is actually fit.`,
   ];
-  const verdict=ldr==='rachit'?rnd(VERDICTS_R):ldr==='anushka'?rnd(VERDICTS_A):rnd(VERDICTS_TIE);
+  const verdict=ldr==='rachit'?seededRnd(VERDICTS_R):ldr==='anushka'?seededRnd(VERDICTS_A):seededRnd(VERDICTS_TIE);
   document.getElementById('sv-text').innerHTML=verdict;
 
   // ── HP BARS ──
