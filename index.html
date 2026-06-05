@@ -720,6 +720,9 @@ h1,h2,h3,.impact{font-family:'Outfit',sans-serif;}
   .shame-row3,.shame-row4,.insight-grid,.charts-grid,.pred-grid{grid-template-columns:1fr;}
   .badges-grid{grid-template-columns:repeat(2,1fr);}
   .wp-stats-grid{grid-template-columns:repeat(2,1fr);}
+  .rv-scoreboard{grid-template-columns:1fr;gap:.8rem;}
+  .rv-mid{order:-1;}
+  .friend-row{grid-template-columns:28px 32px 1fr auto;}.fr-badge{display:none;}
   .hero-title{letter-spacing:-1.5px;}
   .fighter{padding:1.5rem 1rem;}
 }
@@ -1069,7 +1072,168 @@ h1,h2,h3,.impact{font-family:'Outfit',sans-serif;}
   </div>
 </div>
 
-<!-- ENDGAME PREDICTOR -->
+<!-- MUMBAI VS PUNE RIVALRY CARD -->
+<div class="rivalry-card">
+  <div class="rv-header">
+    <div class="rv-eyebrow">🏟️ The Real War Beneath The War</div>
+    <div class="rv-title">Mumbai <span class="rv-vs">VS</span> Pune</div>
+    <div class="rv-sub">The debate that has no right answer. The leaderboard now has data.</div>
+  </div>
+  <div class="rv-scoreboard">
+    <div class="rv-side rv-mumbai">
+      <div class="rv-city-emoji">🏙️</div>
+      <div class="rv-city-name">Mumbai</div>
+      <div class="rv-city-score" id="rv-mum-score">0</div>
+      <div class="rv-city-label">days won</div>
+      <div class="rv-city-rep">Local trains · Vada pav · Rachit</div>
+    </div>
+    <div class="rv-mid">
+      <div class="rv-mid-score" id="rv-mid-txt">—</div>
+      <div class="rv-mid-label">Current verdict</div>
+    </div>
+    <div class="rv-side rv-pune">
+      <div class="rv-city-emoji">🌿</div>
+      <div class="rv-city-name">Pune</div>
+      <div class="rv-city-score" id="rv-pun-score">0</div>
+      <div class="rv-city-label">days won</div>
+      <div class="rv-city-rep">Wide roads · Pani puri · Anushka Ji</div>
+    </div>
+  </div>
+  <div class="rv-bar-wrap">
+    <div class="rv-bar-track">
+      <div class="rv-bar-mum" id="rv-bar-mum" style="width:50%"></div>
+      <div class="rv-bar-pun" id="rv-bar-pun" style="width:50%"></div>
+    </div>
+    <div class="rv-bar-labels">
+      <span style="color:#f97316">Mumbai</span>
+      <span style="color:#94a3b8" id="rv-bar-center">50 / 50</span>
+      <span style="color:#8b5cf6">Pune</span>
+    </div>
+  </div>
+  <div class="rv-roast-box">
+    <div class="rv-roast-label">📢 Today's Mumbai vs Pune Verdict</div>
+    <div class="rv-roast-text" id="rv-roast">—</div>
+  </div>
+  <div class="rv-facts">
+    <div class="rv-fact">
+      <span class="rv-fact-icon">🚆</span>
+      <span class="rv-fact-txt">Mumbai local trains require running, boarding, and fighting. Rachit has all this infrastructure and is using none of it.</span>
+    </div>
+    <div class="rv-fact">
+      <span class="rv-fact-icon">🛵</span>
+      <span class="rv-fact-txt">Pune has ring roads, wide lanes, and zero reason to walk anywhere. Anushka Ji has built a lifestyle around this and called it better.</span>
+    </div>
+    <div class="rv-fact">
+      <span class="rv-fact-icon">🌧️</span>
+      <span class="rv-fact-txt">Pune weather is objectively nicer. Anushka Ji is not using it. Mumbai is humid and Rachit is still somehow competitive.</span>
+    </div>
+  </div>
+</div>
+
+<!-- FRIEND LEADERBOARD -->
+<div class="friends-card">
+  <div class="fc-header">
+    <div class="fc-eyebrow">👯 The Support Squad (Unsupporting)</div>
+    <div class="fc-title">Anushka Ji's Friend Leaderboard</div>
+    <div class="fc-sub">Ranked by contribution to this challenge. Data verified. Results devastating.</div>
+  </div>
+  <div class="friends-list">
+    <div class="friend-row fr-anushka">
+      <div class="fr-rank">1</div>
+      <div class="fr-emoji">🚶‍♀️</div>
+      <div class="fr-info">
+        <div class="fr-name">Anushka Ji <span class="fr-tag ft-competitor">COMPETITOR</span></div>
+        <div class="fr-detail">Senior QA Engineer · Makeup Artist · Pune · Actually in the challenge</div>
+      </div>
+      <div class="fr-stat">
+        <div class="fr-steps" id="fr-anushka-steps">—</div>
+        <div class="fr-steps-lbl">steps logged</div>
+      </div>
+      <div class="fr-badge fb-active">🏃 Active</div>
+    </div>
+    <div class="friend-row fr-shivani">
+      <div class="fr-rank">2</div>
+      <div class="fr-emoji">💪</div>
+      <div class="fr-info">
+        <div class="fr-name">Shivani <span class="fr-tag ft-gym">GYM MEMBER</span></div>
+        <div class="fr-detail">Pune · The only one in this group with any athletic credibility</div>
+      </div>
+      <div class="fr-stat">
+        <div class="fr-steps">0</div>
+        <div class="fr-steps-lbl">contribution</div>
+      </div>
+      <div class="fr-badge fb-gym">🏋️ At least she tries</div>
+    </div>
+    <div class="friend-row fr-shreenidhi">
+      <div class="fr-rank">3</div>
+      <div class="fr-emoji">🛋️</div>
+      <div class="fr-info">
+        <div class="fr-name">Shreenidhi <span class="fr-tag ft-couch">MORAL SUPPORT ONLY</span></div>
+        <div class="fr-detail">Pune · Watching this leaderboard with concern but zero steps</div>
+      </div>
+      <div class="fr-stat">
+        <div class="fr-steps">0</div>
+        <div class="fr-steps-lbl">contribution</div>
+      </div>
+      <div class="fr-badge fb-couch">🛋️ Solidly Seated</div>
+    </div>
+    <div class="friend-row fr-hrutuja">
+      <div class="fr-rank">4</div>
+      <div class="fr-emoji">🛋️</div>
+      <div class="fr-info">
+        <div class="fr-name">Hrutuja <span class="fr-tag ft-couch">MORAL SUPPORT ONLY</span></div>
+        <div class="fr-detail">Pune · Has not walked with Anushka Ji once this month. Documented.</div>
+      </div>
+      <div class="fr-stat">
+        <div class="fr-steps">0</div>
+        <div class="fr-steps-lbl">contribution</div>
+      </div>
+      <div class="fr-badge fb-couch">🛋️ Solidly Seated</div>
+    </div>
+    <div class="friend-row fr-shweta">
+      <div class="fr-rank">5</div>
+      <div class="fr-emoji">🛋️</div>
+      <div class="fr-info">
+        <div class="fr-name">Shweta <span class="fr-tag ft-couch">MORAL SUPPORT ONLY</span></div>
+        <div class="fr-detail">Pune · Sends encouraging texts. Steps sent: 0. Texts sent: many.</div>
+      </div>
+      <div class="fr-stat">
+        <div class="fr-steps">0</div>
+        <div class="fr-steps-lbl">contribution</div>
+      </div>
+      <div class="fr-badge fb-couch">🛋️ Solidly Seated</div>
+    </div>
+  </div>
+  <div class="friends-verdict">
+    💬 <em>The Pune friend group has 5 members. Combined fitness contribution: 1 gym membership (Shivani), 4 couches, and a group chat full of heart emojis. Solidarity without steps is just sympathy.</em>
+  </div>
+</div>
+
+<!-- EXCUSE OF THE DAY -->
+<div class="excuse-card">
+  <div class="ex-header">
+    <div class="ex-eyebrow">🎭 Official Excuse Registry</div>
+    <div class="ex-title">Excuse of the Day</div>
+    <div class="ex-sub" id="ex-sub">Automatically generated for today's loser. Accuracy: suspicious.</div>
+  </div>
+  <div class="ex-body" id="ex-body">
+    <div class="ex-avatar" id="ex-avatar">🤷</div>
+    <div class="ex-name" id="ex-name">—</div>
+    <div class="ex-excuse-wrap">
+      <div class="ex-quote-mark">"</div>
+      <div class="ex-excuse" id="ex-excuse">Loading today's excuse...</div>
+      <div class="ex-quote-mark">"</div>
+    </div>
+    <div class="ex-credibility">
+      <div class="ex-cred-label">Excuse Credibility Score</div>
+      <div class="ex-cred-bar-wrap">
+        <div class="ex-cred-bar" id="ex-cred-bar"></div>
+      </div>
+      <div class="ex-cred-val" id="ex-cred-val">—</div>
+    </div>
+  </div>
+  <button class="ex-btn" id="ex-btn" onclick="rollExcuse()">🎲 Generate Another Excuse</button>
+</div>
 <div class="predictor">
   <span class="pred-trophy" id="pred-trophy">🔮</span>
   <div class="pred-winner" id="pred-winner">Battle outcome pending</div>
@@ -1088,6 +1252,132 @@ h1,h2,h3,.impact{font-family:'Outfit',sans-serif;}
 <div id="toast">✅ Done!</div>
 
 <script>
+// ══════════════════════════════════════════════
+// MUMBAI VS PUNE RIVALRY
+// ══════════════════════════════════════════════
+const RV_ROASTS_MUM_WIN=[
+  "Mumbai is winning. This is the correct outcome. A city where people run to catch trains is beating a city where people drive 400m to buy bread. As expected.",
+  "Mumbai leads the geographical debate today. Rachit, who walks through Bandra traffic without thinking, is defeating someone who considers a Zomato order a physical activity.",
+  "Mumbai: 1. The city where every commute is cardio is proving its point against the city where every commute is an Uber Pool.",
+  "Rachit is from a city where the local train platform requires a 200m sprint at 8:47am. That infrastructure is finally showing up in the data.",
+  "Today Mumbai wins. Anushka Ji will now argue the Pune weather, Pune food, Pune roads, Pune quality of life. She will not mention the step count. That's fine. The leaderboard mentions it for her.",
+  "Mumbai's chaotic infrastructure — the crowds, the stairs, the platforms — builds passive fitness. Pune's ring roads build passive sitting. Today's scoreline reflects this.",
+];
+const RV_ROASTS_PUN_WIN=[
+  "Pune wins today. Anushka Ji is walking through a city with decent pavements and breathing air that isn't 80% humidity and 20% diesel. She is using this advantage wisely.",
+  "Pune leads. The city with better roads, nicer weather, and apparently more walking than Mumbai today. Anushka Ji will text this to Rachit immediately. Probably with a map emoji.",
+  "Anushka Ji wins the day for Pune. She will now remind Rachit about Pune's weather for the next 48 hours. She is not wrong. She is also barely walking. These are both true.",
+  "Today: Pune 1, Mumbai 0. Anushka Ji is doing Pune proud while simultaneously eating non-veg near FC Road and calling it a training meal.",
+  "Pune takes the day. Somewhere in Mumbai, Rachit is on a bike ride and calling it research. The leaderboard is not counting bike steps, Rachit.",
+  "Pune leads today. Anushka Ji walked more than a man from the city that invented the concept of 'no choice but to walk.' This is historically significant.",
+];
+const RV_ROASTS_TIE=[
+  "The Mumbai vs Pune debate remains statistically unresolved. Both cities contributed equally to their representative's mediocrity today.",
+  "A tie. Neither Mumbai nor Pune can claim superiority today. Both should be embarrassed. The misal and the pani puri are equally safe. For now.",
+  "Neither city wins today. The debate continues. As it always does. Over food, usually.",
+];
+
+function renderRivalry(DATA,rT,aT){
+  const mumWins=DATA.filter(d=>d.r>d.a).length;
+  const punWins=DATA.filter(d=>d.a>d.r).length;
+  const ties=DATA.filter(d=>d.r===d.a&&d.r>0).length;
+  const n=DATA.length;
+  document.getElementById('rv-mum-score').textContent=mumWins;
+  document.getElementById('rv-pun-score').textContent=punWins;
+  const tot2=mumWins+punWins||1;
+  const mPct=Math.round(mumWins/tot2*100);
+  const pPct=100-mPct;
+  document.getElementById('rv-bar-mum').style.width=mPct+'%';
+  document.getElementById('rv-bar-pun').style.width=pPct+'%';
+  document.getElementById('rv-bar-center').textContent=`${mPct}% / ${pPct}%`;
+  let verdict='',roast='';
+  if(mumWins>punWins){
+    verdict=`🏙️ Mumbai leads ${mumWins}–${punWins}${ties?' ('+ties+' ties)':''}. The debate is settling.`;
+    roast=seededRnd(RV_ROASTS_MUM_WIN);
+  }else if(punWins>mumWins){
+    verdict=`🌿 Pune leads ${punWins}–${mumWins}${ties?' ('+ties+' ties)':''}. Shocking. Audacious. Temporary.`;
+    roast=seededRnd(RV_ROASTS_PUN_WIN);
+  }else{
+    verdict=`⚖️ ${mumWins}–${punWins} — The great debate remains statistically unresolved.`;
+    roast=seededRnd(RV_ROASTS_TIE);
+  }
+  document.getElementById('rv-mid-txt').textContent=n?verdict:'No data yet';
+  document.getElementById('rv-roast').textContent=roast;
+}
+
+// ══════════════════════════════════════════════
+// FRIEND LEADERBOARD
+// ══════════════════════════════════════════════
+function renderFriendLeaderboard(aT){
+  document.getElementById('fr-anushka-steps').textContent=aT?new Intl.NumberFormat('en-IN').format(aT):'0';
+}
+
+// ══════════════════════════════════════════════
+// EXCUSE ENGINE
+// ══════════════════════════════════════════════
+const EXCUSES_R=[
+  {e:"I went on a long bike ride along Marine Drive. That definitely counts as steps. The wind resistance alone was cardio.",c:12},
+  {e:"I was in the middle of a very deep conversation with a friend and it would have been rude to walk while listening. The conversation was important. The steps were not.",c:8},
+  {e:"I had misal pav for breakfast and it hit different today. The kind that makes you philosophical, not physical. I needed to sit with it.",c:6},
+  {e:"I was writing. A long message. Very expressive. About life and connection and what it means to really show up for people. I was showing up for people. Just not on this leaderboard.",c:4},
+  {e:"I was optimising Folk Creations' Amazon A+ content and then I just kept going. You can't stop mid-optimisation. The algorithm doesn't wait.",c:11},
+  {e:"I was debugging the SP-API integration and it took 6 hours and by the end I didn't have legs anymore. Medically, walking wasn't viable.",c:7},
+  {e:"I was researching a new bike route. Research is important. You can't just ride somewhere without planning. Planning is also exercise. For the brain.",c:5},
+  {e:"I was on a call with a Meta Ads consultant and the call ran long and then it was dark outside and walking in the dark is dangerous. Safety first.",c:9},
+  {e:"I made misal pav, I ate misal pav, I appreciated misal pav. This is a spiritual practice and should not be interrupted by cardiovascular activity.",c:3},
+  {e:"I was thinking about my watch roll collection and how each piece deserves proper consideration. You don't rush presence. I was being present.",c:7},
+  {e:"My Python automation script had a bug. I couldn't leave it. People depend on the P&L report. The report required me to be seated. The steps required me to not be.",c:10},
+  {e:"I was going to go for a walk but then someone sent a really interesting voice note and I had to reply properly. The reply took 40 minutes. It was a good reply.",c:6},
+];
+const EXCUSES_A=[
+  {e:"I had an 11am standup, a 2pm deployment review, a 4pm regression testing session, and a 6pm bug triage. My legs were not included in any of these calendar invites.",c:14},
+  {e:"Baner Road traffic at 7pm is not survivable. I was going to walk outside but the traffic was genuinely faster than a pedestrian and the footpath was a suggestion, not infrastructure.",c:18},
+  {e:"I was doing a full glam look. Contour, highlight, cut crease, setting spray. Two hours minimum. You cannot rush art. The steps waited. The contour could not.",c:9},
+  {e:"Shreenidhi called and we were talking and then Hrutuja joined and then Shweta joined and then it was a three-hour group call. I was stationary but emotionally very active.",c:5},
+  {e:"I was writing automated test cases and I genuinely lost track of time. The irony of failing to automate my step count while automating test cases is not lost on me. It is, however, documented here.",c:16},
+  {e:"It was raining in Pune. Not Mumbai rain which is aggressive and unavoidable. Pune rain, which is pleasant and perfect for sitting indoors with chai and not walking.",c:11},
+  {e:"I had a skincare routine to complete and you cannot rush hyaluronic acid. It needs time to absorb. During that time I could not sweat. Walking causes sweating. I was protecting my skin.",c:8},
+  {e:"I was evaluating marriage prospects and the process is mentally exhausting. It drains you in ways that are invisible but real. My step count reflects my emotional bandwidth today.",c:12},
+  {e:"There was a new pani puri stall that opened near Aundh and I went there to eat and sat there for two hours and then came home and sat more. It was worth it. Probably.",c:7},
+  {e:"My QA automation pipeline had a flaky test and I couldn't just ignore it. A flaky test is a sign. I investigated. It took all evening. The steps can wait for a stable build.",c:15},
+  {e:"Shivani said she was going to the gym and I felt guilty but not guilty enough to actually go. There's a zone between guilt and action. I lived there all day.",c:6},
+  {e:"I was doing makeup tutorials on Instagram for reference and then I accidentally watched 4 hours of content. The algorithm is more powerful than competitive walking motivation.",c:10},
+];
+
+let currentExcuseIdx=-1;
+let currentExcusePool=[];
+
+function rollExcuse(forceLoser){
+  const ldr=window._currentLdr||'tie';
+  const isR=ldr==='anushka'; // rachit is loser when anushka leads
+  const pool=isR?EXCUSES_R:EXCUSES_A;
+  currentExcusePool=pool;
+  let idx=Math.floor(Math.random()*pool.length);
+  while(idx===currentExcuseIdx&&pool.length>1)idx=Math.floor(Math.random()*pool.length);
+  currentExcuseIdx=idx;
+  const ex=pool[idx];
+  document.getElementById('ex-avatar').textContent=isR?'🏃':'🚶‍♀️';
+  document.getElementById('ex-name').textContent=(isR?'Rachit':'Anushka Ji')+' explains:';
+  document.getElementById('ex-sub').textContent=`Today's official excuse from ${isR?'Rachit (Mumbai)':'Anushka Ji (Pune)'}. Credibility rating included.`;
+  document.getElementById('ex-excuse').textContent=ex.e;
+  const cPct=ex.c;
+  const bar=document.getElementById('ex-cred-bar');
+  bar.style.width=cPct+'%';
+  bar.style.background=cPct<20?'linear-gradient(90deg,#ef4444,#f87171)':cPct<50?'linear-gradient(90deg,#f59e0b,#fbbf24)':'linear-gradient(90deg,#10b981,#34d399)';
+  const labels=['Completely fabricated','Nobody believes this','Questionable at best','Technically possible','Remotely plausible'];
+  document.getElementById('ex-cred-val').textContent=`${cPct}% credible — "${cPct<20?labels[0]:cPct<35?labels[1]:cPct<50?labels[2]:cPct<70?labels[3]:labels[4]}"`;
+}
+
+function renderExcuse(ldr){
+  window._currentLdr=ldr;
+  const exCard=document.querySelector('.excuse-card');
+  if(ldr==='tie'){
+    exCard.style.display='none';return;
+  }
+  exCard.style.display='block';
+  rollExcuse();
+}
+
 // ══════════════════════════════════════════════
 // ACHIEVEMENT BADGES
 // ══════════════════════════════════════════════
@@ -1679,6 +1969,9 @@ function renderAll(){
 
   renderBadges(DATA,rT,aT,rW,aW,diff,ldr,n);
   renderWantedPoster(DATA,rT,aT,ldr,diff,rSl,aSl,n);
+  renderRivalry(DATA,rT,aT);
+  renderFriendLeaderboard(aT);
+  renderExcuse(ldr);
   renderCharts(rT,aT,n);
 }
 
